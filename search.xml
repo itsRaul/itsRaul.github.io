@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[测试111111111]]></title>
+    <url>%2F2018%2F09%2F27%2Fa%2F</url>
+    <content type="text"><![CDATA[这是个测试111111111 hello word1.1111111111111111111]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[测试2222222222]]></title>
+    <url>%2F2018%2F09%2F26%2Fb%2F</url>
+    <content type="text"><![CDATA[这是个测试111111111 hello word1. 2. 3.]]></content>
+      <categories>
+        <category>react</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+</search>
