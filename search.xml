@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[搭建个人博客]]></title>
+    <url>%2F2018%2F09%2F30%2Fblog-construct%2F</url>
+    <content type="text"><![CDATA[hexo + github 搭建属于自己的个人博客 准备工作1.node：安装node，到官网下载，一路安装即可，在命令行输入node -v，出现版本号安装成功。 2.git：一路安装即可，教程 3.github：程序员的交流网站，用来做博客的远程创库、域名、服务器。 (Mac系统下载Homebrew，直接在终端进行下载，brew install git、brew install node) 安装hexo框架1npm install -g hexo 初始化项目终端cd到一个选定的目录文件下(如新建一个文件夹blog)1hexo init 查看blog文件下是否存在node_modules文件夹,不在则执行如下命令1hexo install 开启hexo服务器，在浏览器打开网址http://localhost:4000，出现hexo页面1hexo s 创建github仓库1.打开github，注册账号，需要和电脑关联，在本地创建ssh key，可在百度输入github与本地电脑关联 2.创建github仓库,点击+号(New repository),新建仓库，名为用户名.github.io固定写法。(用户名就是自己github的名字) 3.Create repository创建仓库，其它不用选择 4.cd到blog文件夹，打开配置文件_config.yml1234deploy: type: git repository: https://github.com/xxx/xxx.github.io.git branch: master 你需要将repository后xxx换成你自己的用户名,浏览器输入xxx.github.io 发布文章cd到blog文件夹，执行如下命令新建文章1hexo new "postName" 名为postName的文件夹在/blog/source/_posts下。 编辑文章完成，终端cd到blog文件夹下，执行如下命令1hexo g 1hexo d 安装theme可以去搜索关于hexo的主题页，修饰自己的个人网站,在github上Clone or download地址终端cd到blog的目录下执行如下命令1git clone https://github.com/iissnan/hexo-theme-next themes/next cd到blog文件夹(每次部署文章的步骤)1hexo clean 1hexo g 1hexo d 至于更改theme内容，配置主题的网站，去修改blog/_config.yml文件和blog/themes/next/_config.yml，不要忘记冒号：加空格 绑定个人域名1.想让自己的网站看起来更有个性，可以去万网购买喜欢的域名~~ 2.购买域名后，需要进行域名解析，之前先进行域名的实名验证，填写好信息，万网有详细的教程 3.在blog/source建立CNAME的文件，没有后缀名，内容输入购买的域名，如www.xxx.com 4.在万网对域名进行解析，进入解析设置，点击添加记录，需要添加4条记录12345第一条记录：记录类型：A主机记录:www解析线路：默认记录值192.30.252.154 12345第二条记录：记录类型：A主机记录:@解析线路：默认记录值192.30.252.154 12345第三条记录：记录类型：A主机记录:www解析线路：默认记录值192.30.252.153 12345第四条记录：记录类型：A主机记录:@解析线路：默认记录值192.30.252.153 总结和说明hexo + github搭建个人网站非常简单，主要在域名解析部分，当时各种解析添加记录都无法进行解析，这4条记录一定得添加好，绑定属于自己的域名。搭建属于自己的个人网站成就感满满，也希望自己一直坚持写博客，把自己遇到的问题和所做的收获一点一滴记录起来。明天是国庆节，国庆节快乐！！！]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[为什么写博客]]></title>
     <url>%2F2018%2F09%2F28%2Fblog-start%2F</url>
     <content type="text"><![CDATA[为什么坚持写博客? 原因 这个博客是由我自己一点点去搭建的，其中也遇到了不少麻烦，特别是在域名解析部分。 为什么要去搭建一个博客呢？可以看看自己的轨迹，做过什么，不忘处心，不遗失自己。 之前一直有想在博客园去写博客，但发现自己写不出东西来～～～，总之就是下不了笔。 我自己搭建的博客就是想把自己对前端或其它领域某些知识点自己思考写出来，积累下来。 有很多事情你以为你知道，其实你什么都不知道。 我的理解 未来自己写博客的过程中，对某个知识点进行比较全的解析，怎么来的？用在哪里？了解其原理。 用心去写，希望在多年以后回过头来看，原来曾经自己写得这么“傻逼”。 这是第一篇文章，以后慢慢来写，因为菜，所以好好学习、天天向上。 下一篇想写个人博客的搭建！]]></content>
