@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[H5的支付]]></title>
+    <url>%2F2018%2F10%2F01%2Fh5-pay%2F</url>
+    <content type="text"><![CDATA[JSSDK微信支付和h5浏览器支付宝支付 微信支付引入JS文件1http://res2.wx.qq.com/open/js/jweixin-1.4.0.js 通过config接口注入权限验证配置使用JSSDK的页面必须先配置信息，否则无法使用。配置的信息通过后端接口返回，前端调用。chooseWXPay:微信支付的接口12345678wx.config(&#123; debug: true, // 开启调试模式 appId: &apos;&apos;, // 必填，公众号的唯一标识 timestamp: , // 必填，生成签名的时间戳 nonceStr: &apos;&apos;, // 必填，生成签名的随机串 signature: &apos;&apos;,// 必填，签名 jsApiList: [&apos;chooseWXPay&apos;] // 必填，需要使用的JS接口列表&#125;); 通过ready接口处理成功验证config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。12345678910111213141516wx.ready(function()&#123; wx.chooseWXPay(&#123; timestamp: , // 支付签名时间戳 nonceStr: , // 支付签名随机串，不长于 32 位 package:, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*） signType: &apos;MD5&apos;, // 签名方式，默认为&apos;SHA1&apos;，使用新版支付需传入&apos;MD5&apos; paySign: , // 支付签名 success: function (res) &#123; if(res.errMsg == &quot;chooseWXPay:ok&quot;)&#123; alert(&quot;支付成功&quot;) &#125;else&#123; alert(res.errMsg); &#125; &#125; &#125;);&#125;); 1.坑：当支付成功时，前端看到支付成功，有个坑可能会出现，就是后端订单的支付信息可能会显示未支付状态2.出现的原因：用户支付完成，直接退出，后端未接收到支付完成的回调3.解决方法：后端提供支付订单状态接口，在支付成功时调用后端接口来确认订单支付状态 支付宝支付1.关于在h5浏览器的支付宝支付，前端直接调用后端接口2.后端提供接口alipay里有关于html页面，显示支付宝支付页面，继续支付和已完成支付，点击继续支付即可完成支付3.坑：后端提供的接口是否可以跳转支付页面，需要前后端联调前端处理123456res =&gt; &#123; const div = document.createElement(&apos;div&apos;); div.innerHTML = res.html; //接口返回的html document.body.appendChild(div); document.forms.alipaysubmit.submit(); &#125;]]></content>
+      <categories>
+        <category>H5</category>
+      </categories>
+      <tags>
+        <tag>wx.chooseWXPay</tag>
+        <tag>Alipay</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[搭建个人博客]]></title>
     <url>%2F2018%2F09%2F30%2Fblog-construct%2F</url>
     <content type="text"><![CDATA[hexo + github 搭建属于自己的个人博客 准备工作1.node：安装node，到官网下载，一路安装即可，在命令行输入node -v，出现版本号安装成功。 2.git：一路安装即可，教程 3.github：程序员的交流网站，用来做博客的远程创库、域名、服务器。 (Mac系统下载Homebrew，直接在终端进行下载，brew install git、brew install node) 安装hexo框架1npm install -g hexo 初始化项目终端cd到一个选定的目录文件下(如新建一个文件夹blog)1hexo init 查看blog文件下是否存在node_modules文件夹,不在则执行如下命令1hexo install 开启hexo服务器，在浏览器打开网址http://localhost:4000，出现hexo页面1hexo s 创建github仓库1.打开github，注册账号，需要和电脑关联，在本地创建ssh key，可在百度输入github与本地电脑关联 2.创建github仓库,点击+号(New repository),新建仓库，名为用户名.github.io固定写法。(用户名就是自己github的名字) 3.Create repository创建仓库，其它不用选择 4.cd到blog文件夹，打开配置文件_config.yml1234deploy: type: git repository: https://github.com/xxx/xxx.github.io.git branch: master 你需要将repository后xxx换成你自己的用户名,浏览器输入xxx.github.io 发布文章cd到blog文件夹，执行如下命令新建文章1hexo new "postName" 名为postName的文件夹在/blog/source/_posts下。 编辑文章完成，终端cd到blog文件夹下，执行如下命令1hexo g 1hexo d 安装theme可以去搜索关于hexo的主题页，修饰自己的个人网站,在github上Clone or download地址终端cd到blog的目录下执行如下命令1git clone https://github.com/iissnan/hexo-theme-next themes/next cd到blog文件夹(每次部署文章的步骤)1hexo clean 1hexo g 1hexo d 至于更改theme内容，配置主题的网站，去修改blog/_config.yml文件和blog/themes/next/_config.yml，不要忘记冒号：加空格 绑定个人域名1.想让自己的网站看起来更有个性，可以去万网购买喜欢的域名~~ 2.购买域名后，需要进行域名解析，之前先进行域名的实名验证，填写好信息，万网有详细的教程 3.在blog/source建立CNAME的文件，没有后缀名，内容输入购买的域名，如www.xxx.com 4.在万网对域名进行解析，进入解析设置，点击添加记录，需要添加4条记录12345第一条记录：记录类型：A主机记录:www解析线路：默认记录值192.30.252.154 12345第二条记录：记录类型：A主机记录:@解析线路：默认记录值192.30.252.154 12345第三条记录：记录类型：A主机记录:www解析线路：默认记录值192.30.252.153 12345第四条记录：记录类型：A主机记录:@解析线路：默认记录值192.30.252.153 总结和说明hexo + github搭建个人网站非常简单，主要在域名解析部分，当时各种解析添加记录都无法进行解析，这4条记录一定得添加好，绑定属于自己的域名。搭建属于自己的个人网站成就感满满，也希望自己一直坚持写博客，把自己遇到的问题和所做的收获一点一滴记录起来。明天是国庆节，国庆节快乐！！！]]></content>
