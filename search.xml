@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[vue-router的history模式]]></title>
+    <url>%2F2018%2F10%2F16%2Fvue-router-history%2F</url>
+    <content type="text"><![CDATA[History模式 简述1.vue-router 默认 hash 模式 ,后面带有#号，如果不要hash，可以用路由的 history 模式，后面不带#号。 2.前端处理12345const router = new VueRouter(&#123; mode: &apos;history&apos;, base:&quot;/app&quot; routes: [...]&#125;) base：应用的基路径。例如，如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 “/app/“。如果放在app文件下面没有base设置，页面会出现空白，无法显示页面。 3.history 模式需要后端的配置支持后端配置history模式详情]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue-router</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[moment在vue时间格式化]]></title>
     <url>%2F2018%2F10%2F10%2Fmoment%2F</url>
     <content type="text"><![CDATA[Vue–moment时间格式插件安装和使用 moment文档安装插件1yarn add moment -S 导入使用12345678910import moment from &apos;moment&apos;filters: &#123; dateyear(time)&#123; return moment(time*1000).format(&quot;YYYY年MM月DD日&quot;) &#125;, formatDate(time) &#123; return moment(time*1000).format(&quot;YYYY-MM-DD HH:mm:ss&quot;) &#125;&#125;, filters过滤器，time时间戳的形参，time为什么要乘以1000？因为我公司的后端是PHP，PHP返回的时间戳需要乘以1000,格式化的时间才准确显示。123&lt;template&gt; &lt;div&gt;&#123;&#123;item.add_time | formatDate&#125;&#125;&lt;/div&gt;&lt;/template&gt; 在vue模版时间格式化的显示]]></content>
