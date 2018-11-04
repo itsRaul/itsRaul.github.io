@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[小程序组件]]></title>
+    <url>%2F2018%2F11%2F04%2FweChat-component%2F</url>
+    <content type="text"><![CDATA[小程序组件、事件与属性 组件引用1234567891011121314151617181920212223242526272829303132Component(&#123; /** * 组件的属性列表，外部暴露的属性 */ properties: &#123; like:&#123; type:Number、String、Boolean, //属性的类型，必填 value:false, //初始值，选填 observer: function (newVal, oldVal) &#123; this.setData(&#123; val:newVal &#125;) &#125; // observer属性被改变时执行的函数（可选)，不要直接去改变properties的值(发生内存泄漏)，通过data定义的数据，通过setData把properties的值赋值data定义的值 &#125; &#125;, /** * 组件的初始数据 */ data: &#123; isLike:false, val:null &#125;, /** * 组件的方法列表 */ methods: &#123; this.properties.like//访问properties的属性 &#125;&#125;) 1.微信开发者工具小程序新建Component,新建组件目录2.properties：对外属性，即如果外部的wxml文件传入数据时，会把数据设置成properties的属性。(类似vue父子组件的传值类型限定)3.data数据的状态绑定4.methods组件的方法和生命周期的使用5.只有setData才可以更新data的数据]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vue-router的history模式]]></title>
     <url>%2F2018%2F10%2F16%2Fvue-router-history%2F</url>
-    <content type="text"><![CDATA[History模式 简述1.vue-router 默认 hash 模式 ,后面带有#号，如果不要hash，可以用路由的 history 模式，后面不带#号。 2.前端处理12345const router = new VueRouter(&#123; mode: &apos;history&apos;, base:&quot;/app&quot; routes: [...]&#125;) base：应用的基路径。例如，如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 “/app/“。如果放在app文件下面没有base设置，页面会出现空白，无法显示页面。 3.history 模式需要后端的配置支持后端配置history模式详情]]></content>
+    <content type="text"><![CDATA[History模式 简述1.vue-router 默认 hash 模式 ,后面带有#号，如果不要hash，可以用路由的 history 模式，后面不带#号。 2.前端处理12345const router = new VueRouter(&#123; mode: &apos;history&apos;, base:&quot;/app&quot; routes: [...]&#125;) base：应用的基路径。例如，如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 “/app/“。如果放在服务器app文件下面没有base设置，页面会出现空白，无法显示页面。 3.history 模式需要后端的配置支持后端配置history模式详情]]></content>
       <categories>
         <category>vue</category>
       </categories>
