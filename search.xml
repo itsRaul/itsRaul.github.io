@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[小程序http封装]]></title>
+    <url>%2F2018%2F12%2F05%2FweChat-wx-request%2F</url>
+    <content type="text"><![CDATA[小程序wx.request请求封装 12345678910config.js---api_base_url:接口域名appkey:头部携带的参数const config = &#123; api_base_url: &apos;&apos;, appkey: &quot;&quot;,&#125;export &#123;config &#125; 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364http.js---import &#123;config&#125; from &apos;../config.js&apos;定义状态码返回的错误信息 const tips = &#123; 1: &apos;抱歉，出现了一个错误&apos;, 1005:&apos;appkey无效，请前往www.7yue.pro申请&apos;, 3000:&apos;期刊不存在&apos;&#125;解构class HTTP&#123; 默认GET请求方式，返回Promise request(&#123;url,data=&#123;&#125;,method=&apos;GET&apos;&#125;)&#123; return new Promise((resolve, reject)=&gt;&#123; this._request(url,resolve,reject,data, method) &#125;) &#125; _request(url,resolve, reject, data=&#123;&#125;, method=&apos;GET&apos;)&#123; wx.request(&#123; url:config.api_base_url + url, method:method, data:data, header:&#123; &apos;content-type&apos;:&apos;application/json&apos;, &apos;appkey&apos;:config.appkey &#125;, success:(res)=&gt;&#123; const code = res.statusCode.toString() if (code.startsWith(&apos;2&apos;))&#123; resolve(res.data) &#125; else&#123; reject() const error_code = res.data.error_code this._show_error(error_code) &#125; &#125;, fail:(err)=&gt;&#123; reject() this._show_error(1) &#125; &#125;) &#125; _show_error(error_code)&#123; if(!error_code)&#123; error_code = 1 &#125; const tip = tips[error_code] wx.showToast(&#123; title: tip?tip:tips[1], icon:&apos;none&apos;, duration:2000 &#125;) &#125;&#125;export &#123;HTTP&#125; 1234567891011121314151617181920212223242526272829model.js---import &#123; HTTP&#125;from &apos;http.js&apos;ES6继承class Model extends HTTP &#123; GET请求 getDetail(bid) &#123; return this.request(&#123; url: `book/$&#123;bid&#125;/detail` &#125;) &#125; POST请求 postComment(bid, comment) &#123; return this.request(&#123; url: &apos;book/add/short_comment&apos;, method: &apos;POST&apos;, data: &#123; book_id: bid, content: comment &#125; &#125;) &#125;&#125; 123456789101112使用---import &#123; Models&#125; from &apos;/models.js&apos;实例化对象const model = new Models()model.getDetail().then(res =&gt; &#123;&#125;)]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[小程序组件]]></title>
     <url>%2F2018%2F11%2F04%2FweChat-component%2F</url>
     <content type="text"><![CDATA[小程序组件、事件与属性 组件引用1234567891011121314151617181920212223242526272829303132Component(&#123; /** * 组件的属性列表，外部暴露的属性 */ properties: &#123; like:&#123; type:Number、String、Boolean, //属性的类型，必填 value:false, //初始值，选填 observer: function (newVal, oldVal) &#123; this.setData(&#123; val:newVal &#125;) &#125; // observer属性被改变时执行的函数（可选)，不要直接去改变properties的值(发生内存泄漏)，通过data定义的数据，通过setData把properties的值赋值data定义的值 &#125; &#125;, /** * 组件的初始数据 */ data: &#123; isLike:false, val:null &#125;, /** * 组件的方法列表 */ methods: &#123; this.properties.like//访问properties的属性 &#125;&#125;) 1.微信开发者工具小程序新建Component,新建组件目录2.properties：对外属性，即如果外部的wxml文件传入数据时，会把数据设置成properties的属性。(类似vue父子组件的传值类型限定)3.data数据的状态绑定4.methods组件的方法和生命周期的使用5.只有setData才可以更新data的数据]]></content>
