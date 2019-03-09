@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[对象的类型——接口]]></title>
+    <url>%2F2019%2F03%2F09%2F4-ts-interfaces%2F</url>
+    <content type="text"><![CDATA[对象的类型(interfacer) 什么是接口对行为的抽象，而具体如何行动需要由类去实现。TypeScript 中的接口是一个非常灵活的概念，除了可用于对类的一部分行为进行抽象以外，也常用于对「对象的形状（Shape）」进行描述。1234567891011//定义接口interface Person &#123; name:string; age: number;&#125;//定义一个变量，类型是Person。约束了 tom 的形状必须和接口 Person 一致。接口少了一些属性是不允许的，多一些属性也是不允许的。let tom:Person = &#123; name: &apos;Tom&apos;, age: 25&#125; 可选属性有时不需要匹配所有的属性，可以用可选属性。定义属性key后面加? 如key?12345678910//定义接口interface Person &#123; name:string; age？: number;&#125;//这时仍然不允许添加未定义的属性：let tom: Person = &#123; name: &apos;Tom&apos;&#125;; 任意属性1.使用 [propName: string] 定义了任意属性取 string 类型的值。2.一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集，负责报错。 12345678910interface Person &#123; name: string; age?: number; [propName: string]: any;&#125;let tom: Person = &#123; name: &apos;Tom&apos;, gender: &apos;male&apos;&#125;; 123456789101112//报错interface Person &#123; name: string; age?: number; [propName: string]: string;&#125;let tom: Person = &#123; name: &apos;Tom&apos;, age: 25, gender: &apos;male&apos;&#125;; 因为可选属性age的值是number,number 不是 string 的子属性，所以报错了。 可读属性1.readonly 定义只读属性：2.注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候：123456789101112131415//报错interface Person &#123; readonly id: number; name: string; age?: number; [propName: string]: any;&#125;let tom: Person = &#123; id: 89757, name: &apos;Tom&apos;, gender: &apos;male&apos;&#125;;tom.id = 9527; 使用 readonly 定义的属性 id 初始化后，又被赋值了，所以报错了。 12345678910111213interface Person &#123; readonly id: number; name: string; age?: number; [propName: string]: any;&#125;let tom: Person = &#123; name: &apos;Tom&apos;, gender: &apos;male&apos;&#125;;tom.id = 89757; 报错如下： tom 进行赋值的时候，没有给 id 赋值。 tom.id 赋值的时候，由于它是只读属性]]></content>
+      <categories>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[任意值Any]]></title>
+    <url>%2F2019%2F03%2F09%2F3-ts-any%2F</url>
+    <content type="text"><![CDATA[任意值Any 任意值Any任意值（Any）用来表示允许赋值为任意类型。1.如果是一个普通类型，在赋值过程中改变类型是不被允许的。2.如果是一个any类型,则允许被赋值为任意类型。12let myFavoriteNumber:any = &apos;seven&apos;;myFavoriteNumber = 7; 任意值的属性和方法 在任意值上访问任何属性都是允许的： 也允许调用任何方法：12345let anyThing: any = &apos;hello&apos;;console.log(anyThing.myName);let anyThing: any = &apos;Tom&apos;;anyThing.setName(&apos;Jerry&apos;); 未声明类型的变量变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型：12let something;something = &apos;seven&apos;;]]></content>
+      <categories>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[原始数据类型]]></title>
+    <url>%2F2019%2F03%2F09%2F2-ts-primitive-data-type%2F</url>
+    <content type="text"><![CDATA[原始数据类型 原始数据类型1.JS的类型分为两种，原始数据类型和对象类型。2.原始数据类型分为五种，布尔值、数值、字符串、null、undefind、以及ES6中的新类型Symbol。 TypeScript使用原始类型1.布尔值1234let isDone: boolean = false;// 编译通过// 后面约定，未强调编译错误的代码片段，默认为编译通过 2.数值1let decLiteral: number = 6; 3.字符串1let myName:string = &apos;Tom&apos;; 4.空值JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void 表示没有任何返回值的函数：123function alertName(): void &#123; alert(&apos;My name is Tom&apos;)&#125; 声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：1let unusable: void = undefined; 5.Null 和 Undefined在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：12let u: undefined = undefined;let n: null = null; undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null。与 void 的区别是，undefined 和 null 是所有类型的子类型。也就是说 undefined 类型的变量，可以赋值给 number 类型的变量：1234// 这样不会报错let num: number = undefined; let u: undefined;let num: number = u; 而 void 类型的变量不能赋值给 number 类型的变量：1234let u: void;let num: number = u;// index.ts(2,5): error TS2322: Type &apos;void&apos; is not assignable to type &apos;number&apos;.]]></content>
+      <categories>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[TypeScript]]></title>
+    <url>%2F2019%2F03%2F09%2F1-ts%2F</url>
+    <content type="text"><![CDATA[TypeScript TypeScipt介绍 TypeScript 是 JavaScript 的类型的超集，它可以编译成纯 JavaScript。编译出来的 JavaScript 可以运行在任何浏览器上。TypeScript 编译工具可以运行在任何服务器和任何系统上。TypeScript 是开源的。 TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持，它由 微软 开发。 TS 好处1.代码的可维护性。类型系统实际上是最好的文档。2.非常包容，TS是JS的超集。3.活跃的社区。 Hello TypeScript1234function sayHello(person:string) &#123; return &apos;Hello,&apos; + person;&#125;let user = &apos;Tom&apos;; 编译成.js文件12345function sayHello(person) &#123; return &apos;Hello, &apos; + person;&#125;var user = &apos;Tom&apos;;console.log(sayHello(user)); 使用 : 指定变量的类型，: 的前后有没有空格都可以。]]></content>
+      <categories>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[React RouterV4]]></title>
     <url>%2F2019%2F02%2F24%2Freact-router%2F</url>
     <content type="text"><![CDATA[React Router react-router和react-router-dom理解 react-router提供了一些router的核心api,包括Router,Route,Switch等 2.react-router-dom提供了BrowserRouter,HashRouter,Route,Link,NavLink react-router-dom核心用法1.HashRouter和BrowserRouter 2.Route:path,exact,component,renderRoute:路由的根基path:路由的匹配exact:精准匹配component:渲染的 React 组件render:方便的内联渲染和包裹 3.NavLink,LinkLink:导航，路由跳转 4.Switch渲染与该地址匹配的第一个子节点 ,匹配到不会往下继续匹配。 5.Redirect路由重定向 6.HashRouter和BrowserRouterHashRouter: http://localhost:3000/#/admin，带有#号BrowserRouter:http://localhost:3000/admin,基于浏览的Router]]></content>
