@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="你不知道的JavaScript," />
 
 
 
@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘付鹏的个人网站">
-<meta property="og:url" content="http://yoursite.com/categories/Node-js/index.html">
+<meta name="description" content="作用域">
+<meta name="keywords" content="你不知道的JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="作用域">
+<meta property="og:url" content="http://yoursite.com/2019/03/30/1-JS-zuoyongyu/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="作用域">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/cifazuoyongyu.png">
+<meta property="og:updated_time" content="2019-03-31T03:45:27.772Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘付鹏的个人网站">
+<meta name="twitter:title" content="作用域">
+<meta name="twitter:description" content="作用域">
+<meta name="twitter:image" content="http://yoursite.com/images/cifazuoyongyu.png">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Node-js/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/30/1-JS-zuoyongyu/"/>
 
 
 
 
 
-  <title>Category: Node.js | 刘付鹏的个人网站</title>
+  <title>作用域 | 刘付鹏的个人网站</title>
   
 
 
@@ -140,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,55 +275,200 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Node.js<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/1-JS-zuoyongyu/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/01/13/1-Node-introduction/" itemprop="url">
-              
-                <span itemprop="name">Node.js介绍</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">作用域</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-13T19:04:56+08:00"
-              content="2019-01-13" >
-          01-13
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-30T23:37:33+08:00">
+                2019-03-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/你不知道的JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">你不知道的JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><a id="more"></a>
+<h3 id="作用域是什么"><a href="#作用域是什么" class="headerlink" title="作用域是什么"></a>作用域是什么</h3><blockquote>
+<p>作用域就是一套规则，用于确定在何处以及如何查找变量（标识符）。<br>LHS查询：查找的目的是对变量进行赋值。<br>RHS查询：目的是获取变量的值。<br>嵌套作用域：引擎从当前执行作用域开始查找变量，如果没找到，就向上一级继续查找。<br>当抵达最外层的全局作用域时，无论有没有找到，查找过程都会停止</p>
+</blockquote>
+<h4 id="JS编译原理"><a href="#JS编译原理" class="headerlink" title="JS编译原理"></a>JS编译原理</h4><p>例如：var a = 2;</p>
+<blockquote>
+<p>任何JavaScript代码片段在执行前都要进行编译（通常就在执行前）。因此，JavaScript编译器。首先会对var a = 2;这段程序进行编译,然后做好执行它的准备，并且马上就会执行它。</p>
+</blockquote>
+<p>一. JS编译<br>· 引擎<br>从头到尾负责整个JavaScript程序的编译及执行过程。<br>· 编译器<br>引擎的好朋友之一，负责语法分析及代码生成等脏活累活<br>· 作用域<br>引擎的另一位好朋友，负责收集并维护所有声明的标识符（变量）组成的<br>一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。</p>
+<p>二.接下来 var a = 2的编译过程<br>1.编译器询问作用域是否已经有有一个该名称的变量存在作用域集合中。如果是，编译器就会忽略该声明，继续进行编译。否则在该作用域的集合重声明一个新的变量，命名为a。</p>
+<p>2.编译器为引擎生成运行所需的代码，用来处理a = 2的操作。首先询问作用域，当前有没有a的变量，有，引擎使用a的变量。没有则引擎继续查找该变量。如果最终找到a变量，把2赋值给a。没找到抛出异常!</p>
+<h3 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h3><blockquote>
+<p>词法作用域就是定义在词法阶段的作用域。换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况时这样的）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo(a) &#123;</span><br><span class="line">    var b = a * 2;</span><br><span class="line"></span><br><span class="line">    function bar(c) &#123;</span><br><span class="line">        console.log(a,b,c)</span><br><span class="line">    &#125;</span><br><span class="line">    bar(b*3)</span><br><span class="line">&#125;</span><br><span class="line">foo(2) //2,4,12</span><br></pre></td></tr></table></figure>
+<p><img src="/images/cifazuoyongyu.png" alt="image"><br>1.整个全局作用句,有一个标识符：foo。<br>2.foo所创建的作用域，有三个标识符：a,bar和b。<br>3.bar所创建的作用域，有一个标识符：c。</p>
+<p>无论函数在哪里被调用，它的词法作用域都只由函数被声明时所处都位置决定。词法作用域查找只会查找一级标识符，比如a,b,c。如果代码中引用来foo,bar,baz，词法作用域只会试图查找foo标识符,找到这个变量后，对象属性访问规则分别接管bar和baz属性都访问。</p>
+<h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><h4 id="函数作用域-1"><a href="#函数作用域-1" class="headerlink" title="函数作用域"></a>函数作用域</h4><blockquote>
+<p>函数作用域：属于这个函数的全部变量都可以在整个函数都范围内使用及复用（事实上在嵌套都作用域也可以使用）。这种数据方案非常有用，能充分利用JavaScript变量可以根据需要改变值类型都“动态”特效。</p>
+</blockquote>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function doSomething(a) &#123;</span><br><span class="line">    b = a + doSomethingElse(a*2)</span><br><span class="line">    console.log(b*3)</span><br><span class="line">&#125;</span><br><span class="line">function doSomethingElse(a) &#123;</span><br><span class="line">    return a - 1;</span><br><span class="line">&#125;</span><br><span class="line">var b;</span><br><span class="line">doSomething(2) //15</span><br></pre></td></tr></table></figure></p>
+<p>b和doSomethingElse应该是doSomething内部具体实现的“私有”内容。给予外部作用域对b和doSomethingElse对“访问权限”。导致他们可能被有意无意以非预期对方式使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function doSomething(a) &#123;</span><br><span class="line">    function doSomethingElse(a) &#123;</span><br><span class="line">        return a - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    var b ;</span><br><span class="line">    b = a + doSomethingElse(a*2)</span><br><span class="line">    console.log(b*3)</span><br><span class="line">&#125;</span><br><span class="line">doSomething(2) //15</span><br></pre></td></tr></table></figure>
+<p>b和doSomethingElse都无法从外部被访问，只能被doSomething控制，设计上将具体内容私有化。</p>
+<h4 id="函数声明和函数表达式"><a href="#函数声明和函数表达式" class="headerlink" title="函数声明和函数表达式"></a>函数声明和函数表达式</h4><blockquote>
+<p>函数声明：如果function是声明中都第一个词，就是一个函数声明，否则是一个函数表达式。<br>函数表达式：以(function…而不仅是以function…开始。)<br>1.例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = 2;</span><br><span class="line">function foo() &#123;</span><br><span class="line">    var a = 3;</span><br><span class="line">    console.log(a); //3</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br><span class="line">console.log(a); //2</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>具名函数foo()本身污染所在都作用域，并且必须显式通过foo()调用才能运行其中代码。如果函数不需要函数名自动运行？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 2;</span><br><span class="line">(functgion foo() &#123;</span><br><span class="line">    var a = 3;</span><br><span class="line">    console.log(a); //3</span><br><span class="line">&#125;)();</span><br><span class="line">console.log(a); //2</span><br></pre></td></tr></table></figure>
+<p>此foo函数被绑定在函数表达式自身都函数中而不是所在作用域中。意味foo只能在(function foo(){…})…被访问，外部作用域不行。foo被因此在自身意味不会非不要地污染外部作用域</p>
+<p>2.匿名和具名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(function() &#123;</span><br><span class="line"></span><br><span class="line">&#125;,1000)</span><br></pre></td></tr></table></figure></p>
+<p>匿名函数表达式：没有名称和标识符。函数表达式可以是匿名的，而函数声明则不可以省略函数名。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/你不知道的JavaScript/" rel="tag"># 你不知道的JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/09/4-ts-interfaces/" rel="next" title="对象的类型——接口">
+                <i class="fa fa-chevron-left"></i> 对象的类型——接口
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -324,6 +476,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -344,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -409,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">1.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域是什么"><span class="nav-number">2.</span> <span class="nav-text">作用域是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS编译原理"><span class="nav-number">2.1.</span> <span class="nav-text">JS编译原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#词法作用域"><span class="nav-number">3.</span> <span class="nav-text">词法作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数作用域"><span class="nav-number">4.</span> <span class="nav-text">函数作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作用域-1"><span class="nav-number">4.1.</span> <span class="nav-text">函数作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数声明和函数表达式"><span class="nav-number">4.2.</span> <span class="nav-text">函数声明和函数表达式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -549,6 +730,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
