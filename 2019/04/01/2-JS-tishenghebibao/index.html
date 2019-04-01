@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="你不知道的JavaScript," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘付鹏的个人网站">
-<meta property="og:url" content="http://yoursite.com/categories/TypeScript/index.html">
+<meta name="description" content="提升和作用域闭包">
+<meta name="keywords" content="你不知道的JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="提升和作用域闭包">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/2-JS-tishenghebibao/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="提升和作用域闭包">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-01T13:48:24.012Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘付鹏的个人网站">
+<meta name="twitter:title" content="提升和作用域闭包">
+<meta name="twitter:description" content="提升和作用域闭包">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/TypeScript/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/2-JS-tishenghebibao/"/>
 
 
 
 
 
-  <title>Category: TypeScript | 刘付鹏的个人网站</title>
+  <title>提升和作用域闭包 | 刘付鹏的个人网站</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,139 +273,185 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>TypeScript<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/2-JS-tishenghebibao/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/03/09/4-ts-interfaces/" itemprop="url">
-              
-                <span itemprop="name">对象的类型——接口</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">提升和作用域闭包</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-09T09:27:54+08:00"
-              content="2019-03-09" >
-          03-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-01T00:00:00+08:00">
+                2019-04-01
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/你不知道的JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">你不知道的JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/09/3-ts-any/" itemprop="url">
-              
-                <span itemprop="name">任意值Any</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-09T09:14:46+08:00"
-              content="2019-03-09" >
-          03-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/09/2-ts-primitive-data-type/" itemprop="url">
-              
-                <span itemprop="name">原始数据类型</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-09T09:01:32+08:00"
-              content="2019-03-09" >
-          03-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/09/1-ts/" itemprop="url">
-              
-                <span itemprop="name">TypeScript</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-09T08:47:56+08:00"
-              content="2019-03-09" >
-          03-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h3 id="提升和作用域闭包"><a href="#提升和作用域闭包" class="headerlink" title="提升和作用域闭包"></a>提升和作用域闭包</h3><a id="more"></a>
+<h3 id="提升"><a href="#提升" class="headerlink" title="提升"></a>提升</h3><blockquote>
+<p>这意味着无论作用域中的声明出现在什么地方，都将在代码本身被执行前首先进行处理。<br>可以将这个过程形象地想象成所有的声明（变量和函数）都会被“移动”到各自作用域的<br>最顶端，这个过程被称为提升。<br>声明本身会被提升，而包括函数表达式的赋值在内的赋值操作并不会提升。<br>要注意避免重复声明，特别是当普通的  var 声明和函数声明混合在一起的时候，否则会引<br>起很多危险的问题！</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = 2;</span><br><span class="line">var a;</span><br><span class="line">console.log(a) //2</span><br><span class="line">------------------</span><br><span class="line">进行如下处理</span><br><span class="line">var a;</span><br><span class="line">a = 2;</span><br><span class="line">变量出现的位置被“移动”到了最上面，这个过程就叫做提升</span><br></pre></td></tr></table></figure>
+<p>变量和函数在内的所有声明都会在任何代码被执行前首先被处理。JavaScript实际会将其看两个声明：var a;和a = 2;第一个定义声明是在编译阶段进行，第二个赋值声明会被留在原地等待执行阶段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">foo()</span><br><span class="line">function foo() &#123;</span><br><span class="line">    console.log(a) //undefined</span><br><span class="line">    var a = 2;</span><br><span class="line">&#125;</span><br><span class="line">--------------</span><br><span class="line">进行如下处理</span><br><span class="line">function foo() &#123;</span><br><span class="line">    var a;</span><br><span class="line">    console.log(a) //undefined</span><br><span class="line">    a = 2;</span><br><span class="line">&#125;</span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
+<p>foo函数声明被提升了，但函数表达式却不会被提升。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foo() //TypeError</span><br><span class="line">var foo = function bar() &#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>即使是具名函数表达式，名称标识符在赋值之前也无法在所在作用域中使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">foo() //1</span><br><span class="line">var foo;</span><br><span class="line">function foo() &#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;</span><br><span class="line">foo = function() &#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;</span><br><span class="line">-----------</span><br><span class="line">进行如下处理</span><br><span class="line">function foo() &#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;</span><br><span class="line">foo() //1</span><br><span class="line">foo = function() &#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数声明和变量都会被提升，函数首先被提升，然后才是变量。后面的函数声明还可以覆盖前面的函数声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">foo() //3</span><br><span class="line"></span><br><span class="line">function foo() &#123;</span><br><span class="line">    console.log(1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var foo = function() &#123;</span><br><span class="line">    console.log(2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function foo() &#123;</span><br><span class="line">    console.log(3)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="作用域闭包"><a href="#作用域闭包" class="headerlink" title="作用域闭包"></a>作用域闭包</h3><blockquote>
+<p>闭包就是能够读取其他函数内部变量的函数。由于在Javascript语言中，只有函数内部的子函数才能读取局部变量，因此可以把闭包简单理解成”定义在一个函数内部的函数”。在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">    var a = 2;</span><br><span class="line">    function bar() &#123;</span><br><span class="line">        console.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    return bar</span><br><span class="line">&#125;</span><br><span class="line">var baz = bar();</span><br><span class="line">baz(); //2</span><br></pre></td></tr></table></figure>
+<p>函数baz()能够访问foo()的内部作用域。将bar()函数本身当作一个值类型进行传递。而闭包的“神奇”之处正是可以阻止这件事情的发生。事实上内部作用域依然存在，因此<br>没有被回收。谁在使用这个内部作用域？原来是  bar() 本身在使用。bar()拥有foo()内部作用域的闭包，该作用域一直存活,bar()本身在使用。bar() 依然持有对该作用域的引用，而这个引用就叫作闭包。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/你不知道的JavaScript/" rel="tag"># 你不知道的JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/30/1-JS-zuoyongyu/" rel="next" title="作用域">
+                <i class="fa fa-chevron-left"></i> 作用域
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -408,6 +459,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -428,8 +483,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -493,6 +557,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#提升和作用域闭包"><span class="nav-number">1.</span> <span class="nav-text">提升和作用域闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提升"><span class="nav-number">2.</span> <span class="nav-text">提升</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域闭包"><span class="nav-number">3.</span> <span class="nav-text">作用域闭包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -633,6 +713,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
