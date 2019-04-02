@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="你不知道的JavaScript," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="什么是async、await">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="关于this">
+<meta name="keywords" content="你不知道的JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 的 async&#x2F;await">
-<meta property="og:url" content="http://yoursite.com/2018/12/28/async/index.html">
+<meta property="og:title" content="this">
+<meta property="og:url" content="http://yoursite.com/2019/04/02/3-JS-this/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
-<meta property="og:description" content="什么是async、await">
+<meta property="og:description" content="关于this">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-28T14:06:13.803Z">
+<meta property="og:updated_time" content="2019-04-02T09:09:39.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 的 async&#x2F;await">
-<meta name="twitter:description" content="什么是async、await">
+<meta name="twitter:title" content="this">
+<meta name="twitter:description" content="关于this">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/28/async/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/02/3-JS-this/"/>
 
 
 
 
 
-  <title>JavaScript 的 async/await | 刘付鹏的个人网站</title>
+  <title>this | 刘付鹏的个人网站</title>
   
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/28/async/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/3-JS-this/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘付鹏">
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript 的 async/await</h1>
+          <h1 class="post-title" itemprop="name headline">this</h1>
         
 
         <div class="post-meta">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-28T00:00:00+08:00">
-                2018-12-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-02T00:00:00+08:00">
+                2019-04-02
               </time>
             
 
@@ -339,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/你不知道的JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">你不知道的JavaScript</span>
                   </a>
                 </span>
 
@@ -376,20 +376,32 @@
       
 
       
-        <h3 id="什么是async、await"><a href="#什么是async、await" class="headerlink" title="什么是async、await"></a>什么是async、await</h3><a id="more"></a>
-<p>async 是“异步”的简写，而 await 可以认为是 async wait 的简写。所以应该很好理解 async 用于申明一个 function 是异步的，而 await 用于等待一个异步方法执行完成。</p>
-<h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><p>1.async用法，它作为一个关键字放到函数前面，用于表示函数是一个异步函数，因为async就是异步的意思， 异步函数也就意味着该函数的执行不会阻塞后面代码的执行。 写一个async 函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">async function test() &#123;</span><br><span class="line">    return &quot;hello world&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.语法就是在函数前面加上async关键字，用来表示它是异步的，怎么调用呢？async 函数也是函数，平时我们怎么使用函数就怎么使用它，直接加括号调用就可以了，为了表示它没有阻塞它后面代码的执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(test())</span><br><span class="line">//输出的是一个Promisea对象</span><br><span class="line"></span><br><span class="line">Promise</span><br><span class="line">__proto__: Promise</span><br><span class="line">[[PromiseStatus]]: &quot;resolved&quot;</span><br><span class="line">[[PromiseValue]]: &quot;hell&quot;</span><br></pre></td></tr></table></figure></p>
-<p>3.async 函数返回的是一个 Promise 对象。从文档中也可以得到这个信息。async 函数（包含函数语句、函数表达式、Lambda表达式）会返回一个 Promise 对象，如果在函数中 return 一个直接量，async 会把这个直接量通过 Promise.resolve() 封装成 Promise 对象。</p>
-<h3 id="await"><a href="#await" class="headerlink" title="await"></a>await</h3><p>1.一般来说，都认为 await 是在等待一个 async 函数完成。不过按语法说明，await 等待的是一个表达式，这个表达式的计算结果是 Promise 对象或者其它值（换句话说，就是没有特殊限定）。</p>
-<p>2.async函数返回的是一个Promise对象，所以await可以用于等待一个async函数的返回值，await就是等待async的返回值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function test1() &#123;</span><br><span class="line">    reuturn &quot;test1&quot;</span><br><span class="line">&#125;</span><br><span class="line">function test2() &#123;</span><br><span class="line">    reuturn &quot;test2&quot;</span><br><span class="line">&#125;</span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v1 = await test1();</span><br><span class="line">    const v2 = await test2();</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-<p>3.async 函数调用不会造成阻塞，它内部所有的阻塞都被封装在一个 Promise 对象中异步执行。</p>
-<h3 id="async-await-干了啥"><a href="#async-await-干了啥" class="headerlink" title="async/await 干了啥"></a>async/await 干了啥</h3><p>1.async会将其后的函数的返回值封装成一个Promise对象，而await会等待这个Promise完成，并将其resolve的结果返回出来。</p>
-<p>2.async/await 的优势在于处理 then 链，单一的 Promise 链并不能发现 async/await 的优势，但是，如果需要处理由多个 Promise 组成的 then 链的时候，优势就能体现出来了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 传入参数 n，表示这个函数执行的时间（毫秒）</span><br><span class="line"> * 执行的结果是 n + 200，这个值将用于下一步骤</span><br><span class="line"> */</span><br><span class="line">function takeLongTime(n) &#123;</span><br><span class="line">    return new Promise(resolve =&gt; &#123;</span><br><span class="line">        setTimeout(() =&gt; resolve(n + 200), n);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function step1(n) &#123;</span><br><span class="line">    console.log(`step1 with $&#123;n&#125;`);</span><br><span class="line">    return takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function step2(n) &#123;</span><br><span class="line">    console.log(`step2 with $&#123;n&#125;`);</span><br><span class="line">    return takeLongTime(n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function step3(n) &#123;</span><br><span class="line">    console.log(`step3 with $&#123;n&#125;`);</span><br><span class="line">    return takeLongTime(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在用 Promise 方式来实现这三个步骤的处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function doIt() &#123;</span><br><span class="line">    console.time(&quot;doIt&quot;);</span><br><span class="line">    const time1 = 300;</span><br><span class="line">    step1(time1)</span><br><span class="line">        .then(time2 =&gt; step2(time2))</span><br><span class="line">        .then(time3 =&gt; step3(time3))</span><br><span class="line">        .then(result =&gt; &#123;</span><br><span class="line">            console.log(`result is $&#123;result&#125;`);</span><br><span class="line">            console.timeEnd(&quot;doIt&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure></p>
-<p>用 async/await 来实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">async function doIt() &#123;</span><br><span class="line">    console.time(&quot;doIt&quot;);</span><br><span class="line">    const time1 = 300;</span><br><span class="line">    const time2 = await step1(time1);</span><br><span class="line">    const time3 = await step2(time2);</span><br><span class="line">    const result = await step3(time3);</span><br><span class="line">    console.log(`result is $&#123;result&#125;`);</span><br><span class="line">    console.timeEnd(&quot;doIt&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">doIt();</span><br></pre></td></tr></table></figure></p>
-<h3 id="捕捉错误"><a href="#捕捉错误" class="headerlink" title="捕捉错误"></a>捕捉错误</h3><p>既然.then(..)不用写了，那么.catch(..)也不用写，可以直接用标准的try catch语法捕捉错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const start = async function () &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        console.log(&apos;start&apos;);</span><br><span class="line">        await sleep(3000); // 这里得到了一个返回错误</span><br><span class="line">        </span><br><span class="line">        // 所以以下代码不会被执行了</span><br><span class="line">        console.log(&apos;end&apos;);</span><br><span class="line">    &#125; catch (err) &#123;</span><br><span class="line">        console.log(err); // 这里捕捉到错误 `error`</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+        <h3 id="关于this"><a href="#关于this" class="headerlink" title="关于this"></a>关于this</h3><a id="more"></a>
+<blockquote>
+<p>this 既不指向函数自身也不指向函数的词法作用域。this 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。</p>
+</blockquote>
+<h3 id="this是什么"><a href="#this是什么" class="headerlink" title="this是什么"></a>this是什么</h3><p>当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包<br>含函数在哪里被调用（调用栈）、函数的调用方法、传入的参数等信息。this 就是记录的<br>其中一个属性，会在函数执行的过程中用到。</p>
+<h3 id="this绑定"><a href="#this绑定" class="headerlink" title="this绑定"></a>this绑定</h3><p>1.默认绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">    console.log(this.a)</span><br><span class="line">&#125;</span><br><span class="line">var a = 2;</span><br><span class="line">foo() //2</span><br></pre></td></tr></table></figure></p>
+<p>调用foo()，this.a被解析成全局变量a。函数调用时应用了this的默认绑定,this指向全局对象。<br>如何判断默认绑定？在代码中，foo() 是直接使用不带任何修饰的函数引用进行调用的，因此只能使用<br>默认绑定，无法应用其他规则。<br>严格模式下this是undefined。</p>
+<p>2.隐式绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">    console.log(this)</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a: 2,</span><br><span class="line">    foo:foo</span><br><span class="line">&#125;</span><br><span class="line">var a  = 3;</span><br><span class="line">obj.foo() //2</span><br></pre></td></tr></table></figure></p>
+<p>foo()是被当作引用属性添加到 obj 中的。<br>调用位置会使用obj上下文引用函数，foo()调用时指向obj对象，隐式规则会把函数调用中的this绑定到这个上下文对象</p>
+<p>3.显式绑定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123; </span><br><span class="line">    console.log( this.a ); </span><br><span class="line">&#125; </span><br><span class="line">var obj = &#123; </span><br><span class="line">    a:2 </span><br><span class="line">&#125;; </span><br><span class="line">var a = 3;</span><br><span class="line">foo.call( obj ); // 2</span><br></pre></td></tr></table></figure></p>
+<p>通过  foo.call(..)，我们可以在调用  foo 时强制把它的  this 绑定到  obj 上。<br>从  this 绑定的角度来说，call(..) 和  apply(..) 是一样的，它们的区别体现<br>在其他的参数上。</p>
+<p>4.new绑定<br>使用 new 来调用函数，或者说发生构造函数调用时，会自动执行下面的操作。<br>1.创建（或者说构造）一个全新的对象。<br>2.这个新对象会被执行  [[ 原型  ]] 连接。<br>3.这个新对象会绑定到函数调用的 this。<br>4.如果函数没有返回其他对象，那么 new 表达式中的函数调用会自动返回这个新对象。</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo(a) &#123; </span><br><span class="line">    this.a = a; </span><br><span class="line">&#125; </span><br><span class="line">var bar = new foo(2); </span><br><span class="line">console.log( bar.a ); // 2</span><br></pre></td></tr></table></figure>
+<p>使用  new 来调用  foo(..) 时，我们会构造一个新对象并把它绑定到  foo(..) 调用中的  this<br>上。new 是最后一种可以影响函数调用时  this 绑定行为的方法，我们称之为  new 绑定。</p>
+<h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><blockquote>
+<p>箭头函数根据外层（函数或者全局）作用域来决定 this。 </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123; </span><br><span class="line">    // 返回一个箭头函数 </span><br><span class="line">    return (a) =&gt; &#123; </span><br><span class="line">        //this 继承自foo() </span><br><span class="line">        console.log( this.a ); </span><br><span class="line">    &#125;; </span><br><span class="line">&#125; </span><br><span class="line">var obj1 = &#123; </span><br><span class="line">    a:2 </span><br><span class="line">&#125;;</span><br><span class="line">var obj2 = &#123; </span><br><span class="line">    a:3</span><br><span class="line">&#125;;</span><br><span class="line">var bar = foo.call(obj1)</span><br><span class="line">bar.call(obj2) //2 不是3</span><br></pre></td></tr></table></figure>
+<p>箭头函数会捕获调用时foo()到this,foo()的this绑定obj1，this也绑定到obj1。<br>箭头函数的绑定无法被修改</p>
+<h3 id="判断this"><a href="#判断this" class="headerlink" title="判断this"></a>判断this</h3><ol>
+<li>函数是否在 new 中调用（new 绑定）？如果是的话  this 绑定的是新创建的对象。<br>var bar = new foo() </li>
+<li>函数是否通过  call、apply（显式绑定）或者硬绑定调用？如果是的话，this 绑定的是指定的对象。<br>var bar = foo.call(obj2) </li>
+<li>函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this 绑定的是那个上下文对象。<br>var bar = obj1.foo() </li>
+<li>如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined，否则绑定到全局对象。<br>var bar = foo()</li>
+</ol>
 
       
     </div>
@@ -407,7 +419,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/你不知道的JavaScript/" rel="tag"># 你不知道的JavaScript</a>
           
         </div>
       
@@ -420,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/05/weChat-wx-request/" rel="next" title="小程序http封装">
-                <i class="fa fa-chevron-left"></i> 小程序http封装
+              <a href="/2019/04/01/2-JS-tishenghebibao/" rel="next" title="提升和作用域闭包">
+                <i class="fa fa-chevron-left"></i> 提升和作用域闭包
               </a>
             
           </div>
@@ -429,10 +441,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/03/js-shangxiawen/" rel="prev" title="JavaScript的作用域和变量提升、函数声明">
-                JavaScript的作用域和变量提升、函数声明 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是async、await"><span class="nav-number">1.</span> <span class="nav-text">什么是async、await</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async"><span class="nav-number">2.</span> <span class="nav-text">async</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#await"><span class="nav-number">3.</span> <span class="nav-text">await</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async-await-干了啥"><span class="nav-number">4.</span> <span class="nav-text">async/await 干了啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#捕捉错误"><span class="nav-number">5.</span> <span class="nav-text">捕捉错误</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于this"><span class="nav-number">1.</span> <span class="nav-text">关于this</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this是什么"><span class="nav-number">2.</span> <span class="nav-text">this是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this绑定"><span class="nav-number">3.</span> <span class="nav-text">this绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数"><span class="nav-number">4.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断this"><span class="nav-number">5.</span> <span class="nav-text">判断this</span></a></li></ol></div>
             
 
           </div>
