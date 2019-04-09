@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[element上传图片el-upload]]></title>
+    <url>%2F2019%2F04%2F09%2Fele-upload%2F</url>
+    <content type="text"><![CDATA[element上传图片el-upload el-upload组件123456789&lt;el-upload action=&quot;&quot; list-type=&quot;picture-card&quot; :on-change=&quot;uploadChange&quot; :file-list=&quot;fileList&quot; :limit=&quot;5&quot; :auto-upload=&quot;false&quot;&gt; &lt;i class=&quot;el-icon-plus&quot;&gt;&lt;/i&gt;&lt;/el-upload&gt; list-type:文件上传类型，如照片墙、单个上传照片on-change:自定义上传图片file-list:照片墙的数据limit: 最大允许上传个数auto-upload:el-upload 会自动上传两次，false不自动上传 获取base6412345678uploadChange(file,fileList) &#123; var reader = new FileReader(); reader.readAsDataURL(file.raw); reader.onload = (e) =&gt;&#123; //reader.result获取base64 let imgStr = reader.result &#125; &#125;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[this]]></title>
     <url>%2F2019%2F04%2F02%2F3-JS-this%2F</url>
     <content type="text"><![CDATA[关于this this 既不指向函数自身也不指向函数的词法作用域。this 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。 this是什么当一个函数被调用时，会创建一个活动记录（有时候也称为执行上下文）。这个记录会包含函数在哪里被调用（调用栈）、函数的调用方法、传入的参数等信息。this 就是记录的其中一个属性，会在函数执行的过程中用到。 this绑定1.默认绑定12345function foo() &#123; console.log(this.a)&#125;var a = 2;foo() //2 调用foo()，this.a被解析成全局变量a。函数调用时应用了this的默认绑定,this指向全局对象。如何判断默认绑定？在代码中，foo() 是直接使用不带任何修饰的函数引用进行调用的，因此只能使用默认绑定，无法应用其他规则。严格模式下this是undefined。 2.隐式绑定123456789function foo() &#123; console.log(this)&#125;var obj = &#123; a: 2, foo:foo&#125;var a = 3;obj.foo() //2 foo()是被当作引用属性添加到 obj 中的。调用位置会使用obj上下文引用函数，foo()调用时指向obj对象，隐式规则会把函数调用中的this绑定到这个上下文对象 3.显式绑定12345678function foo() &#123; console.log( this.a ); &#125; var obj = &#123; a:2 &#125;; var a = 3;foo.call( obj ); // 2 通过 foo.call(..)，我们可以在调用 foo 时强制把它的 this 绑定到 obj 上。从 this 绑定的角度来说，call(..) 和 apply(..) 是一样的，它们的区别体现在其他的参数上。 4.new绑定使用 new 来调用函数，或者说发生构造函数调用时，会自动执行下面的操作。1.创建（或者说构造）一个全新的对象。2.这个新对象会被执行 [[ 原型 ]] 连接。3.这个新对象会绑定到函数调用的 this。4.如果函数没有返回其他对象，那么 new 表达式中的函数调用会自动返回这个新对象。 12345function foo(a) &#123; this.a = a; &#125; var bar = new foo(2); console.log( bar.a ); // 2 使用 new 来调用 foo(..) 时，我们会构造一个新对象并把它绑定到 foo(..) 调用中的 this上。new 是最后一种可以影响函数调用时 this 绑定行为的方法，我们称之为 new 绑定。 箭头函数 箭头函数根据外层（函数或者全局）作用域来决定 this。 123456789101112131415function foo() &#123; // 返回一个箭头函数 return (a) =&gt; &#123; //this 继承自foo() console.log( this.a ); &#125;; &#125; var obj1 = &#123; a:2 &#125;;var obj2 = &#123; a:3&#125;;var bar = foo.call(obj1)bar.call(obj2) //2 不是3 箭头函数会捕获调用时foo()到this,foo()的this绑定obj1，this也绑定到obj1。箭头函数的绑定无法被修改 判断this 函数是否在 new 中调用（new 绑定）？如果是的话 this 绑定的是新创建的对象。var bar = new foo() 函数是否通过 call、apply（显式绑定）或者硬绑定调用？如果是的话，this 绑定的是指定的对象。var bar = foo.call(obj2) 函数是否在某个上下文对象中调用（隐式绑定）？如果是的话，this 绑定的是那个上下文对象。var bar = obj1.foo() 如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined，否则绑定到全局对象。var bar = foo()]]></content>
