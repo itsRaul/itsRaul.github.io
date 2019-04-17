@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[axios]]></title>
+    <url>%2F2019%2F04%2F17%2Faxios%2F</url>
+    <content type="text"><![CDATA[axios封装 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960request.jsimport _axios from &apos;axios&apos;;import qs from &apos;qs&apos;;//新建一个 axios 实例const axios = _axios.create(&#123; baseURL:DEV_URL, transformRequest:[function(data)&#123; data = qs.stringify(data); return data &#125;], headers:&#123; &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded&apos; &#125;, transformResponse: [function (data) &#123; // 对 data 进行任意转换处理 let _data = JSON.parse(data); return _data; &#125;], withCredentials:true, // 表示跨域请求时是否需要使用凭证 timeout: 5000, // 如果请求话费了超过 `timeout` 的时间，请求将被中断&#125;)axios.defaults.withCredentials = true// 添加请求拦截器axios.interceptors.request.use( config =&gt; &#123; //在发送请求之前做些什么 // if (token) &#123; // config.headers[&apos;X-Token&apos;] = getToken() // &#125; return config &#125;, error =&gt; &#123; // 对请求错误做些什么 console.log(&apos;err&apos; + error) // for debug return Promise.reject(error) &#125;)// 添加响应拦截器axios.interceptors.response.use( response =&gt; &#123; //对响应数据做点什么 const res = response.data //如果自定义代码不是20000，则被判断为错误。统一处理接口报错 if (res.code !== 20000) &#123; return Promise.reject(res.message || &apos;error&apos;) &#125; else &#123; return response &#125; &#125;, error =&gt; &#123; //对响应错误做点什么 console.log(&apos;err&apos; + error) // for debug return Promise.reject(error) &#125;)export default axios; 12345678910111213141516//api.jsimport http from request.js//getexport const getGet = (&#123;id&#125;) =&gt; &#123; let params = &#123; ID &#125; return http.get(&apos;url&apos;,params)&#125;//postexport const getPost = (&#123;id&#125;) =&gt; &#123; let data = &#123; ID &#125; return http.post(&apos;url&apos;,data)&#125;]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[element上传图片el-upload]]></title>
     <url>%2F2019%2F04%2F09%2Fele-upload%2F</url>
     <content type="text"><![CDATA[element上传图片el-upload el-upload组件123456789&lt;el-upload action=&quot;&quot; list-type=&quot;picture-card&quot; :on-change=&quot;uploadChange&quot; :file-list=&quot;fileList&quot; :limit=&quot;5&quot; :auto-upload=&quot;false&quot;&gt; &lt;i class=&quot;el-icon-plus&quot;&gt;&lt;/i&gt;&lt;/el-upload&gt; list-type:文件上传类型，如照片墙、单个上传照片on-change:自定义上传图片file-list:照片墙的数据limit: 最大允许上传个数auto-upload:el-upload 会自动上传两次，false不自动上传 获取base6412345678uploadChange(file,fileList) &#123; var reader = new FileReader(); reader.readAsDataURL(file.raw); reader.onload = (e) =&gt;&#123; //reader.result获取base64 let imgStr = reader.result &#125; &#125;]]></content>
