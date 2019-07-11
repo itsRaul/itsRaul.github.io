@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vuex," />
+  <meta name="keywords" content="js数据结构与算法," />
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="Vuex的使用">
-<meta name="keywords" content="vuex">
+<meta name="description" content="反转单词">
+<meta name="keywords" content="js数据结构与算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vuex">
-<meta property="og:url" content="http://yoursite.com/2018/10/09/vue-vuex/index.html">
+<meta property="og:title" content="反转单词">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/suanfa-string/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
-<meta property="og:description" content="Vuex的使用">
+<meta property="og:description" content="反转单词">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/vuex.png">
-<meta property="og:updated_time" content="2018-10-09T15:02:29.600Z">
+<meta property="og:image" content="http://yoursite.com/images/suanfa-string.jpg">
+<meta property="og:updated_time" content="2019-07-11T15:40:14.954Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vuex">
-<meta name="twitter:description" content="Vuex的使用">
-<meta name="twitter:image" content="http://yoursite.com/images/vuex.png">
+<meta name="twitter:title" content="反转单词">
+<meta name="twitter:description" content="反转单词">
+<meta name="twitter:image" content="http://yoursite.com/images/suanfa-string.jpg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/09/vue-vuex/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/11/suanfa-string/"/>
 
 
 
 
 
-  <title>Vuex | 刘付鹏的个人网站</title>
+  <title>反转单词 | 刘付鹏的个人网站</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/09/vue-vuex/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/suanfa-string/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘付鹏">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vuex</h1>
+          <h1 class="post-title" itemprop="name headline">反转单词</h1>
         
 
         <div class="post-meta">
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-09T00:00:00+08:00">
-                2018-10-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-11T23:31:32+08:00">
+                2019-07-11
               </time>
             
 
@@ -341,8 +341,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
                   </a>
                 </span>
 
@@ -378,28 +378,13 @@
       
 
       
-        <h3 id="Vuex的使用"><a href="#Vuex的使用" class="headerlink" title="Vuex的使用"></a>Vuex的使用</h3><a id="more"></a>
-<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>Vuex是vue的全局状态管理模式，为所有组件管理状态，当多组件共享状态时，应当使用vuex，数据更好进行管理。简单说就是无论父组件还是子组件或子子组件都可以直接从vuex获取状态，vuex提供统一状态管理，更好去管理数据。</p>
-<h4 id="Vuex图解"><a href="#Vuex图解" class="headerlink" title="Vuex图解"></a>Vuex图解</h4><p><img src="/images/vuex.png" alt="image"><br>1.通过提交mutations去改变state状态，从而state状态渲染到视图组件上<br>2.视图组件可以dispatch派发一个Action进行异步操作，异步操作在action里面，在action里面可以commit-mutation<br>3.视图组件可以派发action去提交Mutations，从而改变state</p>
-<h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><p>1.state是vuex唯一的状态源，用一个对象包含了全部的应用层级状态。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">state.js </span><br><span class="line"></span><br><span class="line">const state = &#123;</span><br><span class="line">    count:1</span><br><span class="line">&#125;</span><br><span class="line">export default state;</span><br></pre></td></tr></table></figure></p>
-<p>2.如何在vue组件获取vuex状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Counter = &#123;</span><br><span class="line">  template: `&lt;div&gt;&#123;&#123; count &#125;&#125;&lt;/div&gt;`,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    count () &#123;</span><br><span class="line">      return this.$store.state.count</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>通过在根实例注册store选项，注入到根组件的所有子组件，且子组件能通过 this.$store 访问到。通过计算属性返回某个状态，每当this.$store.state.count变化的时候，都会重新求取计算属性，计算属性有缓存。</p>
-<p>3.mapState辅助函数<br>当一个组件需要获取多个状态时候，将这些状态都声明为计算属性会有些重复和冗余，帮助我们生成计算属性，让你少按几次键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; mapState &#125; from &apos;vuex&apos;</span><br><span class="line">export defauilt &#123;</span><br><span class="line">    computed:&#123;</span><br><span class="line">        ...mapState(</span><br><span class="line">            [&apos;count&apos;]</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h3><h4 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h4><p>Vuex 允许我们在 store 中定义“getter”（可以认为是 store 的计算属性）。就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getters.js</span><br><span class="line"></span><br><span class="line">export const count = state =&gt; state.count</span><br></pre></td></tr></table></figure></p>
-<h4 id="访问方式"><a href="#访问方式" class="headerlink" title="访问方式"></a>访问方式</h4><p>1.组件中使用它<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  doneTodosCount () &#123;</span><br><span class="line">    return this.$store.getters.count</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.mapGetters辅助函数，个人比较喜欢当一种方式<br>使用对象展开运算符将 getter 混入 computed 对象中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; mapGetters &#125; from &apos;vuex&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123; </span><br><span class="line">    ...mapGetters([</span><br><span class="line">      &apos;count&apos;,</span><br><span class="line">      &apos;anotherGetter&apos;,</span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果你想将一个 getter 属性另取一个名字，使用对象形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mapGetters(&#123;</span><br><span class="line">  把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`</span><br><span class="line">  doneCount: &apos;doneTodosCount&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h3><p>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。个人比较常用的一种方式</p>
-<h4 id="Mutation配置"><a href="#Mutation配置" class="headerlink" title="Mutation配置"></a>Mutation配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mutations-types.js</span><br><span class="line"></span><br><span class="line">export const SET_MUTATION = &apos;export const SET_MUTATION&apos;</span><br></pre></td></tr></table></figure>
-<p>使用常量替代 mutation 事件类型在各种 Flux 实现中是很常见的模式。这样可以使 linter 之类的工具发挥作用，同时把这些常量放在单独的文件中可以让你的代码合作者对整个 app 包含的 mutation 一目了然：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mutations.js</span><br><span class="line"></span><br><span class="line">import * as types from &apos;./mutations-types.js&apos;</span><br><span class="line"></span><br><span class="line">const mutations = &#123;</span><br><span class="line">  [types.SET_MUTATION](state,payload)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default mutations;</span><br></pre></td></tr></table></figure>
-<p>state参数可以获取vuex中所有数据源，payload是提交mutations传入的数据参数。</p>
-<h4 id="提交mutation"><a href="#提交mutation" class="headerlink" title="提交mutation"></a>提交mutation</h4><p>1.mapMutations辅助函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import &#123; mapMutations &#125; from &apos;vuex&apos;</span><br><span class="line"></span><br><span class="line">methods:&#123;</span><br><span class="line">  test()&#123;</span><br><span class="line">    this.mutation(&#123;</span><br><span class="line">      amount: 10</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  ...mapMutations(&#123;</span><br><span class="line">    mutation:&apos;types.SET_MUTATION&apos;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>将 <code>this.mutation()</code> 映射为 <code>this.$store.commit(&#39;increment&#39;)</code>。<code>this.mutation()</code>提交mutation。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">接收payload</span><br><span class="line">mutations.js</span><br><span class="line"></span><br><span class="line">import * as types from &apos;./mutations-types.js&apos;</span><br><span class="line"></span><br><span class="line">const mutations = &#123;</span><br><span class="line">  [types.SET_MUTATION](state,payload)&#123;</span><br><span class="line">    state.count = payload.amount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h3><p>Action 提交的是 mutation，而不是直接变更状态。Action 可以包含任意异步操作。</p>
-<h4 id="注册简单的action"><a href="#注册简单的action" class="headerlink" title="注册简单的action"></a>注册简单的action</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import * as types from &apos;./mutations-types.js&apos;</span><br><span class="line"></span><br><span class="line">export const actionFn = function(&#123;commit,state&#125;,&#123;amount&#125;)&#123;</span><br><span class="line">  commit(types.SET_MUTATION,amount)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="在组件中分发-Action"><a href="#在组件中分发-Action" class="headerlink" title="在组件中分发 Action"></a>在组件中分发 Action</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; mapActions &#125; from &apos;vuex&apos;</span><br><span class="line"></span><br><span class="line">methods:&#123;</span><br><span class="line">  test()&#123;</span><br><span class="line">    this.actionFn(&#123;amount:10&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  ...mapActions([</span><br><span class="line">    &apos;actionFn&apos;</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h3 id="反转单词"><a href="#反转单词" class="headerlink" title="反转单词"></a>反转单词</h3><a id="more"></a>
+<p><img src="/images/suanfa-string.jpg" alt="image"><br>思路：</p>
+<ol>
+<li>字符串按空格进行分隔，保存数组，数组的元素的先后顺序就是单词的顺序</li>
+<li>对数组进行遍历，然后每个元素进行反转</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function reverseString(str) &#123;</span><br><span class="line">    return str.split(&apos; &apos;).map(item =&gt; &#123;</span><br><span class="line">        return item.split(&apos;&apos;).reverse().join(&apos;&apos;)</span><br><span class="line">    &#125;).join(&apos; &apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -416,7 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vuex/" rel="tag"># vuex</a>
+            <a href="/tags/js数据结构与算法/" rel="tag"># js数据结构与算法</a>
           
         </div>
       
@@ -429,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/01/h5-pay/" rel="next" title="H5的支付">
-                <i class="fa fa-chevron-left"></i> H5的支付
+              <a href="/2019/07/03/react-native-tools/" rel="next" title="react-native常用组件">
+                <i class="fa fa-chevron-left"></i> react-native常用组件
               </a>
             
           </div>
@@ -438,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/10/moment/" rel="prev" title="moment在vue时间格式化">
-                moment在vue时间格式化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -577,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vuex的使用"><span class="nav-number">1.</span> <span class="nav-text">Vuex的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vuex是什么"><span class="nav-number">2.</span> <span class="nav-text">Vuex是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vuex图解"><span class="nav-number">2.1.</span> <span class="nav-text">Vuex图解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#State"><span class="nav-number">3.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getter"><span class="nav-number">4.</span> <span class="nav-text">Getter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简述"><span class="nav-number">4.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问方式"><span class="nav-number">4.2.</span> <span class="nav-text">访问方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mutation"><span class="nav-number">5.</span> <span class="nav-text">Mutation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mutation配置"><span class="nav-number">5.1.</span> <span class="nav-text">Mutation配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交mutation"><span class="nav-number">5.2.</span> <span class="nav-text">提交mutation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Action"><span class="nav-number">6.</span> <span class="nav-text">Action</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册简单的action"><span class="nav-number">6.1.</span> <span class="nav-text">注册简单的action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在组件中分发-Action"><span class="nav-number">6.2.</span> <span class="nav-text">在组件中分发 Action</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#反转单词"><span class="nav-number">1.</span> <span class="nav-text">反转单词</span></a></li></ol></div>
             
 
           </div>
