@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="TypeScript," />
+  <meta name="keywords" content="js数据结构与算法," />
 
 
 
@@ -79,18 +79,24 @@
 
 
 
-<meta name="description" content="原始数据类型">
-<meta name="keywords" content="TypeScript">
+<meta name="description" content="数组类">
+<meta name="keywords" content="js数据结构与算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原始数据类型">
-<meta property="og:url" content="http://yoursite.com/2019/03/09/2-ts-primitive-data-type/index.html">
+<meta property="og:title" content="数组类">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/sunfa-array/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
-<meta property="og:description" content="原始数据类型">
+<meta property="og:description" content="数组类">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-09T01:10:44.471Z">
+<meta property="og:image" content="http://yoursite.com/images/array.jpg">
+<meta property="og:image" content="http://yoursite.com/images/array1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/letterCombinations.jpg">
+<meta property="og:image" content="http://yoursite.com/images/array2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/canPlaceFlowers.jpg">
+<meta property="og:updated_time" content="2019-07-12T02:10:20.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="原始数据类型">
-<meta name="twitter:description" content="原始数据类型">
+<meta name="twitter:title" content="数组类">
+<meta name="twitter:description" content="数组类">
+<meta name="twitter:image" content="http://yoursite.com/images/array.jpg">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/09/2-ts-primitive-data-type/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/sunfa-array/"/>
 
 
 
 
 
-  <title>原始数据类型 | 刘付鹏的个人网站</title>
+  <title>数组类 | 刘付鹏的个人网站</title>
   
 
 
@@ -287,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/2-ts-primitive-data-type/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/sunfa-array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘付鹏">
@@ -304,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">原始数据类型</h1>
+          <h1 class="post-title" itemprop="name headline">数组类</h1>
         
 
         <div class="post-meta">
@@ -316,8 +322,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-09T09:01:32+08:00">
-                2019-03-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T00:00:00+08:00">
+                2019-07-12
               </time>
             
 
@@ -339,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/TypeScript/" itemprop="url" rel="index">
-                    <span itemprop="name">TypeScript</span>
+                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
+                    <span itemprop="name">js数据结构与算法</span>
                   </a>
                 </span>
 
@@ -376,16 +382,23 @@
       
 
       
-        <h3 id="原始数据类型"><a href="#原始数据类型" class="headerlink" title="原始数据类型"></a>原始数据类型</h3><a id="more"></a>
-<h3 id="原始数据类型-1"><a href="#原始数据类型-1" class="headerlink" title="原始数据类型"></a>原始数据类型</h3><p>1.JS的类型分为两种，原始数据类型和对象类型。<br>2.原始数据类型分为五种，布尔值、数值、字符串、null、undefind、以及ES6中的新类型Symbol。</p>
-<h3 id="TypeScript使用原始类型"><a href="#TypeScript使用原始类型" class="headerlink" title="TypeScript使用原始类型"></a>TypeScript使用原始类型</h3><p>1.布尔值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let isDone: boolean = false;</span><br><span class="line"></span><br><span class="line">// 编译通过</span><br><span class="line">// 后面约定，未强调编译错误的代码片段，默认为编译通过</span><br></pre></td></tr></table></figure></p>
-<p>2.数值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let decLiteral: number = 6;</span><br></pre></td></tr></table></figure></p>
-<p>3.字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let myName:string = &apos;Tom&apos;;</span><br></pre></td></tr></table></figure></p>
-<p>4.空值<br>JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void 表示没有任何返回值的函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function alertName(): void &#123;</span><br><span class="line">    alert(&apos;My name is Tom&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let unusable: void = undefined;</span><br></pre></td></tr></table></figure></p>
-<p>5.Null 和 Undefined<br>在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let u: undefined = undefined;</span><br><span class="line">let n: null = null;</span><br></pre></td></tr></table></figure></p>
-<p>undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null。<br>与 void 的区别是，undefined 和 null 是所有类型的子类型。也就是说 undefined 类型的变量，可以赋值给 number 类型的变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 这样不会报错</span><br><span class="line">let num: number = undefined; </span><br><span class="line">let u: undefined;</span><br><span class="line">let num: number = u;</span><br></pre></td></tr></table></figure></p>
-<p>而 void 类型的变量不能赋值给 number 类型的变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let u: void;</span><br><span class="line">let num: number = u;</span><br><span class="line"></span><br><span class="line">// index.ts(2,5): error TS2322: Type &apos;void&apos; is not assignable to type &apos;number&apos;.</span><br></pre></td></tr></table></figure></p>
+        <h3 id="数组类"><a href="#数组类" class="headerlink" title="数组类"></a>数组类</h3><a id="more"></a>
+<h3 id="电话号码的字母组合"><a href="#电话号码的字母组合" class="headerlink" title="电话号码的字母组合"></a>电话号码的字母组合</h3><p><img src="/images/array.jpg" alt="image"></p>
+<p>思路：</p>
+<ol>
+<li>“23”分别对应’abc’,’def’,把”23”分隔split成数组对应字母，遍历，splice替换，判断是否还有组合，递归</li>
+<li>“234” 的时候，先算出23的组合，23的新组合和4进行组合，两两计算<br><img src="/images/array1.jpg" alt="image"></li>
+</ol>
+<p><img src="/images/letterCombinations.jpg" alt="image"></p>
+<h3 id="种花问题"><a href="#种花问题" class="headerlink" title="种花问题"></a>种花问题</h3><p><img src="/images/array2.jpg" alt="image"></p>
+<p>思路：</p>
+<ol>
+<li>边界处理，判断1左右两边是否是0，如：0，1，0</li>
+<li>定义计数器0</li>
+<li>遍历，判断是否是0为空地</li>
+<li>再判断第一个同时第二个是否为0空地，是的max++,跳到下一个进行左右判断</li>
+</ol>
+<p><img src="/images/canPlaceFlowers.jpg" alt="image"></p>
 
       
     </div>
@@ -403,7 +416,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+            <a href="/tags/js数据结构与算法/" rel="tag"># js数据结构与算法</a>
           
         </div>
       
@@ -416,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/09/1-ts/" rel="next" title="TypeScript">
-                <i class="fa fa-chevron-left"></i> TypeScript
+              <a href="/2019/07/11/suanfa-string/" rel="next" title="反转单词">
+                <i class="fa fa-chevron-left"></i> 反转单词
               </a>
             
           </div>
@@ -425,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/09/3-ts-any/" rel="prev" title="任意值Any">
-                任意值Any <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始数据类型"><span class="nav-number">1.</span> <span class="nav-text">原始数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原始数据类型-1"><span class="nav-number">2.</span> <span class="nav-text">原始数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TypeScript使用原始类型"><span class="nav-number">3.</span> <span class="nav-text">TypeScript使用原始类型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类"><span class="nav-number">1.</span> <span class="nav-text">数组类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电话号码的字母组合"><span class="nav-number">2.</span> <span class="nav-text">电话号码的字母组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#种花问题"><span class="nav-number">3.</span> <span class="nav-text">种花问题</span></a></li></ol></div>
             
 
           </div>
