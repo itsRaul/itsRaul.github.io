@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="element上传图片el-upload">
+<meta name="description" content="JavaScript数组扁平化">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="element上传图片el-upload">
-<meta property="og:url" content="http://yoursite.com/2019/04/09/ele-upload/index.html">
+<meta property="og:title" content="JavaScript数组扁平化">
+<meta property="og:url" content="http://yoursite.com/2019/10/24/flatten/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
-<meta property="og:description" content="element上传图片el-upload">
+<meta property="og:description" content="JavaScript数组扁平化">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-09T14:19:39.298Z">
+<meta property="og:updated_time" content="2019-10-24T02:35:49.273Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="element上传图片el-upload">
-<meta name="twitter:description" content="element上传图片el-upload">
+<meta name="twitter:title" content="JavaScript数组扁平化">
+<meta name="twitter:description" content="JavaScript数组扁平化">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/09/ele-upload/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/10/24/flatten/"/>
 
 
 
 
 
-  <title>element上传图片el-upload | 刘付鹏的个人网站</title>
+  <title>JavaScript数组扁平化 | 刘付鹏的个人网站</title>
   
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/09/ele-upload/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/24/flatten/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘付鹏">
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">element上传图片el-upload</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript数组扁平化</h1>
         
 
         <div class="post-meta">
@@ -316,8 +316,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-09T22:12:12+08:00">
-                2019-04-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-24T10:34:28+08:00">
+                2019-10-24
               </time>
             
 
@@ -376,10 +376,25 @@
       
 
       
-        <h3 id="element上传图片el-upload"><a href="#element上传图片el-upload" class="headerlink" title="element上传图片el-upload"></a>element上传图片el-upload</h3><a id="more"></a>
-<h3 id="el-upload组件"><a href="#el-upload组件" class="headerlink" title="el-upload组件"></a>el-upload组件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-upload   </span><br><span class="line">    action=&quot;&quot;                                             </span><br><span class="line">    list-type=&quot;picture-card&quot;</span><br><span class="line">    :on-change=&quot;uploadChange&quot;</span><br><span class="line">    :file-list=&quot;fileList&quot;</span><br><span class="line">    :limit=&quot;5&quot;                          </span><br><span class="line">    :auto-upload=&quot;false&quot;&gt;                           </span><br><span class="line">    &lt;i class=&quot;el-icon-plus&quot;&gt;&lt;/i&gt;</span><br><span class="line">&lt;/el-upload&gt;</span><br></pre></td></tr></table></figure>
-<p>list-type:文件上传类型，如照片墙、单个上传照片<br>on-change:自定义上传图片<br>file-list:照片墙的数据<br>limit: 最大允许上传个数<br>auto-upload:el-upload 会自动上传两次，false不自动上传</p>
-<h3 id="获取base64"><a href="#获取base64" class="headerlink" title="获取base64"></a>获取base64</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">uploadChange(file,fileList) &#123;</span><br><span class="line">    var reader = new FileReader();</span><br><span class="line">    reader.readAsDataURL(file.raw);</span><br><span class="line">    reader.onload = (e) =&gt;&#123; </span><br><span class="line">        //reader.result获取base64</span><br><span class="line">        let imgStr = reader.result</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="JavaScript数组扁平化"><a href="#JavaScript数组扁平化" class="headerlink" title="JavaScript数组扁平化"></a>JavaScript数组扁平化</h3><a id="more"></a>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><blockquote>
+<p>循坏各个数组元素，如果还是一个数组，进行递归调用该方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,[2,3],[4,[5,6]]]</span><br><span class="line"></span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    var result = []</span><br><span class="line">    for (var i = 0, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">        //是否为数组，是则进行递归,数组合并</span><br><span class="line">        if (Array.isArray(arr[i])) &#123;</span><br><span class="line">            result = result.concat(flatten(arr[i]))</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            result.push(arr[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(flatten(arr))</span><br></pre></td></tr></table></figure>
+<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><blockquote>
+<p>对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,[2,3],[4,[5,6]]]</span><br><span class="line"></span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    return arr.reduce(function(prev,next) &#123;</span><br><span class="line">        return prev.concat(Array.isArray(next) ? flatten(next) : next)</span><br><span class="line">    &#125;,[])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(flatten(arr))</span><br></pre></td></tr></table></figure>
+<h3 id="ES6-增加了扩展运算符"><a href="#ES6-增加了扩展运算符" class="headerlink" title="ES6 增加了扩展运算符"></a>ES6 增加了扩展运算符</h3><blockquote>
+<p>ES6的扩展运算符只可以扁平一层，结合while和Array.some()</p>
+</blockquote>
+<ol>
+<li><p>while<br>while 语句可以在某个条件表达式为真的前提下，循环执行指定的一段代码，直到那个表达式不为真时结束循环</p>
+</li>
+<li><p>Array.some()<br>测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个Boolean类型的值(数组有1个满足条件，返回true。数组的元素全部不满足条件才返回false)</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,[2,3],[4,[5,6]]]</span><br><span class="line"></span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    while(arr.some(item =&gt; Array.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr)</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -410,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/02/3-JS-this/" rel="next" title="this">
-                <i class="fa fa-chevron-left"></i> this
+              <a href="/2019/08/29/js-token/" rel="next" title="令牌无感知刷新">
+                <i class="fa fa-chevron-left"></i> 令牌无感知刷新
               </a>
             
           </div>
@@ -419,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/17/axios/" rel="prev" title="axios">
-                axios <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -558,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#element上传图片el-upload"><span class="nav-number">1.</span> <span class="nav-text">element上传图片el-upload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#el-upload组件"><span class="nav-number">2.</span> <span class="nav-text">el-upload组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取base64"><span class="nav-number">3.</span> <span class="nav-text">获取base64</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript数组扁平化"><span class="nav-number">1.</span> <span class="nav-text">JavaScript数组扁平化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#递归"><span class="nav-number">1.1.</span> <span class="nav-text">递归</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce"><span class="nav-number">2.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6-增加了扩展运算符"><span class="nav-number">3.</span> <span class="nav-text">ES6 增加了扩展运算符</span></a></li></ol></div>
             
 
           </div>
