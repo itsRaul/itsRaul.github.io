@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js数据结构与算法," />
+  <meta name="keywords" content="Flutter," />
 
 
 
@@ -79,24 +79,18 @@
 
 
 
-<meta name="description" content="数组类">
-<meta name="keywords" content="js数据结构与算法">
+<meta name="description" content="列表的使用">
+<meta name="keywords" content="Flutter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组类">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/sunfa-array/index.html">
+<meta property="og:title" content="Flutter学习之路 - 列表的使用">
+<meta property="og:url" content="http://yoursite.com/2020/06/05/flutter-4-list/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
-<meta property="og:description" content="数组类">
+<meta property="og:description" content="列表的使用">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/array.jpg">
-<meta property="og:image" content="http://yoursite.com/images/array1.jpg">
-<meta property="og:image" content="http://yoursite.com/images/letterCombinations.jpg">
-<meta property="og:image" content="http://yoursite.com/images/array2.jpg">
-<meta property="og:image" content="http://yoursite.com/images/canPlaceFlowers.jpg">
-<meta property="og:updated_time" content="2019-07-12T02:10:20.564Z">
+<meta property="og:updated_time" content="2020-06-05T01:59:34.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数组类">
-<meta name="twitter:description" content="数组类">
-<meta name="twitter:image" content="http://yoursite.com/images/array.jpg">
+<meta name="twitter:title" content="Flutter学习之路 - 列表的使用">
+<meta name="twitter:description" content="列表的使用">
 
 
 
@@ -126,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/sunfa-array/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/06/05/flutter-4-list/"/>
 
 
 
 
 
-  <title>数组类 | 刘付鹏的个人网站</title>
+  <title>Flutter学习之路 - 列表的使用 | 刘付鹏的个人网站</title>
   
 
 
@@ -293,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/sunfa-array/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/05/flutter-4-list/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘付鹏">
@@ -310,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数组类</h1>
+          <h1 class="post-title" itemprop="name headline">Flutter学习之路 - 列表的使用</h1>
         
 
         <div class="post-meta">
@@ -322,8 +316,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T00:00:00+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-05T09:58:42+08:00">
+                2020-06-05
               </time>
             
 
@@ -345,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/js数据结构与算法/" itemprop="url" rel="index">
-                    <span itemprop="name">js数据结构与算法</span>
+                  <a href="/categories/Flutter/" itemprop="url" rel="index">
+                    <span itemprop="name">Flutter</span>
                   </a>
                 </span>
 
@@ -382,23 +376,17 @@
       
 
       
-        <h3 id="数组类"><a href="#数组类" class="headerlink" title="数组类"></a>数组类</h3><a id="more"></a>
-<h3 id="电话号码的字母组合"><a href="#电话号码的字母组合" class="headerlink" title="电话号码的字母组合"></a>电话号码的字母组合</h3><p><img src="/images/array.jpg" alt="image"></p>
-<p>思路：</p>
-<ol>
-<li>“23”分别对应’abc’,’def’,把”23”分隔split成数组对应字母，遍历，splice替换，判断是否还有组合，递归</li>
-<li>“234” 的时候，先算出23的组合，23的新组合和4进行组合，两两计算<br><img src="/images/array1.jpg" alt="image"></li>
-</ol>
-<p><img src="/images/letterCombinations.jpg" alt="image"></p>
-<h3 id="种花问题"><a href="#种花问题" class="headerlink" title="种花问题"></a>种花问题</h3><p><img src="/images/array2.jpg" alt="image"></p>
-<p>思路：</p>
-<ol>
-<li>边界处理，判断1左右两边是否是0，如：0，1，0</li>
-<li>定义计数器0</li>
-<li>遍历，判断是否是0为空地</li>
-<li>再判断第一个同时第二个是否为0空地，是的max++,跳到下一个进行左右判断</li>
-</ol>
-<p><img src="/images/canPlaceFlowers.jpg" alt="image"></p>
+        <h3 id="列表的使用"><a href="#列表的使用" class="headerlink" title="列表的使用"></a>列表的使用</h3><a id="more"></a>
+<h3 id="基础列表的使用"><a href="#基础列表的使用" class="headerlink" title="基础列表的使用"></a>基础列表的使用</h3><p>1.scrollDirection: Axis.horizontal 列表的横行滚动</p>
+<p>2.toList()转成List列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">const CITY_NAMES = [&apos;北京&apos;,&apos;上海&apos;,&apos;广州&apos;,&apos;深圳&apos;,&apos;杭州&apos;,&apos;苏州&apos;,&apos;武汉&apos;,&apos;西安&apos;,&apos;西藏&apos;];</span><br><span class="line"></span><br><span class="line">class SearchPage extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _SearchPageState createState() =&gt; _SearchPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _SearchPageState extends State&lt;SearchPage&gt; &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: Container(</span><br><span class="line">        height: 100,</span><br><span class="line">        child:ListView(</span><br><span class="line">          scrollDirection: Axis.horizontal,</span><br><span class="line">          children:  _buildList()</span><br><span class="line">        )</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt;_buildList() &#123;</span><br><span class="line">    return CITY_NAMES.map((city) =&gt; _item(city)).toList();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  Widget _item(city) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      width: 160,</span><br><span class="line">      margin: EdgeInsets.only(right:15),</span><br><span class="line">      alignment:Alignment.center,</span><br><span class="line">      decoration: BoxDecoration(color: Colors.teal),</span><br><span class="line">      child: Text(</span><br><span class="line">        city,</span><br><span class="line">        style: TextStyle(color: Colors.white, fontSize: 20),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="列表的展开和收起"><a href="#列表的展开和收起" class="headerlink" title="列表的展开和收起"></a>列表的展开和收起</h3><p>定义widgets的List，遍历keys，使用ExpansionTile的Widget来展开和收起</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">const CITY_NAMES = &#123;</span><br><span class="line">  &apos;北京&apos;: [&apos;东城区&apos;,&apos;西城区&apos;,&apos;朝阳区&apos;,&apos;丰台区&apos;,&apos;石景山区&apos;],</span><br><span class="line">  &apos;上海&apos;: [&apos;黄浦区&apos;, &apos;徐汇区&apos;,&apos;长宁区&apos;,&apos;静安区&apos;],</span><br><span class="line">  &apos;广州&apos;: [&apos;越秀&apos;,&apos;海珠&apos;,&apos;荔湾&apos;],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class SearchPage extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _SearchPageState createState() =&gt; _SearchPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _SearchPageState extends State&lt;SearchPage&gt; &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: Container(</span><br><span class="line">        child:ListView(</span><br><span class="line">          children:  _buildList()</span><br><span class="line">        )</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt;_buildList() &#123;</span><br><span class="line">    List&lt;Widget&gt; widgets = [];</span><br><span class="line">    CITY_NAMES.keys.forEach((key) &#123;</span><br><span class="line">      widgets.add(_item(key,CITY_NAMES[key]));</span><br><span class="line">    &#125;);</span><br><span class="line">    return widgets;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  Widget _item(String city, List&lt;String&gt; subCities) &#123;</span><br><span class="line">    return ExpansionTile(</span><br><span class="line">      title: Text(</span><br><span class="line">        city,</span><br><span class="line">        style: TextStyle(color: Colors.black54,fontSize: 20),</span><br><span class="line">      ),</span><br><span class="line">      children: subCities.map((subCity) =&gt; _buildSub(subCity)).toList()</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Widget _buildSub(String subCity) &#123;</span><br><span class="line">    return FractionallySizedBox(</span><br><span class="line">      widthFactor: 1,</span><br><span class="line">      child: Container(</span><br><span class="line">        height: 50,</span><br><span class="line">        margin: EdgeInsets.only(bottom:5),</span><br><span class="line">        decoration: BoxDecoration(color: Colors.black54),</span><br><span class="line">        child: Text(subCity),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="网格布局"><a href="#网格布局" class="headerlink" title="网格布局"></a>网格布局</h3><p>使用GridView.count进行网格布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">const CITY_NAMES = [&apos;北京&apos;,&apos;上海&apos;,&apos;广州&apos;,&apos;深圳&apos;,&apos;杭州&apos;,&apos;苏州&apos;,&apos;武汉&apos;,&apos;西安&apos;,&apos;西藏&apos;];</span><br><span class="line"></span><br><span class="line">class SearchPage extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _SearchPageState createState() =&gt; _SearchPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _SearchPageState extends State&lt;SearchPage&gt; &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: GridView.count(</span><br><span class="line">          crossAxisCount: 4,</span><br><span class="line">          children: _buildList(),</span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  List&lt;Widget&gt;_buildList() &#123;</span><br><span class="line">    return CITY_NAMES.map((city) =&gt; _item(city)).toList();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  Widget _item(city) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      height: 80,</span><br><span class="line">      margin: EdgeInsets.only(bottom: 5),</span><br><span class="line">      alignment:Alignment.center,</span><br><span class="line">      decoration: BoxDecoration(color: Colors.teal),</span><br><span class="line">      child: Text(</span><br><span class="line">        city,</span><br><span class="line">        style: TextStyle(color: Colors.white, fontSize: 20),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="下拉刷新和上拉加载"><a href="#下拉刷新和上拉加载" class="headerlink" title="下拉刷新和上拉加载"></a>下拉刷新和上拉加载</h3><p>1.下拉刷新使用RefreshIndicator里的onRefresh回调</p>
+<p>2.上拉加载添加ScrollController(), 在生命周期开始initState判断页面当前滚动位置等于页面最大滚动位置，执行加载更多当函数。在生命周期结束dispose将之前当监听移除，减少消耗，提升性能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">const CITY_NAMES = [&apos;北京&apos;,&apos;上海&apos;,&apos;广州&apos;,&apos;深圳&apos;,&apos;杭州&apos;,&apos;苏州&apos;,&apos;武汉&apos;,&apos;西安&apos;,&apos;西藏&apos;];</span><br><span class="line"></span><br><span class="line">class SearchPage extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _SearchPageState createState() =&gt; _SearchPageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _SearchPageState extends State&lt;SearchPage&gt; &#123;</span><br><span class="line"></span><br><span class="line">  List&lt;String&gt; cityNames =  [&apos;北京&apos;,&apos;上海&apos;,&apos;广州&apos;,&apos;深圳&apos;,&apos;杭州&apos;,&apos;苏州&apos;,&apos;武汉&apos;,&apos;西安&apos;,&apos;西藏&apos;];</span><br><span class="line"></span><br><span class="line">  ScrollController _scrollController = ScrollController();</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void initState() &#123;</span><br><span class="line">    _scrollController.addListener(() &#123;</span><br><span class="line">      if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent) &#123;</span><br><span class="line">        _loadData();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    super.initState();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void dispose() &#123;</span><br><span class="line">    _scrollController.dispose();</span><br><span class="line">    super.dispose();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _loadData() async &#123;</span><br><span class="line">    await Future.delayed(Duration(milliseconds: 200));</span><br><span class="line"></span><br><span class="line">    setState(() &#123;</span><br><span class="line">      List&lt;String&gt; list = List&lt;String&gt;.from(cityNames);</span><br><span class="line">      list.addAll(cityNames);</span><br><span class="line">      cityNames = list;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    print(&apos;上拉加载&apos;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Future&lt;Null&gt; _handleRefresh() async &#123;</span><br><span class="line">    await Future.delayed(Duration(seconds: 2));</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      cityNames = cityNames.reversed.toList();</span><br><span class="line">    &#125;);</span><br><span class="line">    print(&apos;下拉刷新&apos;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: RefreshIndicator(</span><br><span class="line">        child: ListView(</span><br><span class="line">          controller: _scrollController,</span><br><span class="line">          children: _buildList()</span><br><span class="line">        ), </span><br><span class="line">        onRefresh: _handleRefresh</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  List&lt;Widget&gt;_buildList() &#123;</span><br><span class="line">    return cityNames.map((city) =&gt; _item(city)).toList();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  Widget _item(city) &#123;</span><br><span class="line">    return Container(</span><br><span class="line">      height: 80,</span><br><span class="line">      margin: EdgeInsets.only(bottom: 5),</span><br><span class="line">      alignment:Alignment.center,</span><br><span class="line">      decoration: BoxDecoration(color: Colors.teal),</span><br><span class="line">      child: Text(</span><br><span class="line">        city,</span><br><span class="line">        style: TextStyle(color: Colors.white, fontSize: 20),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -416,7 +404,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js数据结构与算法/" rel="tag"># js数据结构与算法</a>
+            <a href="/tags/Flutter/" rel="tag"># Flutter</a>
           
         </div>
       
@@ -429,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/11/suanfa-string/" rel="next" title="反转单词">
-                <i class="fa fa-chevron-left"></i> 反转单词
+              <a href="/2020/06/02/flutter-3/" rel="next" title="Flutter学习之路 - Flutter 常用的组件">
+                <i class="fa fa-chevron-left"></i> Flutter学习之路 - Flutter 常用的组件
               </a>
             
           </div>
@@ -438,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/29/js-token/" rel="prev" title="令牌无感知刷新">
-                令牌无感知刷新 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -577,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类"><span class="nav-number">1.</span> <span class="nav-text">数组类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电话号码的字母组合"><span class="nav-number">2.</span> <span class="nav-text">电话号码的字母组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#种花问题"><span class="nav-number">3.</span> <span class="nav-text">种花问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表的使用"><span class="nav-number">1.</span> <span class="nav-text">列表的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础列表的使用"><span class="nav-number">2.</span> <span class="nav-text">基础列表的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表的展开和收起"><span class="nav-number">3.</span> <span class="nav-text">列表的展开和收起</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网格布局"><span class="nav-number">4.</span> <span class="nav-text">网格布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下拉刷新和上拉加载"><span class="nav-number">5.</span> <span class="nav-text">下拉刷新和上拉加载</span></a></li></ol></div>
             
 
           </div>
