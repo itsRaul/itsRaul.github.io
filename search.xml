@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Flex]]></title>
+    <url>%2F2021%2F03%2F16%2Fflex%2F</url>
+    <content type="text"><![CDATA[Flex布局 2009提出布局方案，为盒模型提供灵活性。display: flex。采用Flex布局的元素，称为容器。它的所有子元素自动成为容器成员，称为项目。 Flex容器的属性flex-direction 主轴的排列方式row：从左到右依次排列方式 row-reverse：从右到左依次排列方式 colunmn：从上到下依次排列方式 column-reverse：从下到上依次排列方式 flex-wrap 当项目的大小超过主轴的大小，如何排列nowrap： 项目的宽度适应主轴的宽度，自动适应，不会换行 wrap：自动换行 wrap-reverse：自动换行，自下而上进行换行 justify-content 定义项目主轴对齐方式flex-start：沿主轴的方向排列 flex-end：沿主轴的终点方向排列 center: 沿主轴的中间排列 space-between：主轴两端对齐，项目保持相同的间距 space-around： 主轴两端的间距相同，平分项目的间距 align-items 交叉轴的对齐方式flex-start：交叉轴的起点对齐 flex-end：交叉轴的终点对齐 center：交叉轴的中间排列 baseline：项目的第一行文字的基线对齐 stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。 项目的属性order：属性定义项目的排列顺序。数值越小，排列越靠前，默认为0 1order: -1 flex-grow：属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大 1flex-grow: 1 align-self：属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性 flex-shrink：属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小 flex-basis：定义了在分配多余空间之前，项目占据的主轴空间]]></content>
+      <categories>
+        <category>css</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[混合开发概述]]></title>
     <url>%2F2021%2F03%2F15%2F1-hybrid%2F</url>
     <content type="text"><![CDATA[混合开发概述 混合开发是什么 Hybrid App, 混合了Native技术和web技术进行开发的移动应用。 混合开发方案 基于WebView UI (JSBridge)JSBridge是原生端和web端通信端桥梁，通过JSBridge和App进行通信，完成web端和原生端通信。 基于Native UI (ReactNative, weex)赋予web原生能力的基础之上，进一步通过JSBridge解析虚拟节点素，传递到Native端，并使用原生进行渲染的解决方案。 小程序方案通过JSBridge实现，对JSBridge进行更加细致化对定制。隔离UI渲染层和JS逻辑层，形成特殊的开发环境，从而web和Native的融合程度，提高web端的执行性能。 总结：方案2和方案3都是基于方案1进行不同的封装思想实现，提高web和Native的融合程度。 Hybrid App的本质 在App中，使用WebView作为容器，承载一个web页面。JSBridge一座用JavaScript搭建起来的桥，一端是web，一端是Native端。目的web和Native端相互通信、相互调用。 Web调用Android android构建 JSBridge 对象，这里提供的 JSBridge 字符串会被挂载到网页中的window 对象下面。还可以对 123addJavascriptInterface( new MyJaveScriptInterface(mContext, this),&quot;AndroidJSBridge&quot;); Android 调用 onFunction 方法 1234window.onFunction = function (str) &#123; alert(str); return &apos;onFunction 方法已经调用完成&apos;;&#125; Web调用Android方法 1window.AndroidJSBridge.androidTestFunction1(str); Web调用IOS OC注册供JS调用的方法，IOS 注入 jsbridge 对象名为 webkit1234567891011// Web调用IOS方法window.webkit.messageHandlers.IOSTestFunction2.postMessage(&#123;&#125;);// IOS 回调 onFunctionIOS 方法window.onFunctionIOS = function (str) &#123; alert(str); return &apos;onFunctionIOS 方法已经调用完成&apos;;&#125;// 调用 IOS 方法2，通过postMessage传对象function onIOSFunction2 () &#123; window.webkit.messageHandlers.IOSTestFunction2.postMessage(&#123;&#125;);&#125; Android和IOS的双向通信相同点 都是通过WebView来完成网页的加载。 都是通过window注入对象的方式来提供被web端调用的方法。 都是可以直接调用web端挂载到window对象的方法。 不同点 注入对象不同：Android可提供注入对象名。IOS固定为webkit。 JS调用Native的方法不同：面向Android可直接获取注入对象、方法。面对IOS相对固定写法window.webkit.messageHandlers.方法名.postMessage(入参对象)。 传递格式不同：面向Android只能接受基本类型数据，如果传对象，通过JSON.stringify()把对象转字符串。面向IOS可以接受任意类型数据。 返回值不同： 面向Android可以直接接受返回值。面向IOS没有直接获取返回值，通过回调方法获取。]]></content>
