@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[rem]]></title>
+    <url>%2F2021%2F03%2F21%2Frem%2F</url>
+    <content type="text"><![CDATA[rem 定义相同文字的大小，但在不同的设备上应该展示不同的像素数。rem相对于html标签fontSize大小的单位。 rem设置根据屏幕的宽度定义根元素fontSize大小 定义函数把像素转rem 1234567891011121314// 定义最大 fontSizeconst MAX_FONT_SIZE = 42;// 监听HTML文档被解析完成的事件document.addEventListener(&apos;DOMContentLoaded&apos;, () =&gt; &#123; // 获取html标签 const html = document.querySelector(&apos;html&apos;); // 屏幕的宽度除以10，获取根元素 fontSize 标准 let fontSize = window.innerWidth / 10; // 获取到 fontSize 标签不允许超过我们定义的最大值 fontSize = fontSize &gt; MAX_FONT_SIZE ? MAX_FONT_SIZE : fontSize // 定义根元素 fontSize 大小 html.style.fontSize = fontSize + &apos;px&apos;;&#125;) 运算规则 1234567// I6、6s、7为设计基础// 定义预计根元素 fontSize$rootFontSize: 375 / 10;// 定义像素转化为 rem 函数@function px2rem ($px) &#123; @return $px / $rootFontSize + rem;&#125;]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Flex]]></title>
     <url>%2F2021%2F03%2F16%2Fflex%2F</url>
     <content type="text"><![CDATA[Flex布局 2009提出布局方案，为盒模型提供灵活性。display: flex。采用Flex布局的元素，称为容器。它的所有子元素自动成为容器成员，称为项目。 Flex容器的属性flex-direction 主轴的排列方式row：从左到右依次排列方式 row-reverse：从右到左依次排列方式 colunmn：从上到下依次排列方式 column-reverse：从下到上依次排列方式 flex-wrap 当项目的大小超过主轴的大小，如何排列nowrap： 项目的宽度适应主轴的宽度，自动适应，不会换行 wrap：自动换行 wrap-reverse：自动换行，自下而上进行换行 justify-content 定义项目主轴对齐方式flex-start：沿主轴的方向排列 flex-end：沿主轴的终点方向排列 center: 沿主轴的中间排列 space-between：主轴两端对齐，项目保持相同的间距 space-around： 主轴两端的间距相同，平分项目的间距 align-items 交叉轴的对齐方式flex-start：交叉轴的起点对齐 flex-end：交叉轴的终点对齐 center：交叉轴的中间排列 baseline：项目的第一行文字的基线对齐 stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。 项目的属性order：属性定义项目的排列顺序。数值越小，排列越靠前，默认为0 1order: -1 flex-grow：属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大 1flex-grow: 1 align-self：属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性 flex-shrink：属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小 flex-basis：定义了在分配多余空间之前，项目占据的主轴空间]]></content>
