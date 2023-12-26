@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘付鹏的个人网站">
-<meta property="og:url" content="http://yoursite.com/categories/uni-app/index.html">
+<meta name="description" content="SQL优化">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL优化">
+<meta property="og:url" content="http://yoursite.com/2023/12/26/mysql5/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="SQL优化">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2023-12-26T15:07:21.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘付鹏的个人网站">
+<meta name="twitter:title" content="SQL优化">
+<meta name="twitter:description" content="SQL优化">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/uni-app/"/>
+  <link rel="canonical" href="http://yoursite.com/2023/12/26/mysql5/"/>
 
 
 
 
 
-  <title>Category: uni-app | 刘付鹏的个人网站</title>
+  <title>SQL优化 | 刘付鹏的个人网站</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,83 +273,376 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>uni-app<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/12/26/mysql5/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2023/09/09/mescroll-body/" itemprop="url">
-              
-                <span itemprop="name">uni-app高性能下拉刷新上拉加载</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">SQL优化</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2023-09-09T17:08:44+08:00"
-              content="2023-09-09" >
-          09-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-12-26T23:05:54+08:00">
+                2023-12-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2023/08/27/uni-tabs/" itemprop="url">
-              
-                <span itemprop="name">uni-app自定义tabs</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2023-08-27T21:04:41+08:00"
-              content="2023-08-27" >
-          08-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <h3 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h3><a id="more"></a>
+<blockquote>
+<p>发现问题-分析执行计划-优化索引-改写SQL-数据库垂直切分-数据库水平切分</p>
+</blockquote>
+<h4 id="慢查询日志"><a href="#慢查询日志" class="headerlink" title="慢查询日志"></a>慢查询日志</h4><h5 id="配置MySQL慢查询日志"><a href="#配置MySQL慢查询日志" class="headerlink" title="配置MySQL慢查询日志"></a>配置MySQL慢查询日志</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">set global slow_query_log = [ON | OFF]</span><br><span class="line"></span><br><span class="line">// 慢查询日志记录slowlog.log</span><br><span class="line">set global slow_query_log_file = /sql_log/slowlog.log</span><br><span class="line"></span><br><span class="line">// 执行时间超过设置时间，记录到慢查询中</span><br><span class="line">set global long_query_time = xxx.xxx秒</span><br><span class="line"></span><br><span class="line">// 未使用索引的SQL记录到慢查询中</span><br><span class="line">set global log_queries_not_using_indexes = [ON | OFF]</span><br></pre></td></tr></table></figure>
+<h4 id="分析执行计划"><a href="#分析执行计划" class="headerlink" title="分析执行计划"></a>分析执行计划</h4><blockquote>
+<p>了解SQL如何访问表中的数据、索引、查询类型。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN</span><br><span class="line"></span><br><span class="line">SQL语句</span><br></pre></td></tr></table></figure>
+<ol>
+<li>执行计划内容分析</li>
+</ol>
+<ul>
+<li><p>ID表示查询执行的顺序。</p>
+</li>
+<li><p>ID相同时由上到下执行。</p>
+</li>
+<li><p>ID不同时，由大到小执行。</p>
+</li>
+</ul>
+<p>select_type</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIMPLE</td>
+<td>不包含子查询或是UNION操作的查询</td>
+</tr>
+<tr>
+<td>PRIMARY</td>
+<td>查询中如果包含任何子查询，那么最外层的查询则被标记为PRIMARY</td>
+</tr>
+<tr>
+<td>SUBQUERY</td>
+<td>SELECT列表中的子查询</td>
+</tr>
+<tr>
+<td>DEPENDENT SUBQUERY</td>
+<td>依赖外部结果的子查询</td>
+</tr>
+</tbody>
+</table>
+<p>select_type</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UNION</td>
+<td>union操作的第二个或是之后的查询的值为union</td>
+</tr>
+<tr>
+<td>DEPENDENT UNION</td>
+<td>当UNION做为子查询时，第二个或是第二个后的查询的select_type值</td>
+</tr>
+<tr>
+<td>UNION RESULT</td>
+<td>UNION产生的结果值</td>
+</tr>
+<tr>
+<td>DERIVED</td>
+<td>出现在FROM子句中的子查询</td>
+</tr>
+</tbody>
+</table>
+<p>table</p>
+<ul>
+<li>指明是从那个表中获取数据。</li>
+</ul>
+<p>partitions</p>
+<ul>
+<li><p>对于分区表，显示查询的分区ID。</p>
+</li>
+<li><p>对于非分区表，显示NULL。</p>
+</li>
+</ul>
+<p>type</p>
+<table>
+<thead>
+<tr>
+<th>性能</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>高</td>
+<td>system</td>
+<td>这是const连接类型的一个特例，当查询的表只有一行时使用</td>
+</tr>
+<tr>
+<td></td>
+<td>const</td>
+<td>表中有且只有一个匹配的行时使用，如对主键或是唯一索引的查询，这是效率最高的联接方式。</td>
+</tr>
+<tr>
+<td></td>
+<td>eq_ref</td>
+<td>唯一索或主键查找，对于每个索引建，表中只有一条记录与之匹配</td>
+</tr>
+<tr>
+<td></td>
+<td>ref</td>
+<td>非唯一索引查找，返回匹配某个单独值的所有行</td>
+</tr>
+<tr>
+<td></td>
+<td>ref_or_null</td>
+<td>类似于ref类型的查询，但是附加了对NULL值列的查询</td>
+</tr>
+<tr>
+<td></td>
+<td>index_merge</td>
+<td>该联接类型表示使用了索引合并优化方法</td>
+</tr>
+<tr>
+<td></td>
+<td>range</td>
+<td>索引范围扫描，常见于between、&gt;、&lt;这样的查询条件</td>
+</tr>
+<tr>
+<td></td>
+<td>index</td>
+<td>FULL index Scan全索引扫描,同ALL的区别是，遍历的是索引树</td>
+</tr>
+<tr>
+<td>低</td>
+<td>ALL</td>
+<td>FULL TALBLE Scan全表扫描，这是效率最差的联接方式</td>
+</tr>
+</tbody>
+</table>
+<p>possible_keys</p>
+<ul>
+<li>指出查询中可能会用到的索引。</li>
+</ul>
+<p>key</p>
+<ul>
+<li>指出查询时实际用到的索引。</li>
+</ul>
+<p>key_len</p>
+<ul>
+<li>实际使用索引的最大长度。</li>
+</ul>
+<p>ref</p>
+<ul>
+<li>指出那些列或常量被用于索引查找。</li>
+</ul>
+<p>rows</p>
+<ul>
+<li><p>指出那些列或常量被用于索引查找</p>
+</li>
+<li><p>根据统计信息预估的扫描的行数、</p>
+</li>
+</ul>
+<p>filtered</p>
+<ul>
+<li>表示返回结果的行数占需读取行数的百分比</li>
+</ul>
+<p>Extra</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distinct</td>
+<td>优化distinct操作，在找到第一匹配的元组后即停止找同样值的动作</td>
+</tr>
+<tr>
+<td>Not exists</td>
+<td>使用not exists来优化查询</td>
+</tr>
+<tr>
+<td>Using filesort</td>
+<td>使用文件来进行排序，通常会出现在order by或group by 查询中</td>
+</tr>
+<tr>
+<td>Using index</td>
+<td>使用了覆盖索引进行查询</td>
+</tr>
+<tr>
+<td>Using temporary</td>
+<td>MySQL需要使用临时表来处理查询，常见于排序，子查询，和分组查询</td>
+</tr>
+<tr>
+<td>Using where</td>
+<td>需要在MySQL服务器层使用WHERE条件过滤数据</td>
+</tr>
+<tr>
+<td>select tables optimized away</td>
+<td>直接通过索引来获得数据，不用访问表</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/12/05/mysql4/" rel="next" title="SQL开发">
+                <i class="fa fa-chevron-left"></i> SQL开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -352,6 +650,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -372,8 +674,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -437,6 +748,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL优化"><span class="nav-number">1.</span> <span class="nav-text">SQL优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#慢查询日志"><span class="nav-number">1.1.</span> <span class="nav-text">慢查询日志</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#配置MySQL慢查询日志"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置MySQL慢查询日志</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析执行计划"><span class="nav-number">1.2.</span> <span class="nav-text">分析执行计划</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -577,6 +904,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
