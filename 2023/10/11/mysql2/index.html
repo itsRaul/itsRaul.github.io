@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据库设计">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库设计">
+<meta property="og:url" content="http://yoursite.com/2023/10/11/mysql2/index.html">
+<meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="数据库设计">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2023-10-11T15:02:38.498Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库设计">
+<meta name="twitter:description" content="数据库设计">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2023/10/11/mysql2/"/>
+
+
+
+
+
+  <title>数据库设计 | 刘付鹏的个人网站</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘付鹏的个人网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal Website</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/10/11/mysql2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库设计</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-10-11T23:01:56+08:00">
+                2023-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3><a id="more"></a>
+<h4 id="宽表模式"><a href="#宽表模式" class="headerlink" title="宽表模式"></a>宽表模式</h4><blockquote>
+<p>把一个对象的所有属性存储到一个表中，这种类型的表在性能上可能对数据库造成困扰，因为它们需要加载更多的数据，并且需要更多的内存来存储索引。</p>
+</blockquote>
+<h5 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h5><ol>
+<li><p>查询性能提升：宽表可以减少表关联操作的次数，从而减少查询的复杂性和提高查询性能。</p>
+</li>
+<li><p>简化数据模型：宽表可以将相关数据聚合在一张表中，简化数据模型和查询逻辑，提高开发和维护效率。</p>
+</li>
+<li><p>减少表关联操作：宽表可以避免频繁的表关联操作，降低系统开销和数据库负载。</p>
+</li>
+</ol>
+<h5 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h5><ol>
+<li><p>数据冗余：相同的数据一个表中出现了多次。</p>
+</li>
+<li><p>数据更新异常：修改一行中某列的值时，同时修改了多行数据。</p>
+</li>
+<li><p>数据插入异常：部分数据由于缺失主键信息而无法写入表中。</p>
+</li>
+<li><p>数据删除异常：删除某一项数据时不得不删除另一数据。</p>
+</li>
+</ol>
+<h5 id="优化性能"><a href="#优化性能" class="headerlink" title="优化性能"></a>优化性能</h5><ol>
+<li><p>使用索引</p>
+</li>
+<li><p>限制列数</p>
+</li>
+<li><p>垂直拆分</p>
+</li>
+<li><p>分区：将大型表分成多个分区，以提高查询性能和存储效率。</p>
+</li>
+<li><p>使用缓存</p>
+</li>
+</ol>
+<h4 id="设计范式"><a href="#设计范式" class="headerlink" title="设计范式"></a>设计范式</h4><ol>
+<li><p>第一范式：表中的所有字段都是不可再分的。</p>
+</li>
+<li><p>第二范式：表中必须存在业务主键，并且非主键依赖于全部业务主键。</p>
+</li>
+<li><p>第三范式：表中的非主键列之间不能相互依赖。</p>
+</li>
+</ol>
+<h4 id="物理设计"><a href="#物理设计" class="headerlink" title="物理设计"></a>物理设计</h4><h5 id="MySQL常见的存储引擎"><a href="#MySQL常见的存储引擎" class="headerlink" title="MySQL常见的存储引擎"></a>MySQL常见的存储引擎</h5><table>
+<thead>
+<tr>
+<th>引擎名次</th>
+<th>事务</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MYISAM</td>
+<td>N</td>
+<td>MySQL5.6之前的默认引擎，最常用的是非事务型存储引擎</td>
+</tr>
+<tr>
+<td>CSV</td>
+<td>N</td>
+<td>以CSV格式存储的非事务型存储引擎</td>
+</tr>
+<tr>
+<td>Archive</td>
+<td>N</td>
+<td>只允许查询和新增数据而不允许修改的非事务型存储引擎</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>N</td>
+<td>是一种易失性非事务存储引擎</td>
+</tr>
+<tr>
+<td>INNODB</td>
+<td>Y</td>
+<td>最常用的事务型存储引擎</td>
+</tr>
+</tbody>
+</table>
+<h5 id="InnoDB存储引擎的特点"><a href="#InnoDB存储引擎的特点" class="headerlink" title="InnoDB存储引擎的特点"></a>InnoDB存储引擎的特点</h5><ol>
+<li><p>事务型存储引擎支持ACID.</p>
+</li>
+<li><p>数据按主键聚集存储。</p>
+</li>
+<li><p>支持行级锁及MVCC。</p>
+</li>
+<li><p>支持Btree和自适应Hash索引。</p>
+</li>
+<li><p>支持全文和空间索引。</p>
+</li>
+</ol>
+<h5 id="MySQL整数类型"><a href="#MySQL整数类型" class="headerlink" title="MySQL整数类型"></a>MySQL整数类型</h5><ol>
+<li><p>tinyint 1字节 SIGNED(-128~127) UNSIGNED(0~255)</p>
+</li>
+<li><p>smallint 2字节 SIGNED(-32768~32767) UNSIGNED(0~65535)</p>
+</li>
+<li><p>mediumint 3字节 SIGNED(-8388608~8388607) UNSIGNED(0~16777215)</p>
+</li>
+<li><p>int 4字节 SIGNED(-2147483648~2147483647) UNSIGNED(0~4294967295)</p>
+</li>
+<li><p>bigint 8字节 SIGNED(-9223372023654775808~9223372036854775807) UNSIGNED(0~18446744073907551615)</p>
+</li>
+</ol>
+<h5 id="MySQL浮点类型"><a href="#MySQL浮点类型" class="headerlink" title="MySQL浮点类型"></a>MySQL浮点类型</h5><table>
+<thead>
+<tr>
+<th>列表型</th>
+<th>存储空间</th>
+<th>是否精确类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FLOAT</td>
+<td>4个字节</td>
+<td>否</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8个字节</td>
+<td>否</td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td>每4个字节存9个数字，小数点占一个字节</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h5 id="MySQL时间类型"><a href="#MySQL时间类型" class="headerlink" title="MySQL时间类型"></a>MySQL时间类型</h5><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储空间</th>
+<th>格式</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE</td>
+<td>3字节</td>
+<td>YYYY-MM-DD</td>
+<td>从1000-01-01到9999-12-31</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3-6字节</td>
+<td>HH:MM:SS</td>
+<td>从-838:59:59到838:59:59</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1字节</td>
+<td>YYYY</td>
+<td>从1901到2155</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>5-8字节</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>从1000-01-01 00:00:00到9999-12-31 23:59:59</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4-7字节</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>从1970-01-01 00:00:01 UTC到2038-01-19 03:14:07 UTC</td>
+</tr>
+</tbody>
+</table>
+<h5 id="MySQL字符串类型"><a href="#MySQL字符串类型" class="headerlink" title="MySQL字符串类型"></a>MySQL字符串类型</h5><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Char(M)</td>
+<td>M=1~255个字符</td>
+<td>固定长度</td>
+</tr>
+<tr>
+<td>VarChar(M)</td>
+<td>不能超过65535字节，UTF8mb4 varchar(10)=40字节</td>
+<td>存储可变长度的M个字符</td>
+</tr>
+<tr>
+<td>TinyText</td>
+<td>最大长度255字节</td>
+<td>可变长度</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>最大长度65535字节</td>
+<td>可变长度</td>
+</tr>
+<tr>
+<td>MediumText</td>
+<td>最大长度16777215字节</td>
+<td>可变长度</td>
+</tr>
+<tr>
+<td>LongText</td>
+<td>最大长度4294967295字节</td>
+<td>可变长度</td>
+</tr>
+<tr>
+<td>Enum</td>
+<td>集合最大数目65535</td>
+<td>只能插入列表中的值</td>
+</tr>
+</tbody>
+</table>
+<h5 id="MySQL数据库命名"><a href="#MySQL数据库命名" class="headerlink" title="MySQL数据库命名"></a>MySQL数据库命名</h5><ol>
+<li><p>所有数据库对象名称必须使用小写字母可选下划线分割。</p>
+</li>
+<li><p>所有数据库对象名称定义禁止使用MySQL的关键字。</p>
+</li>
+<li><p>数据库对象的命名要能做到见名识义，并且最好不要超过32个字。</p>
+</li>
+</ol>
+<h5 id="MySQL表和列的命名"><a href="#MySQL表和列的命名" class="headerlink" title="MySQL表和列的命名"></a>MySQL表和列的命名</h5><ol>
+<li><p>临时库表必须以tmp为前缀并以日期为后缀。</p>
+</li>
+<li><p>用于备份的库，表必须以bak为前缀并以日期为后缀。</p>
+</li>
+<li><p>所有存储相同数据的列名和列类型必须一致。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/10/07/mysql1/" rel="next" title="关系型和非关系数据库">
+                <i class="fa fa-chevron-left"></i> 关系型和非关系数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/10/16/mysql3/" rel="prev" title="SQL语言开发">
+                SQL语言开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="刘付鹏" />
+            
+              <p class="site-author-name" itemprop="name">刘付鹏</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库设计"><span class="nav-number">1.</span> <span class="nav-text">数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#宽表模式"><span class="nav-number">1.1.</span> <span class="nav-text">宽表模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优势"><span class="nav-number">1.1.1.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#存在问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">存在问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化性能"><span class="nav-number">1.1.3.</span> <span class="nav-text">优化性能</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计范式"><span class="nav-number">1.2.</span> <span class="nav-text">设计范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理设计"><span class="nav-number">1.3.</span> <span class="nav-text">物理设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL常见的存储引擎"><span class="nav-number">1.3.1.</span> <span class="nav-text">MySQL常见的存储引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#InnoDB存储引擎的特点"><span class="nav-number">1.3.2.</span> <span class="nav-text">InnoDB存储引擎的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL整数类型"><span class="nav-number">1.3.3.</span> <span class="nav-text">MySQL整数类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL浮点类型"><span class="nav-number">1.3.4.</span> <span class="nav-text">MySQL浮点类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL时间类型"><span class="nav-number">1.3.5.</span> <span class="nav-text">MySQL时间类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL字符串类型"><span class="nav-number">1.3.6.</span> <span class="nav-text">MySQL字符串类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL数据库命名"><span class="nav-number">1.3.7.</span> <span class="nav-text">MySQL数据库命名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MySQL表和列的命名"><span class="nav-number">1.3.8.</span> <span class="nav-text">MySQL表和列的命名</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘付鹏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
