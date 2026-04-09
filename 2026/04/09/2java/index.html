@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="刘付鹏的个人网站">
-<meta property="og:url" content="http://yoursite.com/tags/css/index.html">
+<meta name="description" content="基于 Redis 状态机的 APP 扫码登录深度实现">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于 Redis 状态机的 APP 扫码登录深度实现">
+<meta property="og:url" content="http://yoursite.com/2026/04/09/2java/index.html">
 <meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="基于 Redis 状态机的 APP 扫码登录深度实现">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2026-04-09T14:09:05.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刘付鹏的个人网站">
+<meta name="twitter:title" content="基于 Redis 状态机的 APP 扫码登录深度实现">
+<meta name="twitter:description" content="基于 Redis 状态机的 APP 扫码登录深度实现">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/css/"/>
+  <link rel="canonical" href="http://yoursite.com/2026/04/09/2java/"/>
 
 
 
 
 
-  <title>Tag: css | 刘付鹏的个人网站</title>
+  <title>基于 Redis 状态机的 APP 扫码登录深度实现 | 刘付鹏的个人网站</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -268,54 +273,180 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>css<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2026/04/09/2java/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2021/03/16/flex/" itemprop="url">
-              
-                <span itemprop="name">Flex</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">基于 Redis 状态机的 APP 扫码登录深度实现</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2021-03-16T23:42:50+08:00"
-              content="2021-03-16" >
-          03-16
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-04-09T22:03:56+08:00">
+                2026-04-09
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基于-Redis-状态机的-APP-扫码登录深度实现"><a href="#基于-Redis-状态机的-APP-扫码登录深度实现" class="headerlink" title="基于 Redis 状态机的 APP 扫码登录深度实现"></a>基于 Redis 状态机的 APP 扫码登录深度实现</h2><a id="more"></a>
+<blockquote>
+<p>业务场景背景在企业级 ERP 系统中，网页端（SaaS 管理后台）往往承载着敏感的财务与人事数据。传统的账号密码登录存在被监听或撞库的风险。APP 扫码登录利用手机端已有的安全上下文（如指纹、面容识别后的登录态），为 PC 端提供了一种既快捷又安全的身份穿透方案。</p>
+</blockquote>
+<h3 id="核心交互流程架构"><a href="#核心交互流程架构" class="headerlink" title="核心交互流程架构"></a>核心交互流程架构</h3><blockquote>
+<p>该功能本质上是一个跨端同步的状态机。通过 Redis 作为中转站，将“网页端”、“后端服务”与“移动端”三方串联。</p>
+</blockquote>
+<p>阶段一：凭证初始化（网页端）<br>网页端加载时调用 getQRToken 接口。</p>
+<p>逻辑：生成全局唯一的 qrToken（二维码令牌）。</p>
+<p>存储：在 Redis 中存入两个 Key：一个记录 Token 本身，另一个作为“读取状态位”（初始值为 0: 未扫描）。</p>
+<p>安全：设置 5 分钟有效期，超时自动失效。</p>
+<p>阶段二：身份关联与预授权（移动端扫码）<br>用户使用已登录的手机 APP 扫描二维码，调用 scanCode 接口。</p>
+<p>校验：后端通过 JWTUtils 校验 APP 端的合法性。</p>
+<p>信任传递：后端生成一个随机的 preToken（预登录令牌），并更新 Redis 状态为 1: 已扫描，同时关联此 preToken。</p>
+<p>返回：将 preToken 返回给手机端，作为后续“确认登录”的唯一凭证。</p>
+<p>阶段三：状态探测（网页端轮询）<br>网页端通过 codeHasBeenRead 接口进行高频轮询（或使用 WebSocket）。</p>
+<p>数据解析：后端拆分 Redis 里的字符串（如 1,preToken）。</p>
+<p>UI 反馈：网页端一旦拿到状态 1，立即从二维码界面切换为“扫码成功，请在手机确认”的提示状态。</p>
+<p>阶段四：最终授权（移动端确认）<br>用户在手机上点击“确认登录”，调用 goQRLogin 接口。</p>
+<p>对暗号：APP 携带 preToken 请求，后端比对 Redis 中的 preToken 是否一致。</p>
+<p>暂存信息：比对成功后，将该用户的信息（Users）暂时缓存至 Redis 的临时区域。</p>
+<p>阶段五：令牌核发（网页端进入）<br>网页端发起最后的 checkLogin 调用。</p>
+<p>JWT 颁发：后端从 Redis 提取暂存的用户信息，使用 jwtUtils.createJWTWithPrefix 生成 SaaS 平台专属的 JWT。</p>
+<p>会话建立：网页端拿到正式令牌，完成登录并进入 ERP 系统主页。</p>
+<h3 id="核心代码实现细节"><a href="#核心代码实现细节" class="headerlink" title="核心代码实现细节"></a>核心代码实现细节</h3><p>在轮询接口中，通过简单的字符串分割实现高效的状态判定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Java</span><br><span class="line">String readStr = redis.get(SAAS_PLATFORM_LOGIN_TOKEN_READ + &quot;:&quot; + qrToken);</span><br><span class="line">if (StringUtils.isNotBlank(readStr)) &#123;</span><br><span class="line"> String[] readArr = readStr.split(&quot;,&quot;); // 格式如 &quot;1,uuid-preToken&quot;</span><br><span class="line"> if (readArr.length &gt;= 2) &#123;</span><br><span class="line"> list.add(Integer.valueOf(readArr[0])); // 状态码: 1</span><br><span class="line"> list.add(readArr[1]); // preToken</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="预登录令牌（preToken）的安全价值"><a href="#预登录令牌（preToken）的安全价值" class="headerlink" title="预登录令牌（preToken）的安全价值"></a>预登录令牌（preToken）的安全价值</h4><p>preToken 是该方案的安全灵魂。它确保了：</p>
+<p>防伪造：只有真实扫过码的手机才能拿到 preToken，攻击者无法通过模拟请求直接进入登录环节。</p>
+<p>链路锁定：确保了最后确认登录的手机与显示二维码的网页窗口是一一对应的“信任链路”。</p>
+<h3 id="技术亮点与架构思考"><a href="#技术亮点与架构思考" class="headerlink" title="技术亮点与架构思考"></a>技术亮点与架构思考</h3><p>无状态化设计：整个过程不依赖 Session，完全由 Redis 维护状态，天然支持集群部署和横向扩展。</p>
+<p>多端身份解耦：APP 令牌与 SaaS 令牌前缀不同、有效期不同，实现了移动端与管理后台的权限体系隔离。</p>
+<p>防御性编程：在 checkLogin 环节，通过 UUID 和短时效 Redis Key 确保了令牌的一次性，有效防止了重放攻击。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>扫码登录不仅是用户体验的优化，更是企业安全策略的延伸。通过 Redis 状态机 + 双重 Token 校验，我们实现了一个低耦合、高可靠的跨端身份认证体系，为 ERP 系统的数据安全构筑了坚固的第一道防线。</p>
+<p>负责了 ERP 系统的跨端统一身份认证中心。重点攻克了扫码登录过程中三方状态同步的问题，通过设计一套基于 Redis 的双令牌（qrToken/preToken）确认机制，解决了跨设备信任传递的安全难题。该方案不仅提升了 HR 用户的办公效率，还通过无状态 JWT 颁发机制支撑了系统的高并发访问。”</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2026/04/09/1java/" rel="next" title="基于 Spring Cloud Alibaba 的分布式企业系统架构实践">
+                <i class="fa fa-chevron-left"></i> 基于 Spring Cloud Alibaba 的分布式企业系统架构实践
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -323,6 +454,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -343,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -408,6 +552,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于-Redis-状态机的-APP-扫码登录深度实现"><span class="nav-number">1.</span> <span class="nav-text">基于 Redis 状态机的 APP 扫码登录深度实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心交互流程架构"><span class="nav-number">1.1.</span> <span class="nav-text">核心交互流程架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核心代码实现细节"><span class="nav-number">1.2.</span> <span class="nav-text">核心代码实现细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预登录令牌（preToken）的安全价值"><span class="nav-number">1.2.1.</span> <span class="nav-text">预登录令牌（preToken）的安全价值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术亮点与架构思考"><span class="nav-number">1.3.</span> <span class="nav-text">技术亮点与架构思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -548,6 +708,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
