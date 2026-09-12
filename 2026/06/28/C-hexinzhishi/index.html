@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="C#开发核心">
+<meta name="keywords" content="C#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#开发核心知识">
+<meta property="og:url" content="http://yoursite.com/2026/06/28/C-hexinzhishi/index.html">
+<meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="C#开发核心">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2026-09-12T02:19:20.152Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#开发核心知识">
+<meta name="twitter:description" content="C#开发核心">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2026/06/28/C-hexinzhishi/"/>
+
+
+
+
+
+  <title>C#开发核心知识 | 刘付鹏的个人网站</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘付鹏的个人网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal Website</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2026/06/28/C-hexinzhishi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#开发核心知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-06-28T10:14:53+08:00">
+                2026-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="C-开发核心"><a href="#C-开发核心" class="headerlink" title="C#开发核心"></a>C#开发核心</h3><a id="more"></a>
+<h1 id="一、C-线程"><a href="#一、C-线程" class="headerlink" title="一、C# 线程"></a>一、C# 线程</h1><h2 id="什么是线程？"><a href="#什么是线程？" class="headerlink" title="什么是线程？"></a>什么是线程？</h2><p>线程可以理解为：</p>
+<blockquote>
+<p><strong>程序中实际执行代码的一条执行路径。</strong></p>
+</blockquote>
+<p>一个 C# 程序启动以后，至少会有一个主线程。</p>
+<p>例如 WinForms/WPF 上位机：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">程序</span><br><span class="line"> │</span><br><span class="line"> └── 主线程</span><br><span class="line">      │</span><br><span class="line">      ├── 创建窗口</span><br><span class="line">      ├── 显示控件</span><br><span class="line">      ├── 响应鼠标</span><br><span class="line">      └── 响应按钮</span><br></pre></td></tr></table></figure>
+<p>如果所有工作都放到主线程中执行，那么一个耗时操作就可能导致界面卡顿。</p>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while (true)</span><br><span class="line">&#123;</span><br><span class="line">    ReadModbus();</span><br><span class="line"></span><br><span class="line">    Thread.Sleep(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果这个代码运行在 UI 线程，那么：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">读取设备</span><br><span class="line"> ↓</span><br><span class="line">等待设备响应</span><br><span class="line"> ↓</span><br><span class="line">读取设备</span><br><span class="line"> ↓</span><br><span class="line">等待</span><br><span class="line"> ↓</span><br><span class="line">UI无法响应</span><br></pre></td></tr></table></figure>
+<p>最终表现就是：</p>
+<blockquote>
+<p>上位机界面卡死。</p>
+</blockquote>
+<hr>
+<h1 id="上位机为什么需要线程？"><a href="#上位机为什么需要线程？" class="headerlink" title="上位机为什么需要线程？"></a>上位机为什么需要线程？</h1><p>工业上位机通常需要一直运行。</p>
+<p>例如需要每隔 1 秒读取：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">冷却塔</span><br><span class="line"> ├── 温度</span><br><span class="line"> ├── 压力</span><br><span class="line"> ├── 流量</span><br><span class="line"> ├── 风机频率</span><br><span class="line"> └── 运行状态</span><br></pre></td></tr></table></figure>
+<p>同时用户还要能够：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查看数据</span><br><span class="line">修改参数</span><br><span class="line">启动设备</span><br><span class="line">停止设备</span><br><span class="line">查看报警</span><br><span class="line">切换页面</span><br></pre></td></tr></table></figure>
+<p>所以不能让设备通信阻塞 UI。</p>
+<p>一般设计为：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">C#上位机</span><br><span class="line">                 │</span><br><span class="line">       ┌─────────┴─────────┐</span><br><span class="line">       ↓                   ↓</span><br><span class="line">    UI线程              后台线程</span><br><span class="line">       │                   │</span><br><span class="line">   页面显示              Modbus</span><br><span class="line">   用户操作              串口通信</span><br><span class="line">   按钮事件              数据采集</span><br><span class="line">                           │</span><br><span class="line">                           ↓</span><br><span class="line">                        数据解析</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Thread-的使用"><a href="#Thread-的使用" class="headerlink" title="Thread 的使用"></a>Thread 的使用</h1><p>传统 C# 可以使用 <code>Thread</code>：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = new Thread(ReadDevice);</span><br><span class="line"></span><br><span class="line">thread.IsBackground = true;</span><br><span class="line"></span><br><span class="line">thread.Start();</span><br><span class="line"></span><br><span class="line">void ReadDevice()</span><br><span class="line">&#123;</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;读取设备数据&quot;);</span><br><span class="line"></span><br><span class="line">        Thread.Sleep(1000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thread.Start();</span><br></pre></td></tr></table></figure>
+<p>表示启动线程。</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.Sleep(1000);</span><br></pre></td></tr></table></figure>
+<p>表示当前线程暂停 1 秒。</p>
+<hr>
+<h1 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h1><p>现在 .NET 项目中更常见的是 <code>Task</code>：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Task.Run(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        ReadDevice();</span><br><span class="line"></span><br><span class="line">        Thread.Sleep(1000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>异步场景可以使用：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Task.Run(async () =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        await ReadDeviceAsync();</span><br><span class="line"></span><br><span class="line">        await Task.Delay(1000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>现代 C# 中可以简单理解为：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Thread</span><br><span class="line">    ↓</span><br><span class="line">直接管理线程</span><br><span class="line"></span><br><span class="line">Task</span><br><span class="line">    ↓</span><br><span class="line">更高级的任务模型</span><br><span class="line">    ↓</span><br><span class="line">通常更推荐</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="上位机中的线程使用场景"><a href="#上位机中的线程使用场景" class="headerlink" title="上位机中的线程使用场景"></a>上位机中的线程使用场景</h1><p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">主线程</span><br><span class="line"> ↓</span><br><span class="line">显示冷却塔监控界面</span><br><span class="line"></span><br><span class="line">后台Task</span><br><span class="line"> ↓</span><br><span class="line">读取PLC</span><br><span class="line"> ↓</span><br><span class="line">读取冷却塔</span><br><span class="line"> ↓</span><br><span class="line">读取变频器</span><br><span class="line"> ↓</span><br><span class="line">解析数据</span><br><span class="line"> ↓</span><br><span class="line">判断报警</span><br></pre></td></tr></table></figure>
+<p>这样设备通信不会阻塞 UI。</p>
+<hr>
+<h1 id="二、C-委托-Delegate"><a href="#二、C-委托-Delegate" class="headerlink" title="二、C# 委托 Delegate"></a>二、C# 委托 Delegate</h1><h2 id="什么是委托？"><a href="#什么是委托？" class="headerlink" title="什么是委托？"></a>什么是委托？</h2><p>委托可以简单理解为：</p>
+<blockquote>
+<p><strong>可以保存方法引用的类型。</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void PrintMessage(string message)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义一个委托：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delegate void MyDelegate(string message);</span><br></pre></td></tr></table></figure>
+<p>然后：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MyDelegate d = PrintMessage;</span><br><span class="line"></span><br><span class="line">d(&quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
+<p>本质上相当于：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d</span><br><span class="line"> ↓</span><br><span class="line">PrintMessage()</span><br></pre></td></tr></table></figure>
+<p>所以调用：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d(&quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
+<p>就相当于：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PrintMessage(&quot;Hello&quot;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="为什么上位机需要委托？"><a href="#为什么上位机需要委托？" class="headerlink" title="为什么上位机需要委托？"></a>为什么上位机需要委托？</h1><p>这里是上位机开发非常重要的一个场景：</p>
+<blockquote>
+<p><strong>后台线程不能直接操作 UI 控件。</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Task.Run(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    labelTemperature.Text = &quot;30℃&quot;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在 WinForms/WPF 中可能产生跨线程访问问题。</p>
+<p>正确思路是：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">后台线程</span><br><span class="line">   ↓</span><br><span class="line">读取设备</span><br><span class="line">   ↓</span><br><span class="line">温度 = 30℃</span><br><span class="line">   ↓</span><br><span class="line">委托</span><br><span class="line">   ↓</span><br><span class="line">UI线程</span><br><span class="line">   ↓</span><br><span class="line">更新Label</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke"></a>Invoke</h1><p>WinForms 中经常看到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.Invoke(new Action(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    labelTemperature.Text = &quot;30℃&quot;;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>这里的：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Action</span><br></pre></td></tr></table></figure>
+<p>就是一个委托。</p>
+<p>意思是：</p>
+<blockquote>
+<p>把这段 UI 操作交给 UI 线程执行。</p>
+</blockquote>
+<hr>
+<h1 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h1><p><code>Action</code> 表示：</p>
+<blockquote>
+<p><strong>没有返回值的委托。</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Action action = () =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(&quot;Hello&quot;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">action();</span><br></pre></td></tr></table></figure>
+<p>也可以带参数：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Action&lt;string&gt; action = message =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(message);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">action(&quot;设备连接成功&quot;);</span><br></pre></td></tr></table></figure>
+<p>上位机中例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Action&lt;double&gt; updateTemperature = temperature =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    labelTemperature.Text = $&quot;&#123;temperature&#125;℃&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Func"><a href="#Func" class="headerlink" title="Func"></a>Func</h1><p><code>Func</code> 表示：</p>
+<blockquote>
+<p><strong>有返回值的委托。</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;int, int&gt; func = x =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    return x * 2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int result = func(10);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure>
+<p>简单记：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Action</span><br><span class="line">↓</span><br><span class="line">无返回值</span><br><span class="line"></span><br><span class="line">Func</span><br><span class="line">↓</span><br><span class="line">有返回值</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Event-事件"><a href="#Event-事件" class="headerlink" title="Event 事件"></a>Event 事件</h1><p>C# 的事件也是建立在委托基础上的。</p>
+<p>例如定义设备温度变化事件：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public event Action&lt;double&gt; TemperatureChanged;</span><br></pre></td></tr></table></figure>
+<p>读取到新的温度：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TemperatureChanged?.Invoke(30.5);</span><br></pre></td></tr></table></figure>
+<p>UI 层订阅：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">device.TemperatureChanged += temperature =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    labelTemperature.Text = $&quot;&#123;temperature&#125;℃&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>于是：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">设备通信</span><br><span class="line"> ↓</span><br><span class="line">获取温度30.5℃</span><br><span class="line"> ↓</span><br><span class="line">触发TemperatureChanged</span><br><span class="line"> ↓</span><br><span class="line">UI收到事件</span><br><span class="line"> ↓</span><br><span class="line">更新界面</span><br></pre></td></tr></table></figure>
+<p>这种设计非常适合上位机。</p>
+<hr>
+<h1 id="三、C-数值转换"><a href="#三、C-数值转换" class="headerlink" title="三、C# 数值转换"></a>三、C# 数值转换</h1><p>数值转换在普通 C# 开发中很常见。</p>
+<p>但是对于工业上位机来说，它的重要性更高。</p>
+<p>因为设备通信返回的数据通常是：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte[]</span><br></pre></td></tr></table></figure>
+<p>而业务需要的是：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">温度</span><br><span class="line">压力</span><br><span class="line">流量</span><br><span class="line">频率</span><br><span class="line">电流</span><br><span class="line">电压</span><br><span class="line">功率</span><br></pre></td></tr></table></figure>
+<p>所以需要：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">byte[]</span><br><span class="line"> ↓</span><br><span class="line">字节解析</span><br><span class="line"> ↓</span><br><span class="line">整数</span><br><span class="line"> ↓</span><br><span class="line">浮点数</span><br><span class="line"> ↓</span><br><span class="line">实际工程值</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Parse"><a href="#Parse" class="headerlink" title="Parse"></a>Parse</h1><p>字符串转换成整数：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int value = int.Parse(&quot;123&quot;);</span><br></pre></td></tr></table></figure>
+<p>字符串转换成浮点：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double value = double.Parse(&quot;12.5&quot;);</span><br></pre></td></tr></table></figure>
+<p>但是：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int.Parse(&quot;abc&quot;);</span><br></pre></td></tr></table></figure>
+<p>会抛出异常。</p>
+<hr>
+<h1 id="TryParse"><a href="#TryParse" class="headerlink" title="TryParse"></a>TryParse</h1><p>实际项目更推荐：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (int.TryParse(&quot;123&quot;, out int value))</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果转换失败：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool result = int.TryParse(&quot;abc&quot;, out int value);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = false</span><br></pre></td></tr></table></figure>
+<p>不会直接抛出异常。</p>
+<p>所以：</p>
+<blockquote>
+<p>对用户输入、配置文件、设备数据等不确定数据，优先考虑 <code>TryParse</code>。</p>
+</blockquote>
+<hr>
+<h1 id="Convert"><a href="#Convert" class="headerlink" title="Convert"></a>Convert</h1><p>也可以使用：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int value = Convert.ToInt32(&quot;123&quot;);</span><br><span class="line"></span><br><span class="line">double temperature = Convert.ToDouble(&quot;30.5&quot;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">double temperature = 30.8;</span><br><span class="line"></span><br><span class="line">int value = (int)temperature;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30</span><br></pre></td></tr></table></figure>
+<p>小数部分被截掉。</p>
+<hr>
+<h1 id="十六进制转换"><a href="#十六进制转换" class="headerlink" title="十六进制转换"></a>十六进制转换</h1><p>工业通信中经常看到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 00 00 02</span><br></pre></td></tr></table></figure>
+<p>这些实际上是十六进制数据。</p>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">byte value = 0x1A;</span><br><span class="line"></span><br><span class="line">string hex = value.ToString(&quot;X2&quot;);</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1A</span><br></pre></td></tr></table></figure>
+<p>数组：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">byte[] data =</span><br><span class="line">&#123;</span><br><span class="line">    0x01,</span><br><span class="line">    0x03,</span><br><span class="line">    0x00,</span><br><span class="line">    0x10</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string hex = BitConverter.ToString(data);</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01-03-00-10</span><br></pre></td></tr></table></figure>
+<p>调试 Modbus 时非常常见。</p>
+<hr>
+<h1 id="byte-转数值"><a href="#byte-转数值" class="headerlink" title="byte[] 转数值"></a>byte[] 转数值</h1><p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">byte[] data =</span><br><span class="line">&#123;</span><br><span class="line">    0x2C,</span><br><span class="line">    0x01</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以使用：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">short value = BitConverter.ToInt16(data, 0);</span><br></pre></td></tr></table></figure>
+<p>但是工业通信必须特别注意：</p>
+<blockquote>
+<p><strong>字节序（Byte Order）。</strong></p>
+</blockquote>
+<p>因为设备协议规定的数据顺序不一定与 C# 默认转换方式一致。</p>
+<p>例如 Modbus 中经常需要处理：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">高字节</span><br><span class="line">低字节</span><br></pre></td></tr></table></figure>
+<p>甚至：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ABCD</span><br><span class="line">CDAB</span><br><span class="line">BADC</span><br><span class="line">DCBA</span><br></pre></td></tr></table></figure>
+<p>等不同字节/寄存器排列方式。</p>
+<hr>
+<h1 id="Modbus-中的数值转换"><a href="#Modbus-中的数值转换" class="headerlink" title="Modbus 中的数值转换"></a>Modbus 中的数值转换</h1><p>例如设备返回：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 02 01 2C</span><br></pre></td></tr></table></figure>
+<p>可以理解为：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">01</span><br><span class="line">↓</span><br><span class="line">设备地址</span><br><span class="line"></span><br><span class="line">03</span><br><span class="line">↓</span><br><span class="line">功能码</span><br><span class="line"></span><br><span class="line">02</span><br><span class="line">↓</span><br><span class="line">数据长度</span><br><span class="line"></span><br><span class="line">01 2C</span><br><span class="line">↓</span><br><span class="line">寄存器数据</span><br></pre></td></tr></table></figure>
+<p>：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x012C</span><br></pre></td></tr></table></figure>
+<p>转换成十进制：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">300</span><br></pre></td></tr></table></figure>
+<p>如果设备协议规定：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实际温度 = 寄存器值 / 10</span><br></pre></td></tr></table></figure>
+<p>那么：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">double temperature = 300 / 10.0;</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30℃</span><br></pre></td></tr></table></figure>
+<p>这就是工业协议中非常典型的：</p>
+<blockquote>
+<p><strong>原始值 → 工程值</strong></p>
+</blockquote>
+<hr>
+<h1 id="四、C-串口操作"><a href="#四、C-串口操作" class="headerlink" title="四、C# 串口操作"></a>四、C# 串口操作</h1><h2 id="什么是串口？"><a href="#什么是串口？" class="headerlink" title="什么是串口？"></a>什么是串口？</h2><p>串口是一种设备通信方式。</p>
+<p>工业现场常见：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RS232</span><br><span class="line">RS485</span><br></pre></td></tr></table></figure>
+<p>其中工业设备中非常常见的是：</p>
+<blockquote>
+<p><strong>RS485 + Modbus RTU</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">C#上位机</span><br><span class="line">   │</span><br><span class="line"> COM3</span><br><span class="line">   │</span><br><span class="line">RS485</span><br><span class="line">   │</span><br><span class="line">   ├── PLC</span><br><span class="line">   ├── 变频器</span><br><span class="line">   ├── 电表</span><br><span class="line">   ├── 温度仪表</span><br><span class="line">   └── 冷却塔控制器</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="SerialPort"><a href="#SerialPort" class="headerlink" title="SerialPort"></a>SerialPort</h1><p>C# 提供：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">using System.IO.Ports;</span><br></pre></td></tr></table></figure>
+<p>创建串口：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SerialPort serialPort = new SerialPort();</span><br></pre></td></tr></table></figure>
+<p>配置：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">serialPort.PortName = &quot;COM3&quot;;</span><br><span class="line">serialPort.BaudRate = 9600;</span><br><span class="line">serialPort.DataBits = 8;</span><br><span class="line">serialPort.StopBits = StopBits.One;</span><br><span class="line">serialPort.Parity = Parity.None;</span><br></pre></td></tr></table></figure>
+<p>典型配置：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">波特率：9600</span><br><span class="line">数据位：8</span><br><span class="line">校验位：None</span><br><span class="line">停止位：1</span><br></pre></td></tr></table></figure>
+<p>也就是常说：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600 8N1</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="打开串口"><a href="#打开串口" class="headerlink" title="打开串口"></a>打开串口</h1><figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (!serialPort.IsOpen)</span><br><span class="line">&#123;</span><br><span class="line">    serialPort.Open();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关闭：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialPort.Close();</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="发送数据"><a href="#发送数据" class="headerlink" title="发送数据"></a>发送数据</h1><p>例如发送 Modbus 请求：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">byte[] request =</span><br><span class="line">&#123;</span><br><span class="line">    0x01,</span><br><span class="line">    0x03,</span><br><span class="line">    0x00,</span><br><span class="line">    0x00,</span><br><span class="line">    0x00,</span><br><span class="line">    0x02</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">serialPort.Write(</span><br><span class="line">    request,</span><br><span class="line">    0,</span><br><span class="line">    request.Length</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>实际 Modbus RTU 报文还需要 CRC：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 00 00 02 CRC CRC</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a>接收数据</h1><p>可以读取：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">byte[] buffer = new byte[256];</span><br><span class="line"></span><br><span class="line">int length = serialPort.Read(</span><br><span class="line">    buffer,</span><br><span class="line">    0,</span><br><span class="line">    buffer.Length</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>然后：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">byte[] response =</span><br><span class="line">    buffer.Take(length).ToArray();</span><br></pre></td></tr></table></figure>
+<p>这里已经出现了：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SerialPort</span><br><span class="line">     ↓</span><br><span class="line">byte[]</span><br><span class="line">     ↓</span><br><span class="line">LINQ</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="DataReceived"><a href="#DataReceived" class="headerlink" title="DataReceived"></a>DataReceived</h1><p>SerialPort 也可以监听数据：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialPort.DataReceived += SerialPort_DataReceived;</span><br></pre></td></tr></table></figure>
+<p>处理：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void SerialPort_DataReceived(</span><br><span class="line">    object sender,</span><br><span class="line">    SerialDataReceivedEventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    int count = serialPort.BytesToRead;</span><br><span class="line"></span><br><span class="line">    byte[] buffer = new byte[count];</span><br><span class="line"></span><br><span class="line">    serialPort.Read(</span><br><span class="line">        buffer,</span><br><span class="line">        0,</span><br><span class="line">        count</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>流程：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">设备返回</span><br><span class="line"> ↓</span><br><span class="line">串口收到数据</span><br><span class="line"> ↓</span><br><span class="line">DataReceived</span><br><span class="line"> ↓</span><br><span class="line">读取byte[]</span><br><span class="line"> ↓</span><br><span class="line">解析Modbus</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="DataReceived-的重要问题"><a href="#DataReceived-的重要问题" class="headerlink" title="DataReceived 的重要问题"></a>DataReceived 的重要问题</h1><p>不能简单认为：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DataReceived</span><br><span class="line">=</span><br><span class="line">一条完整报文</span><br></pre></td></tr></table></figure>
+<p>例如设备应该返回：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 02 01 2C CRC CRC</span><br></pre></td></tr></table></figure>
+<p>第一次可能收到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 02</span><br></pre></td></tr></table></figure>
+<p>第二次：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 2C CRC CRC</span><br></pre></td></tr></table></figure>
+<p>所以实际工业通信通常需要：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">串口接收</span><br><span class="line"> ↓</span><br><span class="line">接收缓存</span><br><span class="line"> ↓</span><br><span class="line">不断追加数据</span><br><span class="line"> ↓</span><br><span class="line">判断完整报文</span><br><span class="line"> ↓</span><br><span class="line">CRC校验</span><br><span class="line"> ↓</span><br><span class="line">解析</span><br></pre></td></tr></table></figure>
+<p>这是实际做 Modbus 时非常重要的知识。</p>
+<hr>
+<h1 id="五、LINQ"><a href="#五、LINQ" class="headerlink" title="五、LINQ"></a>五、LINQ</h1><h2 id="什么是-LINQ？"><a href="#什么是-LINQ？" class="headerlink" title="什么是 LINQ？"></a>什么是 LINQ？</h2><p>LINQ：</p>
+<blockquote>
+<p>Language Integrated Query</p>
+</blockquote>
+<p>可以理解为：</p>
+<blockquote>
+<p><strong>C# 对集合数据进行查询、过滤、排序、统计的一套语法和 API。</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;int&gt; numbers = new List&lt;int&gt;</span><br><span class="line">&#123;</span><br><span class="line">    10, 20, 30, 40, 50</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>查询大于 20：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var result = numbers</span><br><span class="line">    .Where(x =&gt; x &gt; 20)</span><br><span class="line">    .ToList();</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">30</span><br><span class="line">40</span><br><span class="line">50</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h1><p>过滤数据：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var alarms = devices</span><br><span class="line">    .Where(x =&gt; x.IsAlarm)</span><br><span class="line">    .ToList();</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var highTemperatureDevices =</span><br><span class="line">    devices</span><br><span class="line">        .Where(x =&gt; x.Temperature &gt; 80)</span><br><span class="line">        .ToList();</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<blockquote>
+<p>找出温度超过 80℃ 的设备。</p>
+</blockquote>
+<hr>
+<h1 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h1><p>Select 主要用于数据转换。</p>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var names = devices</span><br><span class="line">    .Select(x =&gt; x.Name)</span><br><span class="line">    .ToList();</span><br></pre></td></tr></table></figure>
+<p>原来：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Device</span><br><span class="line">Device</span><br><span class="line">Device</span><br></pre></td></tr></table></figure>
+<p>转换成：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">设备名称</span><br><span class="line">设备名称</span><br><span class="line">设备名称</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="OrderBy"><a href="#OrderBy" class="headerlink" title="OrderBy"></a>OrderBy</h1><p>升序：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var result = devices</span><br><span class="line">    .OrderBy(x =&gt; x.Temperature)</span><br><span class="line">    .ToList();</span><br></pre></td></tr></table></figure>
+<p>降序：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var result = devices</span><br><span class="line">    .OrderByDescending(x =&gt; x.Temperature)</span><br><span class="line">    .ToList();</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">冷却塔1  30℃</span><br><span class="line">冷却塔2  35℃</span><br><span class="line">冷却塔3  28℃</span><br></pre></td></tr></table></figure>
+<p>按照温度降序：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">冷却塔2</span><br><span class="line">冷却塔1</span><br><span class="line">冷却塔3</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="FirstOrDefault"><a href="#FirstOrDefault" class="headerlink" title="FirstOrDefault"></a>FirstOrDefault</h1><p>查询第一个符合条件的对象：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var device = devices</span><br><span class="line">    .FirstOrDefault(x =&gt; x.Id == 1001);</span><br></pre></td></tr></table></figure>
+<p>如果没有找到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">null</span><br></pre></td></tr></table></figure>
+<p>因此实际开发中通常比直接使用：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">First()</span><br></pre></td></tr></table></figure>
+<p>更安全。</p>
+<hr>
+<h1 id="Any"><a href="#Any" class="headerlink" title="Any"></a>Any</h1><p>判断是否存在：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bool hasAlarm = devices</span><br><span class="line">    .Any(x =&gt; x.IsAlarm);</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bool highTemperature =</span><br><span class="line">    devices.Any(x =&gt; x.Temperature &gt; 80);</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<blockquote>
+<p>有没有设备温度超过 80℃？</p>
+</blockquote>
+<p>在报警系统中非常实用。</p>
+<hr>
+<h1 id="Count"><a href="#Count" class="headerlink" title="Count"></a>Count</h1><p>统计数量：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int count = devices.Count();</span><br></pre></td></tr></table></figure>
+<p>统计报警设备：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int alarmCount =</span><br><span class="line">    devices.Count(x =&gt; x.IsAlarm);</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="Max、Min、Average"><a href="#Max、Min、Average" class="headerlink" title="Max、Min、Average"></a>Max、Min、Average</h1><p>最高温度：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double max =</span><br><span class="line">    devices.Max(x =&gt; x.Temperature);</span><br></pre></td></tr></table></figure>
+<p>最低温度：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double min =</span><br><span class="line">    devices.Min(x =&gt; x.Temperature);</span><br></pre></td></tr></table></figure>
+<p>平均温度：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double avg =</span><br><span class="line">    devices.Average(x =&gt; x.Temperature);</span><br></pre></td></tr></table></figure>
+<p>在节能系统中就非常有意义。</p>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">冷却塔1：30℃</span><br><span class="line">冷却塔2：32℃</span><br><span class="line">冷却塔3：31℃</span><br></pre></td></tr></table></figure>
+<p>计算平均温度：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double avg =</span><br><span class="line">    towers.Average(x =&gt; x.Temperature);</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">31℃</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="GroupBy"><a href="#GroupBy" class="headerlink" title="GroupBy"></a>GroupBy</h1><p>可以根据某个属性进行分组：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var result = devices</span><br><span class="line">    .GroupBy(x =&gt; x.Status);</span><br></pre></td></tr></table></figure>
+<p>例如设备状态：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运行</span><br><span class="line">运行</span><br><span class="line">停止</span><br><span class="line">故障</span><br><span class="line">运行</span><br></pre></td></tr></table></figure>
+<p>分组之后：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">运行：3台</span><br><span class="line">停止：1台</span><br><span class="line">故障：1台</span><br></pre></td></tr></table></figure>
+<p>非常适合做：</p>
+<blockquote>
+<p>设备监控统计。</p>
+</blockquote>
+<hr>
+<h1 id="六、五项技术如何组合到上位机项目中"><a href="#六、五项技术如何组合到上位机项目中" class="headerlink" title="六、五项技术如何组合到上位机项目中"></a>六、五项技术如何组合到上位机项目中</h1><p>假设现在开发一个：</p>
+<blockquote>
+<p><strong>冷却塔科技节能监控系统</strong></p>
+</blockquote>
+<p>系统需要实时读取：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">冷却塔</span><br><span class="line"> ├── 温度</span><br><span class="line"> ├── 压力</span><br><span class="line"> ├── 流量</span><br><span class="line"> ├── 电流</span><br><span class="line"> ├── 风机频率</span><br><span class="line"> └── 运行状态</span><br></pre></td></tr></table></figure>
+<p>整个技术流程可以理解为：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">C#上位机</span><br><span class="line">                    │</span><br><span class="line">          ┌─────────┴─────────┐</span><br><span class="line">          │                   │</span><br><span class="line">       UI线程               后台Task</span><br><span class="line">          │                   │</span><br><span class="line">     显示设备数据              │</span><br><span class="line">     用户操作                 │</span><br><span class="line">                              ↓</span><br><span class="line">                         SerialPort</span><br><span class="line">                              ↓</span><br><span class="line">                          RS485</span><br><span class="line">                              ↓</span><br><span class="line">                         Modbus RTU</span><br><span class="line">                              ↓</span><br><span class="line">                            byte[]</span><br><span class="line">                              ↓</span><br><span class="line">                       CRC + 报文解析</span><br><span class="line">                              ↓</span><br><span class="line">                          数值转换</span><br><span class="line">                              ↓</span><br><span class="line">                        Device对象</span><br><span class="line">                              ↓</span><br><span class="line">                           LINQ</span><br><span class="line">                              ↓</span><br><span class="line">                 ┌────────────┼───────────┐</span><br><span class="line">                 ↓            ↓           ↓</span><br><span class="line">               Where         Any        Average</span><br><span class="line">                 ↓            ↓           ↓</span><br><span class="line">              报警设备      是否报警     平均温度</span><br><span class="line">                 │            │           │</span><br><span class="line">                 └────────────┴───────────┘</span><br><span class="line">                              ↓</span><br><span class="line">                            委托</span><br><span class="line">                              ↓</span><br><span class="line">                            Invoke</span><br><span class="line">                              ↓</span><br><span class="line">                           UI线程</span><br><span class="line">                              ↓</span><br><span class="line">                         更新监控界面</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="七、一个简化的实际代码结构"><a href="#七、一个简化的实际代码结构" class="headerlink" title="七、一个简化的实际代码结构"></a>七、一个简化的实际代码结构</h1><p>可以把它抽象成：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">Task.Run(() =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        // 1. Modbus请求</span><br><span class="line">        byte[] request = BuildRequest();</span><br><span class="line"></span><br><span class="line">        // 2. 串口发送</span><br><span class="line">        serialPort.Write(</span><br><span class="line">            request,</span><br><span class="line">            0,</span><br><span class="line">            request.Length</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        // 3. 接收数据</span><br><span class="line">        byte[] response = ReadResponse();</span><br><span class="line"></span><br><span class="line">        // 4. 解析数据</span><br><span class="line">        Device device = ParseResponse(response);</span><br><span class="line"></span><br><span class="line">        // 5. 数据转换</span><br><span class="line">        device.Temperature =</span><br><span class="line">            device.RawTemperature / 10.0;</span><br><span class="line"></span><br><span class="line">        // 6. 更新设备集合</span><br><span class="line">        devices.Add(device);</span><br><span class="line"></span><br><span class="line">        // 7. LINQ判断报警</span><br><span class="line">        bool hasAlarm =</span><br><span class="line">            devices.Any(x =&gt; x.IsAlarm);</span><br><span class="line"></span><br><span class="line">        // 8. 委托切换UI线程</span><br><span class="line">        Invoke(new Action(() =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            labelTemperature.Text =</span><br><span class="line">                $&quot;&#123;device.Temperature&#125;℃&quot;;</span><br><span class="line"></span><br><span class="line">            labelAlarm.Text =</span><br><span class="line">                hasAlarm ? &quot;有报警&quot; : &quot;正常&quot;;</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">        Thread.Sleep(1000);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>简化版本</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Thread / Task</span><br><span class="line">      ↓</span><br><span class="line">后台采集</span><br><span class="line"></span><br><span class="line">SerialPort</span><br><span class="line">      ↓</span><br><span class="line">设备通信</span><br><span class="line"></span><br><span class="line">byte[]</span><br><span class="line">      ↓</span><br><span class="line">数据接收</span><br><span class="line"></span><br><span class="line">数值转换</span><br><span class="line">      ↓</span><br><span class="line">工程数据</span><br><span class="line"></span><br><span class="line">LINQ</span><br><span class="line">      ↓</span><br><span class="line">数据处理</span><br><span class="line"></span><br><span class="line">Delegate / Action / Invoke</span><br><span class="line">      ↓</span><br><span class="line">UI线程更新</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="八、上位机开发中各技术的定位"><a href="#八、上位机开发中各技术的定位" class="headerlink" title="八、上位机开发中各技术的定位"></a>八、上位机开发中各技术的定位</h1><h1 id="九、最重要概念："><a href="#九、最重要概念：" class="headerlink" title="九、最重要概念："></a>九、最重要概念：</h1><h3 id="①-线程"><a href="#①-线程" class="headerlink" title="① 线程"></a>① 线程</h3><blockquote>
+<p><strong>为什么需要？</strong></p>
+</blockquote>
+<p>因为设备通信不能阻塞 UI。</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UI线程</span><br><span class="line">+</span><br><span class="line">后台通信线程</span><br></pre></td></tr></table></figure>
+<h3 id="②-委托"><a href="#②-委托" class="headerlink" title="② 委托"></a>② 委托</h3><blockquote>
+<p><strong>为什么需要？</strong></p>
+</blockquote>
+<p>因为后台线程采集完数据以后，需要通知 UI 线程更新。</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">后台线程 → 委托 → UI线程</span><br></pre></td></tr></table></figure>
+<h3 id="③-数值转换"><a href="#③-数值转换" class="headerlink" title="③ 数值转换"></a>③ 数值转换</h3><blockquote>
+<p><strong>为什么需要？</strong></p>
+</blockquote>
+<p>因为工业设备传过来的通常是二进制：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte[]</span><br></pre></td></tr></table></figure>
+<p>而业务需要：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">30℃</span><br><span class="line">0.5MPa</span><br><span class="line">25Hz</span><br><span class="line">100A</span><br></pre></td></tr></table></figure>
+<h3 id="④-串口"><a href="#④-串口" class="headerlink" title="④ 串口"></a>④ 串口</h3><blockquote>
+<p><strong>干什么？</strong></p>
+</blockquote>
+<p>负责真正把数据发给/接收自现场设备。</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C#</span><br><span class="line"> ↓</span><br><span class="line">SerialPort</span><br><span class="line"> ↓</span><br><span class="line">RS485</span><br><span class="line"> ↓</span><br><span class="line">Modbus RTU</span><br><span class="line"> ↓</span><br><span class="line">PLC/设备</span><br></pre></td></tr></table></figure>
+<h3 id="⑤-LINQ"><a href="#⑤-LINQ" class="headerlink" title="⑤ LINQ"></a>⑤ LINQ</h3><blockquote>
+<p><strong>干什么？</strong></p>
+</blockquote>
+<p>设备数据拿回来以后，对数据进行处理。</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">设备数据</span><br><span class="line"> ↓</span><br><span class="line">Where</span><br><span class="line"> ↓</span><br><span class="line">过滤报警设备</span><br><span class="line"></span><br><span class="line">设备数据</span><br><span class="line"> ↓</span><br><span class="line">Average</span><br><span class="line"> ↓</span><br><span class="line">计算平均值</span><br><span class="line"></span><br><span class="line">设备数据</span><br><span class="line"> ↓</span><br><span class="line">OrderBy</span><br><span class="line"> ↓</span><br><span class="line">排序</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="十、上位机开发思维"><a href="#十、上位机开发思维" class="headerlink" title="十、上位机开发思维"></a>十、上位机开发思维</h2><p>可以优先按照这个思路去理解：</p>
+<figure class="highlight plain"><figcaption><span>Text</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">第一步：数据从哪里来？</span><br><span class="line">        ↓</span><br><span class="line">     SerialPort</span><br><span class="line">        ↓</span><br><span class="line">     Modbus RTU</span><br><span class="line"></span><br><span class="line">第二步：数据是什么？</span><br><span class="line">        ↓</span><br><span class="line">       byte[]</span><br><span class="line">        ↓</span><br><span class="line">      数值转换</span><br><span class="line"></span><br><span class="line">第三步：谁负责读取？</span><br><span class="line">        ↓</span><br><span class="line">     Thread / Task</span><br><span class="line"></span><br><span class="line">第四步：数据怎么通知界面？</span><br><span class="line">        ↓</span><br><span class="line">   Delegate / Event</span><br><span class="line">        ↓</span><br><span class="line">      Invoke</span><br><span class="line"></span><br><span class="line">第五步：数据怎么处理？</span><br><span class="line">        ↓</span><br><span class="line">       LINQ</span><br><span class="line">        ↓</span><br><span class="line"> Where / Select / Any</span><br><span class="line"> Count / Max / Average</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2026/06/26/SpringAIGraph/" rel="next" title="Spring AI Graph">
+                <i class="fa fa-chevron-left"></i> Spring AI Graph
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2026/07/04/C-SerialCommunication/" rel="prev" title="C#串口通信详解">
+                C#串口通信详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="刘付鹏" />
+            
+              <p class="site-author-name" itemprop="name">刘付鹏</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-开发核心"><span class="nav-number">1.</span> <span class="nav-text">C#开发核心</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、C-线程"><span class="nav-number"></span> <span class="nav-text">一、C# 线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是线程？"><span class="nav-number"></span> <span class="nav-text">什么是线程？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上位机为什么需要线程？"><span class="nav-number"></span> <span class="nav-text">上位机为什么需要线程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Thread-的使用"><span class="nav-number"></span> <span class="nav-text">Thread 的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Task"><span class="nav-number"></span> <span class="nav-text">Task</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上位机中的线程使用场景"><span class="nav-number"></span> <span class="nav-text">上位机中的线程使用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、C-委托-Delegate"><span class="nav-number"></span> <span class="nav-text">二、C# 委托 Delegate</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是委托？"><span class="nav-number"></span> <span class="nav-text">什么是委托？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么上位机需要委托？"><span class="nav-number"></span> <span class="nav-text">为什么上位机需要委托？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Invoke"><span class="nav-number"></span> <span class="nav-text">Invoke</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Action"><span class="nav-number"></span> <span class="nav-text">Action</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Func"><span class="nav-number"></span> <span class="nav-text">Func</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Event-事件"><span class="nav-number"></span> <span class="nav-text">Event 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、C-数值转换"><span class="nav-number"></span> <span class="nav-text">三、C# 数值转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Parse"><span class="nav-number"></span> <span class="nav-text">Parse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TryParse"><span class="nav-number"></span> <span class="nav-text">TryParse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Convert"><span class="nav-number"></span> <span class="nav-text">Convert</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#强制类型转换"><span class="nav-number"></span> <span class="nav-text">强制类型转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十六进制转换"><span class="nav-number"></span> <span class="nav-text">十六进制转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#byte-转数值"><span class="nav-number"></span> <span class="nav-text">byte[] 转数值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Modbus-中的数值转换"><span class="nav-number"></span> <span class="nav-text">Modbus 中的数值转换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、C-串口操作"><span class="nav-number"></span> <span class="nav-text">四、C# 串口操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是串口？"><span class="nav-number"></span> <span class="nav-text">什么是串口？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SerialPort"><span class="nav-number"></span> <span class="nav-text">SerialPort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打开串口"><span class="nav-number"></span> <span class="nav-text">打开串口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发送数据"><span class="nav-number"></span> <span class="nav-text">发送数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接收数据"><span class="nav-number"></span> <span class="nav-text">接收数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DataReceived"><span class="nav-number"></span> <span class="nav-text">DataReceived</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DataReceived-的重要问题"><span class="nav-number"></span> <span class="nav-text">DataReceived 的重要问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、LINQ"><span class="nav-number"></span> <span class="nav-text">五、LINQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-LINQ？"><span class="nav-number"></span> <span class="nav-text">什么是 LINQ？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Where"><span class="nav-number"></span> <span class="nav-text">Where</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Select"><span class="nav-number"></span> <span class="nav-text">Select</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OrderBy"><span class="nav-number"></span> <span class="nav-text">OrderBy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FirstOrDefault"><span class="nav-number"></span> <span class="nav-text">FirstOrDefault</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Any"><span class="nav-number"></span> <span class="nav-text">Any</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Count"><span class="nav-number"></span> <span class="nav-text">Count</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Max、Min、Average"><span class="nav-number"></span> <span class="nav-text">Max、Min、Average</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GroupBy"><span class="nav-number"></span> <span class="nav-text">GroupBy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、五项技术如何组合到上位机项目中"><span class="nav-number"></span> <span class="nav-text">六、五项技术如何组合到上位机项目中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、一个简化的实际代码结构"><span class="nav-number"></span> <span class="nav-text">七、一个简化的实际代码结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、上位机开发中各技术的定位"><span class="nav-number"></span> <span class="nav-text">八、上位机开发中各技术的定位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、最重要概念："><span class="nav-number"></span> <span class="nav-text">九、最重要概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#①-线程"><span class="nav-number">1.</span> <span class="nav-text">① 线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#②-委托"><span class="nav-number">2.</span> <span class="nav-text">② 委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#③-数值转换"><span class="nav-number">3.</span> <span class="nav-text">③ 数值转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#④-串口"><span class="nav-number">4.</span> <span class="nav-text">④ 串口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⑤-LINQ"><span class="nav-number">5.</span> <span class="nav-text">⑤ LINQ</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#十、上位机开发思维"><span class="nav-number"></span> <span class="nav-text">十、上位机开发思维</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘付鹏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

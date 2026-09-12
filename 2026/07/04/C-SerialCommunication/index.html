@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C#," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="串口通信详解">
+<meta name="keywords" content="C#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#串口通信详解">
+<meta property="og:url" content="http://yoursite.com/2026/07/04/C-SerialCommunication/index.html">
+<meta property="og:site_name" content="刘付鹏的个人网站">
+<meta property="og:description" content="串口通信详解">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2026-09-12T02:22:16.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#串口通信详解">
+<meta name="twitter:description" content="串口通信详解">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2026/07/04/C-SerialCommunication/"/>
+
+
+
+
+
+  <title>C#串口通信详解 | 刘付鹏的个人网站</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘付鹏的个人网站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Personal Website</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2026/07/04/C-SerialCommunication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘付鹏">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘付鹏的个人网站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C#串口通信详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2026-07-04T20:20:43+08:00">
+                2026-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="串口通信详解"><a href="#串口通信详解" class="headerlink" title="串口通信详解"></a>串口通信详解</h3><a id="more"></a>
+<h1 id="串口通信详解：从基本原理到-C-上位机工业现场应用"><a href="#串口通信详解：从基本原理到-C-上位机工业现场应用" class="headerlink" title="串口通信详解：从基本原理到 C# 上位机工业现场应用"></a>串口通信详解：从基本原理到 C# 上位机工业现场应用</h1><p>在 C# 上位机、SCADA、MES、工业自动化、设备监控等项目中，<strong>串口通信是非常基础也非常重要的一项技术</strong>。</p>
+<p>例如：</p>
+<ul>
+<li>上位机读取空压机运行数据</li>
+<li>上位机读取电表、电流表、电压表</li>
+<li>上位机控制水泵、风机</li>
+<li>PLC 与电脑之间交换数据</li>
+<li>温度、压力、流量传感器向上位机发送数据</li>
+<li>变频器接收启动、停止、频率设置命令</li>
+<li>工业仪表通过 RS485 接入监控系统</li>
+<li>多台设备通过 Modbus RTU 接入 SCADA 系统</li>
+</ul>
+<p>这些场景背后，经常都能看到：</p>
+<p><strong>串口 + RS485 + Modbus RTU</strong></p>
+<p>需要特别注意：</p>
+<blockquote>
+<p><strong>串口通信、RS485、Modbus RTU 不是同一个东西。</strong></p>
+</blockquote>
+<p>可以先建立一个整体概念：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">应用层</span><br><span class="line">    ↓</span><br><span class="line">Modbus RTU / 自定义协议</span><br><span class="line">    ↓</span><br><span class="line">串口通信</span><br><span class="line">    ↓</span><br><span class="line">RS485 / RS232</span><br><span class="line">    ↓</span><br><span class="line">物理线路</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><strong>串口通信</strong>：一种数据传输方式</li>
+<li><strong>RS232 / RS485</strong>：规定电气接口和信号传输方式</li>
+<li><strong>Modbus RTU</strong>：规定数据应该如何组织、设备如何请求和响应</li>
+</ul>
+<hr>
+<h1 id="一、什么是串口通信？"><a href="#一、什么是串口通信？" class="headerlink" title="一、什么是串口通信？"></a>一、什么是串口通信？</h1><p>串口通信，全称是 Serial Communication。</p>
+<p>它最核心的思想非常简单：</p>
+<blockquote>
+<p><strong>数据按照顺序，一个 bit 一个 bit 地发送。</strong></p>
+</blockquote>
+<p>例如一个字节：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10110010</span><br></pre></td></tr></table></figure>
+<p>不是 8 个 bit 同时发送，而是依次发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 → 0 → 1 → 1 → 0 → 0 → 1 → 0</span><br></pre></td></tr></table></figure>
+<p>所以叫：</p>
+<p><strong>Serial，串行。</strong></p>
+<p>与之相对的是并行通信：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">并行：</span><br><span class="line"></span><br><span class="line">1 0 1 1 0 0 1 0</span><br><span class="line">↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓</span><br><span class="line">同时传输</span><br></pre></td></tr></table></figure>
+<p>串行通信：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 → 0 → 1 → 1 → 0 → 0 → 1 → 0</span><br></pre></td></tr></table></figure>
+<p>串口最大的优势是：</p>
+<ul>
+<li>线路简单</li>
+<li>成本低</li>
+<li>实现简单</li>
+<li>设备兼容性高</li>
+<li>特别适合工业设备通信</li>
+</ul>
+<p>因此即使现在工业现场大量使用工业以太网，RS232、RS485 等串行通信方式仍然大量存在。尤其是老旧设备、仪表、变频器、PLC、传感器等设备。</p>
+<hr>
+<h1 id="二、串口通信到底解决什么问题？"><a href="#二、串口通信到底解决什么问题？" class="headerlink" title="二、串口通信到底解决什么问题？"></a>二、串口通信到底解决什么问题？</h1><p>假设现在有一台电脑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────┐</span><br><span class="line">│     C# 上位机     │</span><br><span class="line">└────────┬─────────┘</span><br><span class="line">         │</span><br><span class="line">         │ 通信</span><br><span class="line">         ↓</span><br><span class="line">┌──────────────────┐</span><br><span class="line">│      空压机       │</span><br><span class="line">└──────────────────┘</span><br></pre></td></tr></table></figure>
+<p>电脑需要知道：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当前压力是多少？</span><br><span class="line">当前温度是多少？</span><br><span class="line">当前电流是多少？</span><br><span class="line">当前频率是多少？</span><br><span class="line">设备是否运行？</span><br><span class="line">有没有报警？</span><br></pre></td></tr></table></figure>
+<p>设备也可能需要接收：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">启动</span><br><span class="line">停止</span><br><span class="line">设置频率</span><br><span class="line">设置压力</span><br><span class="line">复位报警</span><br></pre></td></tr></table></figure>
+<p>这时候就需要一种<strong>设备之间约定好的通信方式</strong>。</p>
+<p>串口负责：</p>
+<blockquote>
+<p><strong>把数据从 A 设备传到 B 设备。</strong></p>
+</blockquote>
+<p>但是串口本身并不知道：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02 C5 CD</span><br></pre></td></tr></table></figure>
+<p>到底是什么意思。</p>
+<p>这就需要更上层的通信协议。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Modbus RTU</span><br></pre></td></tr></table></figure>
+<p>所以可以理解为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">串口</span><br><span class="line">= 运输道路</span><br><span class="line"></span><br><span class="line">Modbus RTU</span><br><span class="line">= 交通规则</span><br><span class="line"></span><br><span class="line">数据</span><br><span class="line">= 运输的货物</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="三、串口通信中的几个核心概念"><a href="#三、串口通信中的几个核心概念" class="headerlink" title="三、串口通信中的几个核心概念"></a>三、串口通信中的几个核心概念</h1><p>实际开发中经常看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COM3</span><br><span class="line">9600</span><br><span class="line">8</span><br><span class="line">None</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>这几个参数非常重要。</p>
+<p>通常完整配置类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COM3</span><br><span class="line">BaudRate = 9600</span><br><span class="line">DataBits = 8</span><br><span class="line">Parity = None</span><br><span class="line">StopBits = 1</span><br></pre></td></tr></table></figure>
+<p>也就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">串口：COM3</span><br><span class="line">波特率：9600</span><br><span class="line">数据位：8</span><br><span class="line">校验位：None</span><br><span class="line">停止位：1</span><br></pre></td></tr></table></figure>
+<p>如果通信双方配置不一致，就可能无法正常通信。</p>
+<hr>
+<h1 id="四、什么是-COM-口？"><a href="#四、什么是-COM-口？" class="headerlink" title="四、什么是 COM 口？"></a>四、什么是 COM 口？</h1><p>在 Windows 中，串口通常显示为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">COM1</span><br><span class="line">COM2</span><br><span class="line">COM3</span><br><span class="line">COM4</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>例如 USB 转 RS485 后，Windows 可能显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USB Serial Port (COM5)</span><br></pre></td></tr></table></figure>
+<p>那么 C# 程序就可以打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COM5</span><br></pre></td></tr></table></figure>
+<p>可以通过 Windows 的设备管理器查看。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">设备管理器</span><br><span class="line">    ↓</span><br><span class="line">端口（COM 和 LPT）</span><br><span class="line">    ↓</span><br><span class="line">USB-SERIAL CH340 (COM5)</span><br></pre></td></tr></table></figure>
+<p>这意味着：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C#程序</span><br><span class="line">   ↓</span><br><span class="line">COM5</span><br><span class="line">   ↓</span><br><span class="line">USB转RS485</span><br><span class="line">   ↓</span><br><span class="line">RS485线路</span><br><span class="line">   ↓</span><br><span class="line">工业设备</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="五、什么是波特率？"><a href="#五、什么是波特率？" class="headerlink" title="五、什么是波特率？"></a>五、什么是波特率？</h1><p>波特率：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Baud Rate</span><br></pre></td></tr></table></figure>
+<p>表示通信速度。</p>
+<p>工业设备中常见：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1200</span><br><span class="line">2400</span><br><span class="line">4800</span><br><span class="line">9600</span><br><span class="line">19200</span><br><span class="line">38400</span><br><span class="line">57600</span><br><span class="line">115200</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600</span><br></pre></td></tr></table></figure>
+<p>可以简单理解为：</p>
+<blockquote>
+<p>每秒传输约 9600 个符号。</p>
+</blockquote>
+<p>在常见的 UART 异步串口场景中，波特率与 bit/s 密切相关，但严格来说两者并非任何情况下都完全等价。</p>
+<p>工业设备最常见的配置之一就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">9600</span><br><span class="line">8</span><br><span class="line">N</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>也就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">9600 baud</span><br><span class="line">8 data bits</span><br><span class="line">No parity</span><br><span class="line">1 stop bit</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="六、什么是数据位？"><a href="#六、什么是数据位？" class="headerlink" title="六、什么是数据位？"></a>六、什么是数据位？</h1><p>DataBits 表示：</p>
+<blockquote>
+<p>每个数据字符包含多少个有效数据位。</p>
+</blockquote>
+<p>常见：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<p>工业通信中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
+<p>非常常见。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10110010</span><br></pre></td></tr></table></figure>
+<p>就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8 bit</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="七、什么是校验位？"><a href="#七、什么是校验位？" class="headerlink" title="七、什么是校验位？"></a>七、什么是校验位？</h1><p>Parity：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">Even</span><br><span class="line">Odd</span><br></pre></td></tr></table></figure>
+<p>常见：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">None</span><br><span class="line">Even</span><br><span class="line">Odd</span><br></pre></td></tr></table></figure>
+<p>它的作用主要是：</p>
+<blockquote>
+<p>对数据传输进行简单的错误检测。</p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">None</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无校验</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Even</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">偶校验</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Odd</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">奇校验</span><br></pre></td></tr></table></figure>
+<p>如果设备要求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600 8 E 1</span><br></pre></td></tr></table></figure>
+<p>而你的程序配置成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600 8 N 1</span><br></pre></td></tr></table></figure>
+<p>那么即使：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">COM口正确</span><br><span class="line">RS485线路正确</span><br><span class="line">设备地址正确</span><br></pre></td></tr></table></figure>
+<p>也可能无法正常通信。</p>
+<hr>
+<h1 id="八、什么是停止位？"><a href="#八、什么是停止位？" class="headerlink" title="八、什么是停止位？"></a>八、什么是停止位？</h1><p>StopBits 表示：</p>
+<blockquote>
+<p>一个数据帧结束之后，用多少位表示结束。</p>
+</blockquote>
+<p>常见：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1.5</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>工业设备中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>非常常见。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600 8 N 1</span><br></pre></td></tr></table></figure>
+<p>就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">9600 波特率</span><br><span class="line">8 数据位</span><br><span class="line">N 无校验</span><br><span class="line">1 停止位</span><br></pre></td></tr></table></figure>
+<p>这是一种非常常见的串口参数组合。</p>
+<hr>
+<h1 id="九、UART-与-RS232、RS485-到底是什么关系？"><a href="#九、UART-与-RS232、RS485-到底是什么关系？" class="headerlink" title="九、UART 与 RS232、RS485 到底是什么关系？"></a>九、UART 与 RS232、RS485 到底是什么关系？</h1><p>这是初学者最容易混淆的地方。</p>
+<p>可以简单理解成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">UART</span><br><span class="line"> ↓</span><br><span class="line">数字数据怎么组织、发送</span><br><span class="line"> ↓</span><br><span class="line">RS232 / RS485</span><br><span class="line"> ↓</span><br><span class="line">电气信号怎么在线路上传输</span><br><span class="line"> ↓</span><br><span class="line">Modbus RTU</span><br><span class="line"> ↓</span><br><span class="line">这些数据具体代表什么</span><br></pre></td></tr></table></figure>
+<p>严格来说：</p>
+<p><strong>UART 是一种串行收发硬件/逻辑机制；RS232、RS485 是电气接口标准；Modbus RTU 是通信协议。</strong></p>
+<p>因此：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UART ≠ RS485</span><br><span class="line"></span><br><span class="line">RS485 ≠ Modbus</span><br><span class="line"></span><br><span class="line">Modbus ≠ 串口</span><br></pre></td></tr></table></figure>
+<p>它们属于不同层次。</p>
+<hr>
+<h1 id="十、RS232-是什么？"><a href="#十、RS232-是什么？" class="headerlink" title="十、RS232 是什么？"></a>十、RS232 是什么？</h1><p>RS232 是一种经典的串行通信接口标准。</p>
+<p>它通常适合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">设备 A</span><br><span class="line">  │</span><br><span class="line">  │</span><br><span class="line">  │</span><br><span class="line">设备 B</span><br></pre></td></tr></table></figure>
+<p>也就是：</p>
+<blockquote>
+<p>点对点通信。</p>
+</blockquote>
+<p>典型应用：</p>
+<ul>
+<li>电脑连接工业仪表</li>
+<li>PLC 编程口</li>
+<li>设备调试</li>
+<li>打印机</li>
+<li>老式工业设备</li>
+<li>仪器仪表</li>
+</ul>
+<p>RS232 的特点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">点对点</span><br><span class="line">短距离</span><br><span class="line">设备数量少</span><br><span class="line">实现简单</span><br></pre></td></tr></table></figure>
+<p>因此如果只有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">电脑 ↔ 一台设备</span><br></pre></td></tr></table></figure>
+<p>RS232 就可能非常合适。</p>
+<hr>
+<h1 id="十一、RS485-是什么？"><a href="#十一、RS485-是什么？" class="headerlink" title="十一、RS485 是什么？"></a>十一、RS485 是什么？</h1><p>RS485 是工业自动化中非常重要的一种串行接口标准。</p>
+<p>它最大的优势之一是：</p>
+<blockquote>
+<p><strong>可以让多个设备挂在同一条总线上。</strong></p>
+</blockquote>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">                 ┌── 电表</span><br><span class="line">                 │</span><br><span class="line">                 ├── 温度仪</span><br><span class="line">                 │</span><br><span class="line">电脑 ── RS485 ───┼── 压力传感器</span><br><span class="line">                 │</span><br><span class="line">                 ├── 变频器</span><br><span class="line">                 │</span><br><span class="line">                 └── PLC</span><br></pre></td></tr></table></figure>
+<p>这就是典型的工业现场结构。</p>
+<p>RS485 使用差分信号，相比 RS232 更适合工业环境中的较长距离和噪声环境；RS485 也常用于多设备总线。</p>
+<hr>
+<h1 id="十二、为什么工业现场喜欢-RS485？"><a href="#十二、为什么工业现场喜欢-RS485？" class="headerlink" title="十二、为什么工业现场喜欢 RS485？"></a>十二、为什么工业现场喜欢 RS485？</h1><p>因为工厂环境非常复杂。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">电机</span><br><span class="line">变频器</span><br><span class="line">接触器</span><br><span class="line">继电器</span><br><span class="line">空压机</span><br><span class="line">水泵</span><br><span class="line">风机</span><br><span class="line">PLC</span><br></pre></td></tr></table></figure>
+<p>这些设备工作时可能产生各种电磁干扰。</p>
+<p>如果通信线路抗干扰能力不足，就可能出现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">数据错误</span><br><span class="line">CRC错误</span><br><span class="line">偶发超时</span><br><span class="line">通信断开</span><br><span class="line">数据跳变</span><br></pre></td></tr></table></figure>
+<p>RS485 使用差分传输：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A线</span><br><span class="line">B线</span><br></pre></td></tr></table></figure>
+<p>接收端关注的是两条线之间的电压差，而不是单纯某一根线相对于地的电压，因此在工业环境中通常具有更好的抗共模干扰能力。</p>
+<hr>
+<h1 id="十三、RS485-和-Modbus-RTU-是什么关系？"><a href="#十三、RS485-和-Modbus-RTU-是什么关系？" class="headerlink" title="十三、RS485 和 Modbus RTU 是什么关系？"></a>十三、RS485 和 Modbus RTU 是什么关系？</h1><p>这是做上位机必须理解的一个概念。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C#上位机</span><br><span class="line">    ↓</span><br><span class="line">Modbus RTU</span><br><span class="line">    ↓</span><br><span class="line">RS485</span><br><span class="line">    ↓</span><br><span class="line">变频器</span><br></pre></td></tr></table></figure>
+<p>这里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Modbus RTU</span><br></pre></td></tr></table></figure>
+<p>是协议。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RS485</span><br></pre></td></tr></table></figure>
+<p>是物理通信接口。</p>
+<p>因此：</p>
+<blockquote>
+<p><strong>RS485 是路，Modbus RTU 是规则。</strong></p>
+</blockquote>
+<p>Modbus RTU 通常运行在 RS485 上，也可以使用 RS232 等串行接口。它广泛用于 PLC、变频器、电表、传感器、远程 I/O 等工业设备。</p>
+<hr>
+<h1 id="十四、什么是-Modbus-RTU？"><a href="#十四、什么是-Modbus-RTU？" class="headerlink" title="十四、什么是 Modbus RTU？"></a>十四、什么是 Modbus RTU？</h1><p>Modbus 是工业自动化领域非常经典的通信协议。</p>
+<p>它采用典型的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">请求</span><br><span class="line"> ↓</span><br><span class="line">响应</span><br></pre></td></tr></table></figure>
+<p>模式。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">上位机</span><br><span class="line">   │</span><br><span class="line">   │ 请求：读取压力</span><br><span class="line">   ↓</span><br><span class="line">PLC / 仪表</span><br><span class="line">   │</span><br><span class="line">   │ 响应：压力 = 0.85MPa</span><br><span class="line">   ↓</span><br><span class="line">上位机</span><br></pre></td></tr></table></figure>
+<p>所以它非常适合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">监控</span><br><span class="line">采集</span><br><span class="line">控制</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="十五、Modbus-RTU-中的设备地址"><a href="#十五、Modbus-RTU-中的设备地址" class="headerlink" title="十五、Modbus RTU 中的设备地址"></a>十五、Modbus RTU 中的设备地址</h1><p>假设 RS485 总线上挂了 4 个设备：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">          ┌── 设备1</span><br><span class="line">          │   地址：1</span><br><span class="line">          │</span><br><span class="line">上位机 ───┼── 设备2</span><br><span class="line">          │   地址：2</span><br><span class="line">          │</span><br><span class="line">          ├── 设备3</span><br><span class="line">          │   地址：3</span><br><span class="line">          │</span><br><span class="line">          └── 设备4</span><br><span class="line">              地址：4</span><br></pre></td></tr></table></figure>
+<p>上位机发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 ...</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找地址 1 的设备</span><br></pre></td></tr></table></figure>
+<p>发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">03 ...</span><br></pre></td></tr></table></figure>
+<p>表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">功能码 03</span><br></pre></td></tr></table></figure>
+<p>例如读取保持寄存器。</p>
+<p>因此一条 Modbus RTU 请求可能类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02 C5 CD</span><br></pre></td></tr></table></figure>
+<p>可以粗略拆解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">01</span><br><span class="line">↓</span><br><span class="line">设备地址</span><br><span class="line"></span><br><span class="line">03</span><br><span class="line">↓</span><br><span class="line">功能码</span><br><span class="line"></span><br><span class="line">00 10</span><br><span class="line">↓</span><br><span class="line">起始寄存器</span><br><span class="line"></span><br><span class="line">00 02</span><br><span class="line">↓</span><br><span class="line">读取两个寄存器</span><br><span class="line"></span><br><span class="line">C5 CD</span><br><span class="line">↓</span><br><span class="line">CRC校验</span><br></pre></td></tr></table></figure>
+<p>实际项目中，<strong>寄存器地址、数据类型、缩放比例、字节序等都必须以设备厂家的协议说明书为准</strong>。</p>
+<hr>
+<h1 id="十六、为什么上位机需要“协议文档”？"><a href="#十六、为什么上位机需要“协议文档”？" class="headerlink" title="十六、为什么上位机需要“协议文档”？"></a>十六、为什么上位机需要“协议文档”？</h1><p>这是实际工作中非常重要的一点。</p>
+<p>很多刚开始做上位机的人会认为：</p>
+<blockquote>
+<p>“我把 COM 口打开，然后 Read/Write 就可以了。”</p>
+</blockquote>
+<p>实际上远远不够。</p>
+<p>设备厂家一般会给你一份：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设备通信协议</span><br></pre></td></tr></table></figure>
+<p>里面可能规定：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">设备地址</span><br><span class="line">波特率</span><br><span class="line">数据位</span><br><span class="line">校验方式</span><br><span class="line">停止位</span><br><span class="line">功能码</span><br><span class="line">寄存器地址</span><br><span class="line">数据类型</span><br><span class="line">数据长度</span><br><span class="line">读写权限</span><br><span class="line">数据缩放比例</span><br><span class="line">异常码</span><br><span class="line">CRC算法</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">压力</span><br><span class="line">寄存器：40001</span><br><span class="line">类型：16-bit</span><br><span class="line">单位：0.01MPa</span><br><span class="line">读写：只读</span><br></pre></td></tr></table></figure>
+<p>那么设备返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">85</span><br></pre></td></tr></table></figure>
+<p>上位机可能需要计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">85 × 0.01</span><br><span class="line">=</span><br><span class="line">0.85 MPa</span><br></pre></td></tr></table></figure>
+<p>因此：</p>
+<blockquote>
+<p><strong>上位机开发真正困难的地方，往往不是打开串口，而是正确理解和实现设备通信协议。</strong></p>
+</blockquote>
+<hr>
+<h1 id="十七、C-如何实现串口通信？"><a href="#十七、C-如何实现串口通信？" class="headerlink" title="十七、C# 如何实现串口通信？"></a>十七、C# 如何实现串口通信？</h1><p>.NET 提供：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.IO.Ports.SerialPort</span><br></pre></td></tr></table></figure>
+<p>用于串口操作。Microsoft 官方文档也将 <code>SerialPort</code> 定义为用于控制串口资源的类，并支持同步和事件驱动的 I/O。</p>
+<p>最基本的代码：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.IO.Ports;</span><br><span class="line"></span><br><span class="line">SerialPort serialPort = <span class="keyword">new</span> SerialPort();</span><br><span class="line"></span><br><span class="line">serialPort.PortName = <span class="string">"COM3"</span>;</span><br><span class="line">serialPort.BaudRate = <span class="number">9600</span>;</span><br><span class="line">serialPort.DataBits = <span class="number">8</span>;</span><br><span class="line">serialPort.Parity = Parity.None;</span><br><span class="line">serialPort.StopBits = StopBits.One;</span><br></pre></td></tr></table></figure>
+<p>然后打开：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialPort.Open();</span><br></pre></td></tr></table></figure>
+<p>Microsoft 的 <code>SerialPort.Open()</code> 用于打开新的串口连接，如果端口不存在、已经被其他程序占用或参数非法等，会抛出相应异常。</p>
+<p>关闭：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialPort.Close();</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="十八、C-发送数据"><a href="#十八、C-发送数据" class="headerlink" title="十八、C# 发送数据"></a>十八、C# 发送数据</h1><p>例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] data =</span><br><span class="line">&#123;</span><br><span class="line">    <span class="number">0x01</span>,</span><br><span class="line">    <span class="number">0x03</span>,</span><br><span class="line">    <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x10</span>,</span><br><span class="line">    <span class="number">0x00</span>,</span><br><span class="line">    <span class="number">0x02</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">serialPort.Write(data, <span class="number">0</span>, data.Length);</span><br></pre></td></tr></table></figure>
+<p>这里发送的是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02</span><br></pre></td></tr></table></figure>
+<p>但是如果使用 Modbus RTU：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CRC</span><br></pre></td></tr></table></figure>
+<p>通常也需要计算并追加到数据帧中。</p>
+<p>所以真实项目中一般不会直接在业务代码里到处写：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialPort.Write(...)</span><br></pre></td></tr></table></figure>
+<p>而是进行封装。</p>
+<hr>
+<h1 id="十九、推荐的-C-上位机串口架构"><a href="#十九、推荐的-C-上位机串口架构" class="headerlink" title="十九、推荐的 C# 上位机串口架构"></a>十九、推荐的 C# 上位机串口架构</h1><p>实际项目中可以设计成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────┐</span><br><span class="line">│          WPF UI              │</span><br><span class="line">│  设备状态 / 压力 / 温度 / 报警 │</span><br><span class="line">└──────────────┬──────────────┘</span><br><span class="line">               ↓</span><br><span class="line">┌─────────────────────────────┐</span><br><span class="line">│       DeviceService          │</span><br><span class="line">│   设备业务逻辑                │</span><br><span class="line">└──────────────┬──────────────┘</span><br><span class="line">               ↓</span><br><span class="line">┌─────────────────────────────┐</span><br><span class="line">│       ModbusService          │</span><br><span class="line">│  组包 / 解包 / CRC / 超时      │</span><br><span class="line">└──────────────┬──────────────┘</span><br><span class="line">               ↓</span><br><span class="line">┌─────────────────────────────┐</span><br><span class="line">│       SerialPortService      │</span><br><span class="line">│  COM / BaudRate / Read/Write │</span><br><span class="line">└──────────────┬──────────────┘</span><br><span class="line">               ↓</span><br><span class="line">          RS485 / USB</span><br><span class="line">               ↓</span><br><span class="line">            PLC / 设备</span><br></pre></td></tr></table></figure>
+<p>这样可以把：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UI</span><br><span class="line">业务逻辑</span><br><span class="line">通信协议</span><br><span class="line">串口</span><br></pre></td></tr></table></figure>
+<p>分开。</p>
+<p>这比直接在按钮事件里面操作串口更加合理。</p>
+<hr>
+<h1 id="二十、串口接收数据"><a href="#二十、串口接收数据" class="headerlink" title="二十、串口接收数据"></a>二十、串口接收数据</h1><p>C# 可以使用：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataReceived</span><br></pre></td></tr></table></figure>
+<p>事件接收数据。</p>
+<p>例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">serialPort.DataReceived += SerialPort_DataReceived;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">SerialPort_DataReceived</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">object</span> sender,</span></span></span><br><span class="line"><span class="function"><span class="params">    SerialDataReceivedEventArgs e</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = serialPort.BytesToRead;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[count];</span><br><span class="line"></span><br><span class="line">    serialPort.Read(buffer, <span class="number">0</span>, count);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是实际项目中不能简单认为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一次 DataReceived</span><br><span class="line">=</span><br><span class="line">一整条完整消息</span><br></pre></td></tr></table></figure>
+<p>这是非常重要的。</p>
+<hr>
+<h1 id="二十一、为什么-DataReceived-不能直接当成完整数据包？"><a href="#二十一、为什么-DataReceived-不能直接当成完整数据包？" class="headerlink" title="二十一、为什么 DataReceived 不能直接当成完整数据包？"></a>二十一、为什么 DataReceived 不能直接当成完整数据包？</h1><p>假设设备发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02 C5 CD</span><br></pre></td></tr></table></figure>
+<p>实际接收时可能变成：</p>
+<p>第一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00</span><br></pre></td></tr></table></figure>
+<p>第二次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 00 02</span><br></pre></td></tr></table></figure>
+<p>第三次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C5 CD</span><br></pre></td></tr></table></figure>
+<p>也可能一次全部收到。</p>
+<p>所以：</p>
+<blockquote>
+<p><strong>串口接收是字节流，不应该简单依赖一次事件对应一次完整业务消息。</strong></p>
+</blockquote>
+<p>因此实际项目一般需要：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">接收缓存</span><br><span class="line">    ↓</span><br><span class="line">不断追加字节</span><br><span class="line">    ↓</span><br><span class="line">判断是否形成完整帧</span><br><span class="line">    ↓</span><br><span class="line">校验长度</span><br><span class="line">    ↓</span><br><span class="line">校验CRC</span><br><span class="line">    ↓</span><br><span class="line">解析</span><br><span class="line">    ↓</span><br><span class="line">交给业务层</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二十二、什么是数据帧？"><a href="#二十二、什么是数据帧？" class="headerlink" title="二十二、什么是数据帧？"></a>二十二、什么是数据帧？</h1><p>串口协议通常会把一段数据组织成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">帧 Frame</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">┌──────┬──────┬──────────┬────────┐</span><br><span class="line">│地址  │功能码│   数据    │ CRC    │</span><br><span class="line">└──────┴──────┴──────────┴────────┘</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02 C5 CD</span><br></pre></td></tr></table></figure>
+<p>整个就是一帧。</p>
+<p>接收程序需要：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">找到帧</span><br><span class="line"> ↓</span><br><span class="line">判断长度</span><br><span class="line"> ↓</span><br><span class="line">检查CRC</span><br><span class="line"> ↓</span><br><span class="line">解析数据</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二十三、什么是-CRC？"><a href="#二十三、什么是-CRC？" class="headerlink" title="二十三、什么是 CRC？"></a>二十三、什么是 CRC？</h1><p>CRC：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cyclic Redundancy Check</span><br><span class="line">循环冗余校验</span><br></pre></td></tr></table></figure>
+<p>主要用于检测数据传输过程中是否发生错误。</p>
+<p>例如发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02</span><br></pre></td></tr></table></figure>
+<p>计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CRC</span><br></pre></td></tr></table></figure>
+<p>得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C5 CD</span><br></pre></td></tr></table></figure>
+<p>最终：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01 03 00 10 00 02 C5 CD</span><br></pre></td></tr></table></figure>
+<p>设备收到以后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">重新计算CRC</span><br><span class="line">        ↓</span><br><span class="line">和收到的CRC比较</span><br><span class="line">        ↓</span><br><span class="line">一致？</span><br><span class="line">   ↓       ↓</span><br><span class="line"> 是       否</span><br><span class="line"> ↓         ↓</span><br><span class="line">正常      数据错误</span><br></pre></td></tr></table></figure>
+<p>Modbus RTU 使用 CRC 进行帧校验。</p>
+<hr>
+<h1 id="二十四、串口通信实际工作场景一：空压站上位机"><a href="#二十四、串口通信实际工作场景一：空压站上位机" class="headerlink" title="二十四、串口通信实际工作场景一：空压站上位机"></a>二十四、串口通信实际工作场景一：空压站上位机</h1><p>结合工业上位机项目来看，这是非常典型的应用。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">                 ┌── 空压机1</span><br><span class="line">                 │</span><br><span class="line">                 ├── 空压机2</span><br><span class="line">                 │</span><br><span class="line">C# WPF上位机 ────┼── 冷却塔</span><br><span class="line">                 │</span><br><span class="line">                 ├── 循环水泵</span><br><span class="line">                 │</span><br><span class="line">                 ├── 电表</span><br><span class="line">                 │</span><br><span class="line">                 └── PLC</span><br></pre></td></tr></table></figure>
+<p>可能采用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RS485</span><br><span class="line">+</span><br><span class="line">Modbus RTU</span><br></pre></td></tr></table></figure>
+<p>上位机每隔一定时间轮询：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">读取空压机状态</span><br><span class="line">读取压力</span><br><span class="line">读取温度</span><br><span class="line">读取电流</span><br><span class="line">读取功率</span><br><span class="line">读取运行频率</span><br><span class="line">读取报警状态</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Timer</span><br><span class="line"> ↓</span><br><span class="line">读取设备1</span><br><span class="line"> ↓</span><br><span class="line">读取设备2</span><br><span class="line"> ↓</span><br><span class="line">读取设备3</span><br><span class="line"> ↓</span><br><span class="line">读取电表</span><br><span class="line"> ↓</span><br><span class="line">更新UI</span><br></pre></td></tr></table></figure>
+<p>最终 WPF 页面显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌────────────────────────────┐</span><br><span class="line">│        空压站监控系统        │</span><br><span class="line">├────────────────────────────┤</span><br><span class="line">│ 空压机1：运行               │</span><br><span class="line">│ 压力：0.82 MPa              │</span><br><span class="line">│ 温度：75℃                   │</span><br><span class="line">│ 功率：125 KW                │</span><br><span class="line">├────────────────────────────┤</span><br><span class="line">│ 空压机2：停止               │</span><br><span class="line">│ 压力：0 MPa                 │</span><br><span class="line">└────────────────────────────┘</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二十五、串口通信实际工作场景二：电表"><a href="#二十五、串口通信实际工作场景二：电表" class="headerlink" title="二十五、串口通信实际工作场景二：电表"></a>二十五、串口通信实际工作场景二：电表</h1><p>例如工厂有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">总电表</span><br><span class="line">车间1电表</span><br><span class="line">车间2电表</span><br><span class="line">空压站电表</span><br><span class="line">生产线电表</span><br></pre></td></tr></table></figure>
+<p>多个电表可以通过 RS485 接入。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">上位机</span><br><span class="line">  │</span><br><span class="line">  │ RS485</span><br><span class="line">  │</span><br><span class="line">  ├── 地址1：总电表</span><br><span class="line">  ├── 地址2：车间1</span><br><span class="line">  ├── 地址3：车间2</span><br><span class="line">  ├── 地址4：空压站</span><br><span class="line">  └── 地址5：生产线</span><br></pre></td></tr></table></figure>
+<p>上位机读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">电压</span><br><span class="line">电流</span><br><span class="line">功率</span><br><span class="line">功率因数</span><br><span class="line">有功电能</span><br><span class="line">无功电能</span><br></pre></td></tr></table></figure>
+<p>再进一步：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">实时数据</span><br><span class="line"> ↓</span><br><span class="line">数据库</span><br><span class="line"> ↓</span><br><span class="line">历史曲线</span><br><span class="line"> ↓</span><br><span class="line">能耗统计</span><br><span class="line"> ↓</span><br><span class="line">报表</span><br></pre></td></tr></table></figure>
+<p>这就是典型的：</p>
+<p><strong>科技节能管理系统 / 能源管理系统</strong></p>
+<hr>
+<h1 id="二十六、串口通信实际工作场景三：变频器"><a href="#二十六、串口通信实际工作场景三：变频器" class="headerlink" title="二十六、串口通信实际工作场景三：变频器"></a>二十六、串口通信实际工作场景三：变频器</h1><p>例如控制一台水泵：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C#上位机</span><br><span class="line">    ↓</span><br><span class="line">RS485</span><br><span class="line">    ↓</span><br><span class="line">变频器</span><br><span class="line">    ↓</span><br><span class="line">水泵</span><br></pre></td></tr></table></figure>
+<p>上位机可以读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运行状态</span><br><span class="line">运行频率</span><br><span class="line">输出电流</span><br><span class="line">输出电压</span><br><span class="line">故障代码</span><br></pre></td></tr></table></figure>
+<p>也可以发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动</span><br><span class="line">停止</span><br><span class="line">设置频率</span><br><span class="line">故障复位</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设置频率 = 45Hz</span><br></pre></td></tr></table></figure>
+<p>上位机：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">业务层</span><br><span class="line"> ↓</span><br><span class="line">设置Frequency = 45</span><br><span class="line"> ↓</span><br><span class="line">转换为寄存器值</span><br><span class="line"> ↓</span><br><span class="line">组装Modbus帧</span><br><span class="line"> ↓</span><br><span class="line">CRC</span><br><span class="line"> ↓</span><br><span class="line">SerialPort.Write()</span><br><span class="line"> ↓</span><br><span class="line">RS485</span><br><span class="line"> ↓</span><br><span class="line">变频器</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二十七、串口通信实际工作场景四：PLC"><a href="#二十七、串口通信实际工作场景四：PLC" class="headerlink" title="二十七、串口通信实际工作场景四：PLC"></a>二十七、串口通信实际工作场景四：PLC</h1><p>工业现场经常是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">传感器</span><br><span class="line">   ↓</span><br><span class="line">PLC</span><br><span class="line">   ↓</span><br><span class="line">RS485 / Ethernet</span><br><span class="line">   ↓</span><br><span class="line">上位机</span><br></pre></td></tr></table></figure>
+<p>PLC负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">采集</span><br><span class="line">控制</span><br><span class="line">逻辑运算</span><br></pre></td></tr></table></figure>
+<p>上位机负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">监控</span><br><span class="line">显示</span><br><span class="line">报警</span><br><span class="line">数据记录</span><br><span class="line">报表</span><br><span class="line">配置</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PLC读取：</span><br><span class="line"></span><br><span class="line">压力 = 0.85MPa</span><br><span class="line">温度 = 72℃</span><br><span class="line">流量 = 120m³/h</span><br><span class="line">电机状态 = 运行</span><br></pre></td></tr></table></figure>
+<p>上位机把这些数据显示出来。</p>
+<p>因此：</p>
+<blockquote>
+<p><strong>上位机并不一定直接控制每一个设备，很多时候是通过 PLC 间接获取设备数据。</strong></p>
+</blockquote>
+<hr>
+<h1 id="二十八、串口通信实际工作场景五：传感器"><a href="#二十八、串口通信实际工作场景五：传感器" class="headerlink" title="二十八、串口通信实际工作场景五：传感器"></a>二十八、串口通信实际工作场景五：传感器</h1><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">温度传感器</span><br><span class="line">压力传感器</span><br><span class="line">流量计</span><br><span class="line">液位计</span><br><span class="line">气体检测仪</span><br></pre></td></tr></table></figure>
+<p>传感器可能通过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RS485</span><br><span class="line">Modbus RTU</span><br></pre></td></tr></table></figure>
+<p>提供数据。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">压力传感器</span><br><span class="line">地址：01</span><br><span class="line">寄存器：40001</span><br><span class="line">数据：850</span><br><span class="line">比例：0.001</span><br></pre></td></tr></table></figure>
+<p>上位机：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">850 × 0.001</span><br><span class="line">=</span><br><span class="line">0.85 MPa</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="二十九、工业项目中的完整数据链路"><a href="#二十九、工业项目中的完整数据链路" class="headerlink" title="二十九、工业项目中的完整数据链路"></a>二十九、工业项目中的完整数据链路</h1><p>以空压站为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">             工业现场</span><br><span class="line">                 │</span><br><span class="line">   ┌─────────────┼─────────────┐</span><br><span class="line">   ↓             ↓             ↓</span><br><span class="line">空压机          电表          温度传感器</span><br><span class="line">   │             │             │</span><br><span class="line">   └──────── RS485 ────────────┘</span><br><span class="line">                 │</span><br><span class="line">             Modbus RTU</span><br><span class="line">                 │</span><br><span class="line">            USB-RS485</span><br><span class="line">                 │</span><br><span class="line">               COM3</span><br><span class="line">                 │</span><br><span class="line">          C# WPF 上位机</span><br><span class="line">                 │</span><br><span class="line">          DeviceService</span><br><span class="line">                 │</span><br><span class="line">          ModbusService</span><br><span class="line">                 │</span><br><span class="line">           数据解析</span><br><span class="line">                 │</span><br><span class="line">       ┌─────────┴─────────┐</span><br><span class="line">       ↓                   ↓</span><br><span class="line">      UI                  DB</span><br><span class="line">       ↓                   ↓</span><br><span class="line">   实时监控             历史数据</span><br><span class="line">                           ↓</span><br><span class="line">                        报表分析</span><br></pre></td></tr></table></figure>
+<p>这就是一个非常典型的工业上位机系统。</p>
+<hr>
+<h1 id="三十、串口通信的典型开发流程"><a href="#三十、串口通信的典型开发流程" class="headerlink" title="三十、串口通信的典型开发流程"></a>三十、串口通信的典型开发流程</h1><h2 id="第一步：确认设备接口"><a href="#第一步：确认设备接口" class="headerlink" title="第一步：确认设备接口"></a>第一步：确认设备接口</h2><p>首先问设备厂家：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RS232？</span><br><span class="line">RS485？</span><br><span class="line">RS422？</span><br><span class="line">网口？</span><br></pre></td></tr></table></figure>
+<p>如果是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RS485</span><br></pre></td></tr></table></figure>
+<p>继续确认。</p>
+<hr>
+<h2 id="第二步：确认通信参数"><a href="#第二步：确认通信参数" class="headerlink" title="第二步：确认通信参数"></a>第二步：确认通信参数</h2><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BaudRate = 9600</span><br><span class="line">DataBits = 8</span><br><span class="line">Parity = None</span><br><span class="line">StopBits = 1</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="第三步：确认协议"><a href="#第三步：确认协议" class="headerlink" title="第三步：确认协议"></a>第三步：确认协议</h2><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Modbus RTU</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">厂家自定义协议</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="第四步：确认设备地址"><a href="#第四步：确认设备地址" class="headerlink" title="第四步：确认设备地址"></a>第四步：确认设备地址</h2><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">空压机1 = 1</span><br><span class="line">空压机2 = 2</span><br><span class="line">电表 = 3</span><br><span class="line">水泵 = 4</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="第五步：获取协议文档"><a href="#第五步：获取协议文档" class="headerlink" title="第五步：获取协议文档"></a>第五步：获取协议文档</h2><p>重点查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">寄存器地址</span><br><span class="line">功能码</span><br><span class="line">数据类型</span><br><span class="line">数据长度</span><br><span class="line">读写权限</span><br><span class="line">数据比例</span><br><span class="line">单位</span><br><span class="line">字节序</span><br><span class="line">CRC</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="第六步：使用串口工具测试"><a href="#第六步：使用串口工具测试" class="headerlink" title="第六步：使用串口工具测试"></a>第六步：使用串口工具测试</h2><p>不要一上来就写 WPF。</p>
+<p>可以先使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Modbus Poll</span><br><span class="line">串口调试工具</span><br><span class="line">厂家调试工具</span><br></pre></td></tr></table></figure>
+<p>确认设备能够正常通信。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">COM3</span><br><span class="line">9600</span><br><span class="line">8N1</span><br><span class="line"></span><br><span class="line">地址：1</span><br><span class="line">功能码：03</span><br><span class="line">寄存器：40001</span><br></pre></td></tr></table></figure>
+<p>测试成功以后，再写 C#。</p>
+<hr>
+<h1 id="三十一、为什么开发上位机时推荐先用串口调试工具？"><a href="#三十一、为什么开发上位机时推荐先用串口调试工具？" class="headerlink" title="三十一、为什么开发上位机时推荐先用串口调试工具？"></a>三十一、为什么开发上位机时推荐先用串口调试工具？</h1><p>因为可以把问题拆开。</p>
+<p>假设 C# 程序通信失败：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C#代码</span><br><span class="line"> ↓</span><br><span class="line">串口</span><br><span class="line"> ↓</span><br><span class="line">RS485</span><br><span class="line"> ↓</span><br><span class="line">设备</span><br></pre></td></tr></table></figure>
+<p>到底哪里错了？</p>
+<p>可能是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">COM口错误</span><br><span class="line">波特率错误</span><br><span class="line">校验错误</span><br><span class="line">A/B接反</span><br><span class="line">设备地址错误</span><br><span class="line">寄存器错误</span><br><span class="line">CRC错误</span><br><span class="line">协议错误</span><br><span class="line">设备没有响应</span><br></pre></td></tr></table></figure>
+<p>如果先用工具测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">串口工具</span><br><span class="line"> ↓</span><br><span class="line">设备</span><br></pre></td></tr></table></figure>
+<p>可以先确定：</p>
+<blockquote>
+<p><strong>设备和通信线路是正常的。</strong></p>
+</blockquote>
+<p>然后再排查 C#。</p>
+<p>这是实际工作中非常重要的调试思路。</p>
+<hr>
+<h1 id="三十二、串口通信常见故障"><a href="#三十二、串口通信常见故障" class="headerlink" title="三十二、串口通信常见故障"></a>三十二、串口通信常见故障</h1><h2 id="1-COM口被占用"><a href="#1-COM口被占用" class="headerlink" title="1. COM口被占用"></a>1. COM口被占用</h2><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COM3</span><br></pre></td></tr></table></figure>
+<p>已经被：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">串口调试工具</span><br></pre></td></tr></table></figure>
+<p>占用。</p>
+<p>然后 C#：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">serialPort.Open();</span><br></pre></td></tr></table></figure>
+<p>可能直接失败。</p>
+<p>所以实际开发时：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">关闭其他串口工具</span><br></pre></td></tr></table></figure>
+<p>或者确认端口是否被其他程序占用。</p>
+<hr>
+<h1 id="三十三、波特率错误"><a href="#三十三、波特率错误" class="headerlink" title="三十三、波特率错误"></a>三十三、波特率错误</h1><p>设备：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9600</span><br></pre></td></tr></table></figure>
+<p>程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">115200</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">乱码</span><br><span class="line">无法解析</span><br><span class="line">CRC错误</span><br><span class="line">无响应</span><br></pre></td></tr></table></figure>
+<p>所以双方必须一致。</p>
+<hr>
+<h1 id="三十四、A-B线接反"><a href="#三十四、A-B线接反" class="headerlink" title="三十四、A/B线接反"></a>三十四、A/B线接反</h1><p>RS485 很常见的问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A</span><br><span class="line">B</span><br></pre></td></tr></table></figure>
+<p>接反。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">上位机 A ───── 设备 B</span><br><span class="line">上位机 B ───── 设备 A</span><br></pre></td></tr></table></figure>
+<p>可能导致：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">完全无法通信</span><br></pre></td></tr></table></figure>
+<p>因此现场排查时：</p>
+<blockquote>
+<p><strong>检查 RS485 A/B 接线是非常常见的一步。</strong></p>
+</blockquote>
+<p>但需要注意，不同厂家对 A/B、D+/D− 的标识可能存在命名差异，不能只看字母，最好结合设备手册和实际测试判断。</p>
+<hr>
+<h1 id="三十五、设备地址错误"><a href="#三十五、设备地址错误" class="headerlink" title="三十五、设备地址错误"></a>三十五、设备地址错误</h1><p>例如设备实际：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">地址 = 2</span><br></pre></td></tr></table></figure>
+<p>但是程序发送：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">地址 = 1</span><br></pre></td></tr></table></figure>
+<p>那么：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">设备2不会响应</span><br></pre></td></tr></table></figure>
+<p>因为它不是在呼叫自己。</p>
+<hr>
+<h1 id="三十六、寄存器地址错误"><a href="#三十六、寄存器地址错误" class="headerlink" title="三十六、寄存器地址错误"></a>三十六、寄存器地址错误</h1><p>例如厂家文档：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">压力：</span><br><span class="line">40001</span><br></pre></td></tr></table></figure>
+<p>你却读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">40002</span><br></pre></td></tr></table></figure>
+<p>程序可能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有响应</span><br></pre></td></tr></table></figure>
+<p>但是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据完全不对</span><br></pre></td></tr></table></figure>
+<p>这类问题比“完全没响应”更难排查。</p>
+<hr>
+<h1 id="三十七、数据类型错误"><a href="#三十七、数据类型错误" class="headerlink" title="三十七、数据类型错误"></a>三十七、数据类型错误</h1><p>设备返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 55</span><br></pre></td></tr></table></figure>
+<p>你认为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">整数</span><br></pre></td></tr></table></figure>
+<p>但是设备实际定义可能是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">有符号整数</span><br><span class="line">无符号整数</span><br><span class="line">浮点数</span><br><span class="line">32位整数</span><br><span class="line">32位浮点数</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x0055</span><br></pre></td></tr></table></figure>
+<p>转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">85</span><br></pre></td></tr></table></figure>
+<p>再根据比例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">85 × 0.01</span><br><span class="line">=</span><br><span class="line">0.85</span><br></pre></td></tr></table></figure>
+<p>因此：</p>
+<blockquote>
+<p><strong>通信成功 ≠ 数据正确。</strong></p>
+</blockquote>
+<hr>
+<h1 id="三十八、字节序问题"><a href="#三十八、字节序问题" class="headerlink" title="三十八、字节序问题"></a>三十八、字节序问题</h1><p>这是工业通信中比较容易踩坑的地方。</p>
+<p>例如一个 32 位数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">12 34 56 78</span><br></pre></td></tr></table></figure>
+<p>不同设备可能采用不同字节顺序。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ABCD</span><br><span class="line">CDAB</span><br><span class="line">BADC</span><br><span class="line">DCBA</span><br></pre></td></tr></table></figure>
+<p>所以如果一个浮点数读取出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">非常离谱</span><br></pre></td></tr></table></figure>
+<p>除了检查寄存器地址，还要检查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Byte Order</span><br><span class="line">Word Order</span><br></pre></td></tr></table></figure>
+<p>也就是：</p>
+<p><strong>字节序 / 字序。</strong></p>
+<hr>
+<h1 id="三十九、串口通信为什么需要超时？"><a href="#三十九、串口通信为什么需要超时？" class="headerlink" title="三十九、串口通信为什么需要超时？"></a>三十九、串口通信为什么需要超时？</h1><p>假设：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上位机发送请求</span><br><span class="line">        ↓</span><br><span class="line">等待设备响应</span><br></pre></td></tr></table></figure>
+<p>但是设备：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">断电</span><br><span class="line">掉线</span><br><span class="line">故障</span><br><span class="line">线路断开</span><br></pre></td></tr></table></figure>
+<p>如果程序无限等待：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">线程一直卡住</span><br></pre></td></tr></table></figure>
+<p>所以一般设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ReadTimeout</span><br><span class="line">WriteTimeout</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">读取超时：1000ms</span><br></pre></td></tr></table></figure>
+<p>如果 1 秒没有响应：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">认为本次通信失败</span><br></pre></td></tr></table></figure>
+<p>然后可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">重试</span><br><span class="line">记录日志</span><br><span class="line">更新设备状态</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="四十、工业上位机一般如何处理通信失败？"><a href="#四十、工业上位机一般如何处理通信失败？" class="headerlink" title="四十、工业上位机一般如何处理通信失败？"></a>四十、工业上位机一般如何处理通信失败？</h1><p>不要简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">通信失败 → 程序崩溃</span><br></pre></td></tr></table></figure>
+<p>而应该：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">发送请求</span><br><span class="line">    ↓</span><br><span class="line">等待响应</span><br><span class="line">    ↓</span><br><span class="line">超时？</span><br><span class="line"> ┌──┴──┐</span><br><span class="line">否     是</span><br><span class="line">↓       ↓</span><br><span class="line">解析    重试</span><br><span class="line">        ↓</span><br><span class="line">      仍失败？</span><br><span class="line">       ↓</span><br><span class="line">     标记离线</span><br><span class="line">       ↓</span><br><span class="line">     记录日志</span><br><span class="line">       ↓</span><br><span class="line">     UI报警</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">空压机1：在线</span><br><span class="line">空压机2：在线</span><br><span class="line">空压机3：通信异常</span><br></pre></td></tr></table></figure>
+<p>系统仍然应该继续运行。</p>
+<hr>
+<h1 id="四十一、工业上位机为什么需要通信线程？"><a href="#四十一、工业上位机为什么需要通信线程？" class="headerlink" title="四十一、工业上位机为什么需要通信线程？"></a>四十一、工业上位机为什么需要通信线程？</h1><p>假设 UI 线程直接执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">读取设备</span><br><span class="line">等待响应 1 秒</span><br></pre></td></tr></table></figure>
+<p>那么：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">UI线程</span><br><span class="line"> ↓</span><br><span class="line">等待设备</span><br><span class="line"> ↓</span><br><span class="line">界面卡顿</span><br></pre></td></tr></table></figure>
+<p>因此实际项目一般会把通信任务放到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">后台线程</span><br><span class="line">Task</span><br><span class="line">定时任务</span><br><span class="line">异步任务</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">UI线程</span><br><span class="line"> ↓</span><br><span class="line">显示界面</span><br><span class="line"></span><br><span class="line">后台通信线程</span><br><span class="line"> ↓</span><br><span class="line">读取设备</span><br><span class="line"> ↓</span><br><span class="line">解析数据</span><br><span class="line"> ↓</span><br><span class="line">更新数据模型</span><br><span class="line"> ↓</span><br><span class="line">通知UI</span><br></pre></td></tr></table></figure>
+<p>这样可以保证：</p>
+<blockquote>
+<p><strong>设备通信不会阻塞界面。</strong></p>
+</blockquote>
+<hr>
+<h1 id="四十二、实际项目中的通信轮询"><a href="#四十二、实际项目中的通信轮询" class="headerlink" title="四十二、实际项目中的通信轮询"></a>四十二、实际项目中的通信轮询</h1><p>例如有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设备1</span><br><span class="line">设备2</span><br><span class="line">设备3</span><br><span class="line">设备4</span><br></pre></td></tr></table></figure>
+<p>可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">每500ms</span><br><span class="line"> ↓</span><br><span class="line">读取设备1</span><br><span class="line"> ↓</span><br><span class="line">读取设备2</span><br><span class="line"> ↓</span><br><span class="line">读取设备3</span><br><span class="line"> ↓</span><br><span class="line">读取设备4</span><br></pre></td></tr></table></figure>
+<p>但是如果设备很多：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100台设备</span><br></pre></td></tr></table></figure>
+<p>就不能简单地：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个循环全部同步读取</span><br></pre></td></tr></table></figure>
+<p>否则很容易导致：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通信耗时过长</span><br><span class="line">设备响应延迟</span><br><span class="line">UI数据不及时</span><br></pre></td></tr></table></figure>
+<p>所以实际项目可能需要：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通信队列</span><br><span class="line">设备调度</span><br><span class="line">轮询周期</span><br><span class="line">优先级</span><br><span class="line">超时机制</span><br><span class="line">重试机制</span><br><span class="line">离线检测</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="四十三、推荐的上位机通信模块"><a href="#四十三、推荐的上位机通信模块" class="headerlink" title="四十三、推荐的上位机通信模块"></a>四十三、推荐的上位机通信模块</h1><p>如果你以后开发 C# WPF 上位机，可以把通信层设计成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Communication</span><br><span class="line">│</span><br><span class="line">├── SerialPortService</span><br><span class="line">│</span><br><span class="line">├── ModbusRtuClient</span><br><span class="line">│</span><br><span class="line">├── DeviceManager</span><br><span class="line">│</span><br><span class="line">├── DevicePollingService</span><br><span class="line">│</span><br><span class="line">├── ProtocolParser</span><br><span class="line">│</span><br><span class="line">├── Crc16</span><br><span class="line">│</span><br><span class="line">└── CommunicationLogger</span><br></pre></td></tr></table></figure>
+<p>职责：</p>
+<h3 id="SerialPortService"><a href="#SerialPortService" class="headerlink" title="SerialPortService"></a>SerialPortService</h3><p>负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">打开串口</span><br><span class="line">关闭串口</span><br><span class="line">发送字节</span><br><span class="line">接收字节</span><br></pre></td></tr></table></figure>
+<h3 id="ModbusRtuClient"><a href="#ModbusRtuClient" class="headerlink" title="ModbusRtuClient"></a>ModbusRtuClient</h3><p>负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">读取寄存器</span><br><span class="line">写入寄存器</span><br><span class="line">组装Modbus报文</span><br><span class="line">解析Modbus报文</span><br><span class="line">CRC</span><br></pre></td></tr></table></figure>
+<h3 id="DeviceManager"><a href="#DeviceManager" class="headerlink" title="DeviceManager"></a>DeviceManager</h3><p>负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">设备列表</span><br><span class="line">设备地址</span><br><span class="line">设备状态</span><br><span class="line">设备配置</span><br></pre></td></tr></table></figure>
+<h3 id="DevicePollingService"><a href="#DevicePollingService" class="headerlink" title="DevicePollingService"></a>DevicePollingService</h3><p>负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">周期性读取设备</span><br></pre></td></tr></table></figure>
+<h3 id="CommunicationLogger"><a href="#CommunicationLogger" class="headerlink" title="CommunicationLogger"></a>CommunicationLogger</h3><p>负责：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">发送日志</span><br><span class="line">接收日志</span><br><span class="line">异常日志</span><br><span class="line">超时日志</span><br></pre></td></tr></table></figure>
+<p>例如日志：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[09:30:01.123]</span><br><span class="line">TX:</span><br><span class="line">01 03 00 10 00 02 C5 CD</span><br><span class="line"></span><br><span class="line">[09:30:01.145]</span><br><span class="line">RX:</span><br><span class="line">01 03 04 00 55 00 10 AA BB</span><br></pre></td></tr></table></figure>
+<p>这对于工业项目排查问题非常重要。</p>
+<hr>
+<h1 id="四十四、串口通信和上位机开发的核心关系"><a href="#四十四、串口通信和上位机开发的核心关系" class="headerlink" title="四十四、串口通信和上位机开发的核心关系"></a>四十四、串口通信和上位机开发的核心关系</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C#</span><br><span class="line">WPF</span><br><span class="line">MVVM</span><br><span class="line">上位机</span><br><span class="line">SCADA</span><br><span class="line">MES</span><br><span class="line">工业自动化</span><br></pre></td></tr></table></figure>
+<p>串口通信掌握：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一层</span><br><span class="line">什么是串口</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第二层</span><br><span class="line">COM口</span><br><span class="line">BaudRate</span><br><span class="line">DataBits</span><br><span class="line">Parity</span><br><span class="line">StopBits</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第三层</span><br><span class="line">UART</span><br><span class="line">RS232</span><br><span class="line">RS422</span><br><span class="line">RS485</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第四层</span><br><span class="line">数据帧</span><br><span class="line">字节流</span><br><span class="line">CRC</span><br><span class="line">超时</span><br><span class="line">重试</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第五层</span><br><span class="line">Modbus RTU</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第六层</span><br><span class="line">C# SerialPort</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第七层</span><br><span class="line">通信线程</span><br><span class="line">异步</span><br><span class="line">轮询</span><br><span class="line">队列</span><br></pre></td></tr></table></figure>
+<p>↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第八层</span><br><span class="line">工业现场故障排查</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="四十五、“什么是串口通信？”"><a href="#四十五、“什么是串口通信？”" class="headerlink" title="四十五、“什么是串口通信？”"></a>四十五、“什么是串口通信？”</h1><blockquote>
+<p>串口通信是一种按照顺序逐 bit 传输数据的通信方式，在工业自动化和上位机开发中应用非常广泛。常见的接口有 RS232、RS485，其中 RS232 更适合点对点通信，RS485 更适合工业现场的多设备总线通信。</p>
+<p>在实际项目中，我接触比较多的是 RS485 + Modbus RTU。上位机通过 USB 转 RS485 接口形成 COM 口，配置波特率、数据位、校验位和停止位，然后按照设备通信协议组装请求帧，通过串口发送给 PLC、变频器、电表、传感器等设备，接收到数据后进行帧解析、CRC 校验和数据转换，最后把结果展示在 WPF 上位机界面。</p>
+<p>实际开发中还需要处理通信超时、重试、设备离线、数据缓存、CRC 校验以及多设备轮询等问题。</p>
+</blockquote>
+<p>这个回答已经比较接近<strong>实际上位机开发工程师的面试表达</strong>。</p>
+<hr>
+<h1 id="四十六、最终理解：串口到底是什么？"><a href="#四十六、最终理解：串口到底是什么？" class="headerlink" title="四十六、最终理解：串口到底是什么？"></a>四十六、最终理解：串口到底是什么？</h1><p>可以用一张图记住：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    C# WPF 上位机</span><br><span class="line">          │</span><br><span class="line">          │</span><br><span class="line">   SerialPort</span><br><span class="line">          │</span><br><span class="line">     COM3 / COM4</span><br><span class="line">          │</span><br><span class="line">    USB转RS485</span><br><span class="line">          │</span><br><span class="line">        RS485</span><br><span class="line">          │</span><br><span class="line"> ┌────────┼────────┐</span><br><span class="line"> │        │        │</span><br><span class="line">PLC      电表     变频器</span><br><span class="line"> │        │        │</span><br><span class="line"> └────────┼────────┘</span><br><span class="line">          │</span><br><span class="line">     Modbus RTU</span><br><span class="line">          │</span><br><span class="line">    请求 / 响应</span><br><span class="line">          │</span><br><span class="line">寄存器 / 数据 / CRC</span><br></pre></td></tr></table></figure>
+<p>真正做工业上位机，要形成这样的思维：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">设备</span><br><span class="line"> ↓</span><br><span class="line">接口</span><br><span class="line"> ↓</span><br><span class="line">串口</span><br><span class="line"> ↓</span><br><span class="line">RS485</span><br><span class="line"> ↓</span><br><span class="line">协议</span><br><span class="line"> ↓</span><br><span class="line">数据帧</span><br><span class="line"> ↓</span><br><span class="line">CRC</span><br><span class="line"> ↓</span><br><span class="line">解析</span><br><span class="line"> ↓</span><br><span class="line">业务数据</span><br><span class="line"> ↓</span><br><span class="line">UI</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">空压机</span><br><span class="line"> ↓</span><br><span class="line">RS485</span><br><span class="line"> ↓</span><br><span class="line">Modbus RTU</span><br><span class="line"> ↓</span><br><span class="line">读取寄存器</span><br><span class="line"> ↓</span><br><span class="line">得到 85</span><br><span class="line"> ↓</span><br><span class="line">按照协议 × 0.01</span><br><span class="line"> ↓</span><br><span class="line">0.85 MPa</span><br><span class="line"> ↓</span><br><span class="line">C#模型</span><br><span class="line"> ↓</span><br><span class="line">WPF</span><br><span class="line"> ↓</span><br><span class="line">界面显示：</span><br><span class="line"></span><br><span class="line">空压站压力：0.85 MPa</span><br></pre></td></tr></table></figure>
+<p>这才是<strong>串口通信在真实上位机项目中的完整应用链路</strong>。</p>
+<hr>
+<h1 id="四十七、总结"><a href="#四十七、总结" class="headerlink" title="四十七、总结"></a>四十七、总结</h1><p>串口通信本身并不复杂，真正需要掌握的是几个层次之间的关系：</p>
+<table>
+<thead>
+<tr>
+<th>概念</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>串口通信</td>
+<td>数据串行传输方式</td>
+</tr>
+<tr>
+<td>UART</td>
+<td>串行数据收发机制</td>
+</tr>
+<tr>
+<td>RS232</td>
+<td>点对点串行接口标准</td>
+</tr>
+<tr>
+<td>RS485</td>
+<td>工业现场常用差分串行接口</td>
+</tr>
+<tr>
+<td>Modbus RTU</td>
+<td>工业通信协议</td>
+</tr>
+<tr>
+<td>COM口</td>
+<td>Windows 对串口设备的编号</td>
+</tr>
+<tr>
+<td>波特率</td>
+<td>通信速度参数</td>
+</tr>
+<tr>
+<td>DataBits</td>
+<td>数据位</td>
+</tr>
+<tr>
+<td>Parity</td>
+<td>校验位</td>
+</tr>
+<tr>
+<td>StopBits</td>
+<td>停止位</td>
+</tr>
+<tr>
+<td>CRC</td>
+<td>数据完整性校验</td>
+</tr>
+<tr>
+<td>Register</td>
+<td>设备数据寄存器</td>
+</tr>
+<tr>
+<td>SerialPort</td>
+<td>C# 中操作串口的 API</td>
+</tr>
+<tr>
+<td>Polling</td>
+<td>上位机周期性读取设备</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>防止通信永久等待</td>
+</tr>
+<tr>
+<td>Retry</td>
+<td>通信失败后的重新请求</td>
+</tr>
+</tbody>
+</table>
+<p>对于<strong>C# 上位机开发</strong>来说，最值得重点掌握的一条技术路线就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">C#</span><br><span class="line"> ↓</span><br><span class="line">SerialPort</span><br><span class="line"> ↓</span><br><span class="line">COM</span><br><span class="line"> ↓</span><br><span class="line">RS485</span><br><span class="line"> ↓</span><br><span class="line">Modbus RTU</span><br><span class="line"> ↓</span><br><span class="line">CRC</span><br><span class="line"> ↓</span><br><span class="line">寄存器</span><br><span class="line"> ↓</span><br><span class="line">设备数据解析</span><br><span class="line"> ↓</span><br><span class="line">WPF/MVVM</span><br><span class="line"> ↓</span><br><span class="line">SCADA监控</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C/" rel="tag"># C#</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2026/06/28/C-hexinzhishi/" rel="next" title="C#开发核心知识">
+                <i class="fa fa-chevron-left"></i> C#开发核心知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="刘付鹏" />
+            
+              <p class="site-author-name" itemprop="name">刘付鹏</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#串口通信详解"><span class="nav-number">1.</span> <span class="nav-text">串口通信详解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#串口通信详解：从基本原理到-C-上位机工业现场应用"><span class="nav-number"></span> <span class="nav-text">串口通信详解：从基本原理到 C# 上位机工业现场应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、什么是串口通信？"><span class="nav-number"></span> <span class="nav-text">一、什么是串口通信？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、串口通信到底解决什么问题？"><span class="nav-number"></span> <span class="nav-text">二、串口通信到底解决什么问题？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、串口通信中的几个核心概念"><span class="nav-number"></span> <span class="nav-text">三、串口通信中的几个核心概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、什么是-COM-口？"><span class="nav-number"></span> <span class="nav-text">四、什么是 COM 口？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、什么是波特率？"><span class="nav-number"></span> <span class="nav-text">五、什么是波特率？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、什么是数据位？"><span class="nav-number"></span> <span class="nav-text">六、什么是数据位？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、什么是校验位？"><span class="nav-number"></span> <span class="nav-text">七、什么是校验位？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#八、什么是停止位？"><span class="nav-number"></span> <span class="nav-text">八、什么是停止位？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九、UART-与-RS232、RS485-到底是什么关系？"><span class="nav-number"></span> <span class="nav-text">九、UART 与 RS232、RS485 到底是什么关系？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十、RS232-是什么？"><span class="nav-number"></span> <span class="nav-text">十、RS232 是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十一、RS485-是什么？"><span class="nav-number"></span> <span class="nav-text">十一、RS485 是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十二、为什么工业现场喜欢-RS485？"><span class="nav-number"></span> <span class="nav-text">十二、为什么工业现场喜欢 RS485？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十三、RS485-和-Modbus-RTU-是什么关系？"><span class="nav-number"></span> <span class="nav-text">十三、RS485 和 Modbus RTU 是什么关系？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十四、什么是-Modbus-RTU？"><span class="nav-number"></span> <span class="nav-text">十四、什么是 Modbus RTU？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十五、Modbus-RTU-中的设备地址"><span class="nav-number"></span> <span class="nav-text">十五、Modbus RTU 中的设备地址</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十六、为什么上位机需要“协议文档”？"><span class="nav-number"></span> <span class="nav-text">十六、为什么上位机需要“协议文档”？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十七、C-如何实现串口通信？"><span class="nav-number"></span> <span class="nav-text">十七、C# 如何实现串口通信？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十八、C-发送数据"><span class="nav-number"></span> <span class="nav-text">十八、C# 发送数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#十九、推荐的-C-上位机串口架构"><span class="nav-number"></span> <span class="nav-text">十九、推荐的 C# 上位机串口架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十、串口接收数据"><span class="nav-number"></span> <span class="nav-text">二十、串口接收数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十一、为什么-DataReceived-不能直接当成完整数据包？"><span class="nav-number"></span> <span class="nav-text">二十一、为什么 DataReceived 不能直接当成完整数据包？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十二、什么是数据帧？"><span class="nav-number"></span> <span class="nav-text">二十二、什么是数据帧？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十三、什么是-CRC？"><span class="nav-number"></span> <span class="nav-text">二十三、什么是 CRC？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十四、串口通信实际工作场景一：空压站上位机"><span class="nav-number"></span> <span class="nav-text">二十四、串口通信实际工作场景一：空压站上位机</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十五、串口通信实际工作场景二：电表"><span class="nav-number"></span> <span class="nav-text">二十五、串口通信实际工作场景二：电表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十六、串口通信实际工作场景三：变频器"><span class="nav-number"></span> <span class="nav-text">二十六、串口通信实际工作场景三：变频器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十七、串口通信实际工作场景四：PLC"><span class="nav-number"></span> <span class="nav-text">二十七、串口通信实际工作场景四：PLC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十八、串口通信实际工作场景五：传感器"><span class="nav-number"></span> <span class="nav-text">二十八、串口通信实际工作场景五：传感器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二十九、工业项目中的完整数据链路"><span class="nav-number"></span> <span class="nav-text">二十九、工业项目中的完整数据链路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十、串口通信的典型开发流程"><span class="nav-number"></span> <span class="nav-text">三十、串口通信的典型开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：确认设备接口"><span class="nav-number"></span> <span class="nav-text">第一步：确认设备接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：确认通信参数"><span class="nav-number"></span> <span class="nav-text">第二步：确认通信参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：确认协议"><span class="nav-number"></span> <span class="nav-text">第三步：确认协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步：确认设备地址"><span class="nav-number"></span> <span class="nav-text">第四步：确认设备地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步：获取协议文档"><span class="nav-number"></span> <span class="nav-text">第五步：获取协议文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六步：使用串口工具测试"><span class="nav-number"></span> <span class="nav-text">第六步：使用串口工具测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十一、为什么开发上位机时推荐先用串口调试工具？"><span class="nav-number"></span> <span class="nav-text">三十一、为什么开发上位机时推荐先用串口调试工具？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十二、串口通信常见故障"><span class="nav-number"></span> <span class="nav-text">三十二、串口通信常见故障</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-COM口被占用"><span class="nav-number"></span> <span class="nav-text">1. COM口被占用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十三、波特率错误"><span class="nav-number"></span> <span class="nav-text">三十三、波特率错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十四、A-B线接反"><span class="nav-number"></span> <span class="nav-text">三十四、A/B线接反</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十五、设备地址错误"><span class="nav-number"></span> <span class="nav-text">三十五、设备地址错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十六、寄存器地址错误"><span class="nav-number"></span> <span class="nav-text">三十六、寄存器地址错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十七、数据类型错误"><span class="nav-number"></span> <span class="nav-text">三十七、数据类型错误</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十八、字节序问题"><span class="nav-number"></span> <span class="nav-text">三十八、字节序问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三十九、串口通信为什么需要超时？"><span class="nav-number"></span> <span class="nav-text">三十九、串口通信为什么需要超时？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十、工业上位机一般如何处理通信失败？"><span class="nav-number"></span> <span class="nav-text">四十、工业上位机一般如何处理通信失败？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十一、工业上位机为什么需要通信线程？"><span class="nav-number"></span> <span class="nav-text">四十一、工业上位机为什么需要通信线程？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十二、实际项目中的通信轮询"><span class="nav-number"></span> <span class="nav-text">四十二、实际项目中的通信轮询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十三、推荐的上位机通信模块"><span class="nav-number"></span> <span class="nav-text">四十三、推荐的上位机通信模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SerialPortService"><span class="nav-number">1.</span> <span class="nav-text">SerialPortService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ModbusRtuClient"><span class="nav-number">2.</span> <span class="nav-text">ModbusRtuClient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeviceManager"><span class="nav-number">3.</span> <span class="nav-text">DeviceManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DevicePollingService"><span class="nav-number">4.</span> <span class="nav-text">DevicePollingService</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CommunicationLogger"><span class="nav-number">5.</span> <span class="nav-text">CommunicationLogger</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十四、串口通信和上位机开发的核心关系"><span class="nav-number"></span> <span class="nav-text">四十四、串口通信和上位机开发的核心关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十五、“什么是串口通信？”"><span class="nav-number"></span> <span class="nav-text">四十五、“什么是串口通信？”</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十六、最终理解：串口到底是什么？"><span class="nav-number"></span> <span class="nav-text">四十六、最终理解：串口到底是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四十七、总结"><span class="nav-number"></span> <span class="nav-text">四十七、总结</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘付鹏</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
